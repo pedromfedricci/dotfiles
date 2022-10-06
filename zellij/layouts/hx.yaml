@@ -1,0 +1,27 @@
+---
+template:
+  direction: Horizontal
+  parts:
+    - direction: Vertical
+      body: true
+    - direction: Vertical
+      borderless: true
+      split_size:
+        Fixed: 1
+      run:
+        plugin:
+          location: "zellij:compact-bar"
+
+tabs:
+   # term editor (hx, nvim)
+   - name: hx
+     direction: Vertical
+     focus: true
+     borderless: true
+     pane_frames: false
+     run:
+       command: { cmd: hx, args: ["./"] }
+
+   # normal tab for shell
+   - name: term
+     direction: Vertical

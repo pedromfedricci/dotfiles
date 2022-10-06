@@ -1,0 +1,20 @@
+# Block all files by default.
+/*
+
+# Enter each desired pattern to include.
+!/.gitignore
+!/starship.toml
+!/alacritty/
+!/bat/
+!/helix/
+!/nix/
+!/nushell/
+!/nvim/
+!/zellij/
+
+# Block nushell history.
+/nushell/history.*
+# Block gh hosts.
+/gh/hosts.*
+# Block runtime files for helix.
+/helix/runtime/

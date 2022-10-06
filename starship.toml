@@ -1,0 +1,152 @@
+command_timeout = 5000
+
+continuation_prompt = "[...](bright-black) "
+
+[shell]
+disabled = false
+
+# Disabled by default
+[status]
+format = "[$status]($style) "
+disabled = true
+
+[aws]
+symbol = "aws "
+
+[bun]
+symbol = "bun "
+
+[c]
+symbol = "C "
+
+[character]
+error_symbol = "[x](bold red)"
+success_symbol = "[>](bold green)"
+vicmd_symbol = "[<](bold green)"
+
+[cmake]
+symbol = "cmake "
+
+[cobol]
+symbol = "cobol "
+
+[conda]
+symbol = "conda "
+
+[crystal]
+symbol = "cr "
+
+[daml]
+symbol = "daml "
+
+[dart]
+symbol = "dart "
+
+[deno]
+symbol = "deno "
+
+[directory]
+read_only = " ro"
+
+[docker_context]
+symbol = "docker "
+
+[dotnet]
+symbol = ".NET "
+
+[elixir]
+symbol = "exs "
+
+[elm]
+symbol = "elm "
+
+[git_branch]
+symbol = "git "
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_status]
+ahead = ">"
+behind = "<"
+deleted = "x"
+diverged = "<>"
+renamed = "r"
+
+[golang]
+symbol = "go "
+
+[hg_branch]
+symbol = "hg "
+
+[java]
+symbol = "java "
+
+[julia]
+symbol = "jl "
+
+[kotlin]
+symbol = "kt "
+
+[lua]
+symbol = "lua "
+
+[memory_usage]
+symbol = "memory "
+
+[nim]
+symbol = "nim "
+
+[nix_shell]
+symbol = "nix "
+
+[nodejs]
+symbol = "nodejs "
+
+[ocaml]
+symbol = "ml "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "pl "
+
+[php]
+symbol = "php "
+
+[pulumi]
+symbol = "pulumi "
+
+[purescript]
+symbol = "purs "
+
+[python]
+symbol = "py "
+
+[raku]
+symbol = "raku "
+
+[ruby]
+symbol = "rb "
+
+[rust]
+symbol = "rs "
+
+[scala]
+symbol = "scala "
+
+[spack]
+symbol = "spack "
+
+[sudo]
+symbol = "sudo "
+
+[swift]
+symbol = "swift "
+
+[terraform]
+symbol = "terraform "
+
+[zig]
+symbol = "zig "
