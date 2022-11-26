@@ -65,7 +65,8 @@ load-env {
     WASMER_DIR: $"($env.HOME)/.wasmer",
     WASMER_CACHE_DIR: $"($env.HOME)/.wasmer/cache",
     HELIX_RUNTIME: $"($env.HOME)/.config/helix/runtime",
-    EDITOR: $"($env.HOME)/.cargo/bin/hx"
+    DENO_INSTALL: $"($env.HOME)/.deno",
+    EDITOR: "/usr/bin/nvim",
 }
 
 # Bin paths. You can also appended them to `$env.PATH` below.
@@ -78,7 +79,8 @@ load-env {
     WAPM_BIN: $"($env.WASMER_DIR)/globals/wapm_packages/.bin",
     # A default path for js global tools. 
     # For anything else, start a POSIX shell with nvm.
-    NODE_BIN: $"($env.HOME)/.nvm/versions/node/v18.8.0/bin"
+    NODE_BIN: $"($env.HOME)/.nvm/versions/node/v18.8.0/bin",
+    DENO_BIN: $"($env.DENO_INSTALL)/bin",
 }
 
 # Prepend new entries to $env.PATH if they are not present already.
@@ -101,11 +103,12 @@ path-extend [
     $env.WASMER_BIN,
     $env.WAPM_BIN,
     $env.NODE_BIN,
+    $env.DENO_BIN,
 ]
 
 # Use completions for cargo.
-use ~/.config/nushell/completions/cargo-completions.nu *
+# use ~/.config/nushell/completions/cargo-completions.nu *
 
 # Starship hook.
-mkdir ~/.cache/starship
-starship init nu | save ~/.cache/starship/init.nu
+# mkdir ~/.cache/starship
+# starship init nu | save ~/.cache/starship/init.nu

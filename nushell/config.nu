@@ -17,7 +17,7 @@ module completions {
   # Download objects and refs from another repository
   export extern "git fetch" [
     repository?: string@"nu-complete git remotes" # name of the repository to fetch
-    branch?: string@"nu-complete git branches"    # name of the branch to fetch
+    branch?: string@"nu-complete git branches" # name of the branch to fetch
     --all                                         # Fetch all remotes
     --append(-a)                                  # Append ref names and object names to .git/FETCH_HEAD
     --atomic                                      # Use an atomic transaction to update local refs.
@@ -101,7 +101,7 @@ module completions {
     --dry-run(-n)                                   # dry run
     --exec: string                                  # receive pack program
     --follow-tags                                   # push missing but relevant tags
-    --force-with-lease: string                      # require old value of ref to be at this value
+    --force-with-lease                              # require old value of ref to be at this value
     --force(-f)                                     # force updates
     --ipv4(-4)                                      # use IPv4 addresses only
     --ipv6(-6)                                      # use IPv6 addresses only
@@ -231,9 +231,16 @@ let light_theme = {
     shape_nothing: light_cyan
 }
 
+# External completer example
+# let carapace_completer = {|spans| 
+#     carapace $spans.0 nushell $spans | from json
+# }
+
+
 # The default config record. This is where much of your global configuration is setup.
 let-env config = {
-  filesize_metric: false
+  external_completer: $nothing # check 'carapace_completer' above to as example
+  filesize_metric: false # true => (KB, MB, GB), false => (KiB, MiB, GiB)
   table_mode: rounded # basic, compact, compact_double, light, thin, with_love, rounded, reinforced, heavy, none, other
   use_ls_colors: true
   rm_always_trash: false
@@ -247,12 +254,12 @@ let-env config = {
   buffer_editor: "hx" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
   use_ansi_coloring: true
   filesize_format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, zb, zib, auto
-  edit_mode: "vi" # emacs, vi
+  edit_mode: vi # emacs, vi
   max_history_size: 10000 # Session has to be reloaded for this to take effect
   sync_history_on_enter: true # Enable to share the history between multiple sessions, else you have to close the session to persist history to file
   history_file_format: "plaintext" # "sqlite" or "plaintext"
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
-  disable_table_indexes: false # set to true to remove the index column from tables
+  table_index_mode: always # "always" show indexes, "never" show indexes, "auto" = show indexes when a table has "index" column
   cd_with_abbreviations: false # set to true to allow you to do things like cd s/o/f and nushell expand it to cd some/other/folder
   case_sensitive_completions: false # set to true to enable case-sensitive completions
   enable_external_completion: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up my be very slow
@@ -266,6 +273,7 @@ let-env config = {
     # truncating_suffix: "..."
   }
   show_banner: false # true or false to enable or disable the banner
+  show_clickable_links_in_ls: true # true or false to enable or disable clickable links in the ls listing. your terminal has to support links.
 
   hooks: {
     pre_prompt: [{
@@ -508,4 +516,3 @@ source "~/.cache/starship/init.nu"
 
 # Single user Nix profile initialization.
 use "~/.config/nix/nix-profile.nu"
-

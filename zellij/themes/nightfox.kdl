@@ -1,0 +1,32 @@
+themes {
+  nightfox {
+    bg      "#192330"
+    fg      "#cdcecf"
+    // black   "#393b44"
+    black   "#192330"
+    red     "#c94f6d"
+    green   "#81b29a"
+    yellow  "#dbc074"
+    blue    "#719cd6"
+    orange  "#D08770"
+    magenta "#9d79d6"
+    cyan    "#63cdcf"
+    white   "#dfdfe0"
+  }
+
+  nordfox {
+    bg      "#2E3440"
+    fg      "#CDCECF"
+    red     "#BF616A"
+    green   "#A3BE8C"
+    blue    "#81A1C1"
+    yellow  "#EBCB8B"
+    magenta "#B48EAD"
+    orange  "#D08770"
+    cyan    "#88C0D0"
+    // black   "#3B4252"
+    black   "#2E3440"
+    white   "#E5E9F0"
+  }
+}
+

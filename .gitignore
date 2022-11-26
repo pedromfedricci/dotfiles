@@ -5,11 +5,11 @@
 !/.gitignore
 !/starship.toml
 !/alacritty/
+!/astronvim/
 !/bat/
 !/helix/
 !/nix/
 !/nushell/
-!/nvim/
 !/zellij/
 
 # Block nushell history.
@@ -18,3 +18,5 @@
 /gh/hosts.*
 # Block runtime files for helix.
 /helix/runtime/
+# Block catppuccin git clone.
+/alacritty/catppuccin
