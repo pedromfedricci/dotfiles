@@ -34,7 +34,7 @@ def paths-str (path: path) {
     if ($paths | is-empty) {
         $path
     } else {
-        build-string $path ":" $paths
+        $"($path):($paths)"
     }
 }
 
@@ -49,7 +49,7 @@ def nix-path (path: path) {
     let input = $in
     let paths = if is-nix-profile {
         let type = ($input | describe)
-        let path = build-string (nix-profile) $path
+        let path = $"(nix-profile)($path)"
         if $type == "string" {
             $input | paths-str $path
         } else if $type == "list<string>" {
@@ -65,7 +65,7 @@ def nix-manpath (path: path) {
     let input = $in
     let paths = if (not ($input | is-empty)) && is-nix-profile {
         let type = ($input | describe)
-        let path = build-string (nix-profile) $path
+        let path = $"(nix-profile)($path)" 
         if $type == "string" {
             $input | paths-str $path
         } else if $type == "list<string>" {
@@ -104,7 +104,7 @@ export-env {
 
         # Find the first existing path and select it for `$env.NIX_SSL_CERT_FILE`.
         # If none exists, returns `nothing`.
-        let matches = ($all_paths | find -p { |path| $path | path exists })
+        let matches = ($all_paths | where { |path| $path | path exists })
         if not ($matches | is-empty) { $matches | first }
     }
 

@@ -107,7 +107,7 @@ path-extend [
 ]
 
 # Use completions for cargo.
-# use ~/.config/nushell/completions/cargo-completions.nu *
+use ~/.config/nushell/completions/cargo-completions.nu *
 
 # Starship hook.
 # mkdir ~/.cache/starship
