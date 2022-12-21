@@ -1,19 +1,17 @@
-theme = "nonedark"
+theme = "nightfox"
 
 [editor]
 color-modes = true
 true-color = true
 cursorline = true
+bufferline = "always"
 
 [editor.indent-guides]
-#render = true
-#character = '|'
+render = true
 
 [editor.statusline]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-#"mode.normal" = "NORMAL"
-#"mode.insert" = "INSERT"
-#"mode.select" = "SELECT"
+"mode.select" = "SELECT"
 
 [editor.file-picker]
 hidden = false
