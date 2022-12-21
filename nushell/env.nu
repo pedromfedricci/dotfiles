@@ -110,5 +110,5 @@ path-extend [
 use ~/.config/nushell/completions/cargo-completions.nu *
 
 # Starship hook.
-# mkdir ~/.cache/starship
-# starship init nu | save ~/.cache/starship/init.nu
+mkdir ~/.cache/starship
+starship init nu | save --force ~/.cache/starship/init.nu

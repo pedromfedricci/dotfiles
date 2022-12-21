@@ -18,7 +18,7 @@
 # Return user's `.nix-profile` path, if it exists, `$nothing` otherwise.
 def nix-profile () {
     let envs = (env).name
-    if "HOME" in $envs && "USER" in $envs {
+    if "HOME" in $envs and "USER" in $envs {
         $"($env.HOME)/.nix-profile"
     } # Else `nothing`.
 }
@@ -40,7 +40,7 @@ def paths-str (path: path) {
 
 # Prepend `path` to list of paths, removing `path` duplicates.
 def paths-list (path: path) {
-    where -b { |it| $it != $path } | prepend $path
+    where { |it| $it != $path } | prepend $path
 }
 
 # Prepend `path` to source, removing `path` duplicates. If source is not a `string`,
@@ -63,7 +63,7 @@ def nix-path (path: path) {
 
 def nix-manpath (path: path) {
     let input = $in
-    let paths = if (not ($input | is-empty)) && is-nix-profile {
+    let paths = if (not ($input | is-empty)) and is-nix-profile {
         let type = ($input | describe)
         let path = $"(nix-profile)($path)" 
         if $type == "string" {
