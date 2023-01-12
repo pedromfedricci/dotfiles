@@ -62,6 +62,7 @@ let-env NU_PLUGIN_DIRS = [
 load-env {
     CARGO_HOME: $"($env.HOME)/.cargo",
     WASMTIME_HOME: $"($env.HOME)/.wasmtime",
+    ZIG_HOME: $"($env.HOME)/.zig",
     WASMER_DIR: $"($env.HOME)/.wasmer",
     WASMER_CACHE_DIR: $"($env.HOME)/.wasmer/cache",
     HELIX_RUNTIME: $"($env.HOME)/.config/helix/runtime",
@@ -81,6 +82,7 @@ load-env {
     # For anything else, start a POSIX shell with nvm.
     NODE_BIN: $"($env.HOME)/.nvm/versions/node/v18.8.0/bin",
     DENO_BIN: $"($env.DENO_INSTALL)/bin",
+    ZIG_BIN: $"($env.ZIG_HOME)",
 }
 
 # Prepend new entries to $env.PATH if they are not present already.
@@ -104,6 +106,7 @@ path-extend [
     $env.WAPM_BIN,
     $env.NODE_BIN,
     $env.DENO_BIN,
+    $env.ZIG_BIN,
 ]
 
 # Use completions for cargo.
