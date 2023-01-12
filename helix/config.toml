@@ -11,7 +11,9 @@ render = true
 
 [editor.statusline]
 right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-"mode.select" = "SELECT"
+
+[editor.cursor-shape]
+insert = "bar"
 
 [editor.file-picker]
 hidden = false

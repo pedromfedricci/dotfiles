@@ -1,0 +1,9 @@
+inherits = "nightfox"
+
+# SYNTAX HIGHLIGHTING OVERRIDES
+# These keys match tree-sitter scopes.
+
+"type.builtin" = { fg = "magenta-bright" }
+"constructor" = { fg = "orange-bright" }
+"keyword.storage.modifier"  = { fg = "magenta-bright" }
+"keyword.function" = { fg = "magenta" }
