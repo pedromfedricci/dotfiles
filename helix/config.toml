@@ -3,15 +3,14 @@ theme = "nightfox"
 [editor]
 color-modes = true
 true-color = true
-cursorline = true
 bufferline = "always"
 
 [editor.indent-guides]
 render = true
 
 [editor.statusline]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
-
+left = ["mode", "spinner", "file-name", "file-encoding"]
+right = ["diagnostics", "selections", "position", "position-percentage"]
 [editor.cursor-shape]
 insert = "bar"
 

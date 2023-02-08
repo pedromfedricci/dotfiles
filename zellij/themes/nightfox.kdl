@@ -1,6 +1,6 @@
 themes {
   nightfox {
-    bg      "#192330"
+    bg      "#393b44"
     fg      "#cdcecf"
     // black   "#393b44"
     black   "#192330"
