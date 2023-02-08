@@ -1,0 +1,4 @@
+[[language]]
+name = "java"
+roots = ["pom.xml", "build.gradle"]
+language-server = { command = "jdtls" }
