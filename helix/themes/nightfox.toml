@@ -7,3 +7,5 @@ inherits = "nightfox"
 "constructor" = { fg = "orange-bright" }
 "keyword.storage.modifier"  = { fg = "magenta-bright" }
 "keyword.function" = { fg = "magenta" }
+"ui.virtual.inlay-hint.parameter" = { fg = "comment" }
+"ui.virtual.inlay-hint.type" = { fg = "comment" }
