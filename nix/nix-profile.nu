@@ -17,8 +17,7 @@
 
 # Return user's `.nix-profile` path, if it exists, `$nothing` otherwise.
 def nix-profile () {
-    let envs = (env).name
-    if "HOME" in $envs and "USER" in $envs {
+    if "HOME" in $env and "USER" in $env {
         $"($env.HOME)/.nix-profile"
     } # Else `nothing`.
 }
@@ -47,7 +46,7 @@ def paths-list (path: path) {
 # `list<string>` or `nothing`, then return the original value.
 def nix-path (path: path) {
     let input = $in
-    let paths = if is-nix-profile {
+    let paths = if (is-nix-profile) {
         let type = ($input | describe)
         let path = $"(nix-profile)($path)"
         if $type == "string" {
@@ -63,7 +62,7 @@ def nix-path (path: path) {
 
 def nix-manpath (path: path) {
     let input = $in
-    let paths = if (not ($input | is-empty)) and is-nix-profile {
+    let paths = if (not ($input | is-empty)) and (is-nix-profile) {
         let type = ($input | describe)
         let path = $"(nix-profile)($path)" 
         if $type == "string" {
@@ -78,7 +77,7 @@ def nix-manpath (path: path) {
 export-env {
     # Set a cert path to `$env.NIX_SSL_CERT_FILE` so that Nixpkgs applications like
     # curl will work. If no cert file is found, then set it to `$nothing`.
-    let-env NIX_SSL_CERT_FILE = do {
+    let-env NIX_SSL_CERT_FILE = (
         # System path candidates for `$env.NIX_SSL_CERT_FILE`.
         let system_paths = [
             # NixOS, Ubuntu, Debian, Gentoo, Arch.
@@ -89,50 +88,50 @@ export-env {
             "/etc/ssl/certs/ca-bundle.crt",
             # Fedora, CentOS.
             "/etc/pki/tls/certs/ca-bundle.crt",
-        ]
+        ];
 
         # User path candidates for `$env.NIX_SSL_CERT_FILE`.
-        let user_paths = if is-nix-profile {[
+        let user_paths = if (is-nix-profile) {[
             # Fall back to cacert in Nix profile.
             $"(nix-profile)/etc/ssl/certs/ca-bundle.crt",
             # Old cacert in Nix profile.
             $"(nix-profile)/etc/ca-bundle.crt"
-        ]}
+        ]};
 
         # All path candidates for `$env.NIX_SSL_CERT_FILE`.
-        let all_paths = ($system_paths | append $user_paths)
+        let all_paths = ($system_paths | append $user_paths);
 
         # Find the first existing path and select it for `$env.NIX_SSL_CERT_FILE`.
         # If none exists, returns `nothing`.
-        let matches = ($all_paths | where { |path| $path | path exists })
+        let matches = ($all_paths | where { |path| $path | path exists });
         if not ($matches | is-empty) { $matches | first }
-    }
+    )
 
     # Set `$env.NIX_PROFILES` with nix profile paths (default and user).
-    let-env NIX_PROFILES = do {
-        let default = "/nix/var/nix/profiles/default"
-        if is-nix-profile {
+    let-env NIX_PROFILES = (
+        let default = "/nix/var/nix/profiles/default";
+        if (is-nix-profile) {
             $"($default) (nix-profile)"
         } else {
             $default
         }
-    }
+    )
 
     # Prepend user's `.nix-profile/share/man` to `$env.MANPATH`, removing duplicates.
-    let-env MANPATH = do {
-        if "MANPATH" in (env).name {
+    let-env MANPATH = (
+        if "MANPATH" in $env {
             $env.MANPATH | nix-manpath "/share/man"
         } else {
             ""
         }
-    }
+    )
 
     # Prepend user's `.nix-profile/bin` to `$env.PATH`, removing duplicates.
-    let-env PATH = do {
-        if "PATH" in (env).name {
+    let-env PATH = (
+        if "PATH" in $env {
             $env.PATH | nix-path "/bin"
         } else {
-            ""
+            []
         }
-    }
+    )
 }
