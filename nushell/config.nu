@@ -1,6 +1,6 @@
 # Nushell Config File
 #
-# version = 0.78.1
+# version = 0.79.0
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html
@@ -26,21 +26,21 @@ let dark_theme = {
     duration: white
     date: {|| (date now) - $in |
       if $in < 1hr {
-        'red3b'
+        'purple'
       } else if $in < 6hr {
-        'orange3'
+        'red'
       } else if $in < 1day {
-        'yellow3b'
+        'yellow'
       } else if $in < 3day {
-        'chartreuse2b'
+        'green'
       } else if $in < 1wk {
-        'green3b'
+        'light_green'
       } else if $in < 6wk {
-        'darkturquoise'
+        'cyan'
       } else if $in < 52wk {
-        'deepskyblue3b'
+        'blue'
       } else { 'dark_gray' }
-    }    
+    }
     range: white
     float: white
     string: white
@@ -57,6 +57,7 @@ let dark_theme = {
     shape_binary: purple_bold
     shape_block: blue_bold
     shape_bool: light_cyan
+    shape_closure: green_bold
     shape_custom: green
     shape_datetime: cyan_bold
     shape_directory: cyan
@@ -66,7 +67,7 @@ let dark_theme = {
     shape_flag: blue_bold
     shape_float: purple_bold
     # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+    shape_garbage: { fg: white bg: red attr: b}
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
@@ -86,6 +87,7 @@ let dark_theme = {
     shape_string_interpolation: cyan_bold
     shape_table: blue_bold
     shape_variable: purple
+    shape_vardecl: purple
 }
 
 let light_theme = {
@@ -108,19 +110,19 @@ let light_theme = {
     duration: dark_gray
   date: {|| (date now) - $in |
     if $in < 1hr {
-      'red3b'
+      'purple'
     } else if $in < 6hr {
-      'orange3'
+      'red'
     } else if $in < 1day {
-      'yellow3b'
+      'yellow'
     } else if $in < 3day {
-      'chartreuse2b'
+      'green'
     } else if $in < 1wk {
-      'green3b'
+      'light_green'
     } else if $in < 6wk {
-      'darkturquoise'
+      'cyan'
     } else if $in < 52wk {
-      'deepskyblue3b'
+      'blue'
     } else { 'dark_gray' }
   }
     range: dark_gray
@@ -139,6 +141,7 @@ let light_theme = {
     shape_binary: purple_bold
     shape_block: blue_bold
     shape_bool: light_cyan
+    shape_closure: green_bold
     shape_custom: green
     shape_datetime: cyan_bold
     shape_directory: cyan
@@ -148,7 +151,7 @@ let light_theme = {
     shape_flag: blue_bold
     shape_float: purple_bold
     # shapes are used to change the cli syntax highlighting
-    shape_garbage: { fg: "#FFFFFF" bg: "#FF0000" attr: b}
+    shape_garbage: { fg: white bg: red attr: b}
     shape_globpattern: cyan_bold
     shape_int: purple_bold
     shape_internalcall: cyan_bold
@@ -168,6 +171,7 @@ let light_theme = {
     shape_string_interpolation: cyan_bold
     shape_table: blue_bold
     shape_variable: purple
+    shape_vardecl: purple
 }
 
 # External completer example
@@ -287,7 +291,7 @@ let-env config = {
   use_grid_icons: true
   footer_mode: "25" # always, never, number_of_rows, auto
   float_precision: 2 # the precision for displaying floats in tables
-  #buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
+  # buffer_editor: "emacs" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
   use_ansi_coloring: true
   edit_mode: emacs # emacs, vi
   shell_integration: true # enables terminal markers and a workaround to arrow keys stop working issue
