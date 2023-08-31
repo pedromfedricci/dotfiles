@@ -1,3 +1,5 @@
+command_timeout = 5000
+
 [aws]
 symbol = "  "
 
@@ -128,6 +130,11 @@ symbol = " "
 
 [scala]
 symbol = " "
+
+# Show an indicator for currently used shell.
+# This module is disabled by default.
+[shell]
+disabled = false
 
 [spack]
 symbol = "🅢 "
