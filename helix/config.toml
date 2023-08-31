@@ -18,5 +18,5 @@ insert = "bar"
 [editor.soft-wrap]
 enable = true
 
-[editor.file-picker]
-hidden = false
+[keys.normal]
+"X" = "extend_line_above"
