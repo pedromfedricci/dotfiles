@@ -3,6 +3,7 @@ theme = "nightfox"
 [editor]
 color-modes = true
 true-color = true
+cursorline = true
 bufferline = "always"
 
 [editor.indent-guides]
