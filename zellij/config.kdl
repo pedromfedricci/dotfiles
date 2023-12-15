@@ -59,8 +59,8 @@ theme "nightfox"
 
 // The name of the default layout to load on startup
 // Default: "default"
-//
-default_layout "compact"
+// - compact
+default_layout "zjstatus"
 
 // Choose the mode that zellij uses when starting up.
 // Default: normal
@@ -131,5 +131,6 @@ default_layout "compact"
 ui {
     pane_frames {
         rounded_corners true
+        // hide_session_name true
     }
 }

@@ -16,7 +16,8 @@ themes {
     white "#643f61"
   }
   nightfox {
-    bg "#192330"
+    // bg "#192330" // original
+    bg "#29394f" // reason: https://github.com/zellij-org/zellij/issues/1368
     fg "#cdcecf"
     red "#c94f6d"
     green "#81b29a"
@@ -25,8 +26,9 @@ themes {
     magenta "#9d79d6"
     orange "#f4a261"
     cyan "#63cdcf"
-    // black "#29394f"
-    black "#192330"
+    // black "#29394f" // original, this sets plugins background color.
+    // black "#131a24" // dark bg.
+    black "#192330" // same as original bg.
     white "#aeafb0"
   }
   terafox {
