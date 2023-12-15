@@ -20,3 +20,5 @@
 /helix/runtime/
 # Block catppuccin git clone.
 /alacritty/catppuccin
+# Block zellij plugins.
+/zellij/plugins/
