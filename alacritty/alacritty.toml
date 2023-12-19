@@ -1,0 +1,25 @@
+import = ["/home/pdmfed/.config/alacritty/themes/nightfox.toml"]
+
+[cursor.style]
+blinking = "On"
+shape = "Underline"
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 10.0
+
+[font.normal]
+family = "JetBrainsMono NF"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+decorations = "None"
+dynamic_padding = true
+dynamic_title = false
+resize_increments = true
+startup_mode = "Maximized"
+title = ""
