@@ -2,7 +2,7 @@
 command_timeout = 5000
 
 # Disable the blank line at the start of the prompt.
-add_newline = false
+add_newline = true
 
 [aws]
 symbol = "  "
@@ -138,7 +138,7 @@ symbol = " "
 # Show an indicator for currently used shell.
 # This module is disabled by default.
 [shell]
-disabled = false
+# disabled = false
 
 [spack]
 symbol = "🅢 "
