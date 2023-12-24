@@ -4,6 +4,7 @@ inherits = "nightfox"
 # These keys match tree-sitter scopes.
 
 "type.builtin" = { fg = "magenta-bright" }
+"type.parameter" = { fg = "orange-bright" }
 "constructor" = { fg = "orange-bright" }
 "keyword.storage.modifier"  = { fg = "magenta-bright" }
 "keyword.function" = { fg = "magenta" }
