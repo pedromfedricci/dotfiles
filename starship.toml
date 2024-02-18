@@ -27,6 +27,12 @@ read_only = " 󰌾"
 
 [direnv]
 disabled = false # disabled by default
+style = "bold blue"
+format = '$symbol[\($loaded/$allowed\)]($style) '
+loaded_msg = "l"
+unloaded_msg = "u"
+allowed_msg = "a"
+denied_msg = "d"
 
 [docker_context]
 symbol = " "
