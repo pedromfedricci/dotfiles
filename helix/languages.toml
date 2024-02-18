@@ -1,5 +1,12 @@
-[language-server.elixir-ls]
-config = { dialyzerEnabled = true, fetchDeps = true, suggestSpecs = true , signatureAfterComplete = true }
+[[grammar]]
+name = "rust"
+source = { git = "https://github.com/tree-sitter/tree-sitter-rust", rev = "48e053397b587de97790b055a1097b7c8a4ef846" } # commit that added support for where clauses on GAT 
+
+[language-server.elixir-ls.config]
+dialyzerEnabled = true
+fetchDeps = true
+suggestSpecs = true
+signatureAfterComplete = true
 
 [[language]]
 name = "elixir"
