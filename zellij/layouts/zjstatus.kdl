@@ -4,17 +4,28 @@ layout {
     }
 
     pane size=1 borderless=true {
-        plugin location="file:/home/pdmfed/.config/zellij/plugins/zjstatus.wasm" {
+        plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
             format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
             format_right "{datetime}"
             format_space ""
 
             // Opening a floating pane will add frames which look weird
-            // hide_frame_for_single_pane "true"
+            hide_frame_for_single_pane "true"
 
-
-            mode_normal  "#[bg=#89B4FA] "
-            mode_tmux    "#[bg=#ffc387] "
+            mode_normal        "#[fg=#89B4FA,bold] {name} "
+            mode_locked        "#[fg=#89B4FA,bold] {name} "
+            mode_resize        "#[fg=#89B4FA,bold] {name} "
+            mode_pane          "#[fg=#89B4FA,bold] {name} "
+            mode_tab           "#[fg=#89B4FA,bold] {name} "
+            mode_scroll        "#[fg=#89B4FA,bold] {name} "
+            mode_enter_search  "#[fg=#89B4FA,bold] {name} "
+            mode_search        "#[fg=#89B4FA,bold] {name} "
+            mode_rename_tab    "#[fg=#89B4FA,bold] {name} "
+            mode_rename_pane   "#[fg=#89B4FA,bold] {name} "
+            mode_session       "#[fg=#89B4FA,bold] {name} "
+            mode_move          "#[fg=#89B4FA,bold] {name} "
+            mode_prompt        "#[fg=#89B4FA,bold] {name} "
+            mode_tmux          "#[fg=#89B4FA,bold] {name} "
 
             tab_normal   "#[fg=#6C7086] {name} "
             tab_active   "#[fg=#9399B2,bold,italic] {name} "
