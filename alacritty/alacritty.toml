@@ -11,7 +11,7 @@ TERM = "alacritty"
 size = 10.0
 
 [font.normal]
-family = "JetBrainsMono NF"
+family = "JetBrainsMono Nerd Font"
 
 [mouse]
 hide_when_typing = true
