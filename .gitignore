@@ -1,24 +1,26 @@
 # Block all files by default.
 /*
+/.config/*
 
 # Enter each desired pattern to include.
 !/.gitignore
-!/starship.toml
-!/alacritty/
-!/astronvim/
-!/bat/
-!/helix/
-!/nix/
-!/nushell/
-!/zellij/
+!/.config/
+!/.config/starship.toml
+!/.config/alacritty/
+!/.config/astronvim/
+!/.config/bat/
+!/.config/helix/
+!/.config/nix/
+!/.config/nushell/
+!/.config/zellij/
 
 # Block nushell history.
-/nushell/history.*
+/.config/nushell/history.*
 # Block gh hosts.
-/gh/hosts.*
+/.config/gh/hosts.*
 # Block runtime files for helix.
-/helix/runtime/
+/.config/helix/runtime/
 # Block catppuccin git clone.
-/alacritty/catppuccin
+/.config/alacritty/catppuccin/
 # Block zellij plugins.
-/zellij/plugins/
+/.config/zellij/plugins/

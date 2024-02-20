@@ -84,6 +84,15 @@ default_layout "zjstatus"
 //
 // scroll_buffer_size 10000
 
+// Configure session serialization capability.
+// Default value: true
+//
+// session_serialization false
+
+// Configure session serialization interval in seconds.
+// Default value: 60
+serialization_interval 300
+
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
 // terminal emulators which do not support the OSC 52 ANSI control sequence
@@ -128,6 +137,32 @@ default_layout "zjstatus"
 //
 // theme_dir "/path/to/my/theme_dir"
 
+// Add new keybinds or override defaults
+//
+keybinds {
+    unbind "Alt n" // already using for helix select_next_sibling
+    normal {   
+        // bind F1 to open monocle in a new floating pane and open any results in a new tiled/floating pane
+        bind "Alt m" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
+                floating true
+            };
+            SwitchToMode "Normal";
+        }
+
+        // bind "Alt m" to open monocle on top of the current pane and open any results on top of itself
+        bind "Alt M" {
+            LaunchPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
+                in_place true
+                kiosk true
+            };
+            SwitchToMode "Normal";
+        }
+    }
+}
+
+// Set UI parameters
+//
 ui {
     pane_frames {
         rounded_corners true
