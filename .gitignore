@@ -4,6 +4,8 @@
 
 # Enter each desired pattern to include.
 !/.gitignore
+!/.zshrc
+!/.zshenv
 !/.config/
 !/.config/starship.toml
 !/.config/alacritty/
