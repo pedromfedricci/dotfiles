@@ -23,6 +23,9 @@ fi
 # add deno bin to PATH if it's not present already.
 . "$HOME/.deno/env"
 
+# add rebar3 to path.
+export PATH=/home/pdmfed/.cache/rebar3/bin:$PATH
+
 # Helix runtime files.
 export HELIX_RUNTIME="$HOME/.config/helix/runtime"
 
