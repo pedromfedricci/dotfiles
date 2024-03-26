@@ -121,6 +121,10 @@ export EDITOR='hx'
 
 # lsd alias
 alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # zellij aliases
 function zr () { zellij run --name "$*" -- zsh -ic "$*";}
