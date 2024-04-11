@@ -91,7 +91,7 @@ default_layout "zjstatus"
 
 // Configure session serialization interval in seconds.
 // Default value: 60
-serialization_interval 300
+// serialization_interval 300
 
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
@@ -138,10 +138,25 @@ serialization_interval 300
 // theme_dir "/path/to/my/theme_dir"
 
 // Add new keybinds or override defaults
+// See: https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 //
 keybinds {
-    unbind "Alt n" // already using for helix select_next_sibling
-    normal {   
+    // already using for helix `select_next_sibling`
+    unbind "Alt n"
+
+    shared_except "locked" {
+        // already in use for helix `expand_selection`
+        unbind "Alt i" 
+        // already in use for helix `shrink_selection`
+        unbind "Alt o" 
+
+        // default was "Alt i"
+        bind "Alt H" { MoveTab "Left"; }
+        // default was "Alt o"
+        bind "Alt L" { MoveTab "Right"; }
+    }
+
+    normal {
         // bind F1 to open monocle in a new floating pane and open any results in a new tiled/floating pane
         bind "Alt m" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/monocle.wasm" {
