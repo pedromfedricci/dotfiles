@@ -1,0 +1,10 @@
+[language-server.elixir-ls.config]
+dialyzerEnabled = true
+fetchDeps = true
+suggestSpecs = true
+signatureAfterComplete = true
+
+[[language]]
+name = "elixir"
+auto-format = true
+language-servers = [ "elixir-ls" ]

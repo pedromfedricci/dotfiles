@@ -1,0 +1,195 @@
+{ pkgs, host, ... }:
+
+{
+	imports = [
+    # Include the results of the hardware scan.
+    #
+		./hardware-configuration.nix
+	];
+
+  # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
+  # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
+	# Driver: RTW89_8852be.
+  boot.kernelPackages = pkgs.linuxPackages_6_8;
+
+  # Bootloader.
+  #
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  # Define your hostname.
+  #
+  networking.hostName = host.hostName;
+
+  # Enables wirless support via wpa_supplicant.
+  #
+  # networking.wireless.enable = true;
+
+  # Configure network proxy if necessary.
+  #
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  # Enable networking
+  #
+  networking.networkmanager.enable = true;
+
+  # Set your time zone.
+  #
+  time.timeZone = host.timeZone;
+
+  # Select internationalisation properties.
+  #
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "pt_BR.UTF-8";
+    LC_IDENTIFICATION = "pt_BR.UTF-8";
+    LC_MEASUREMENT = "pt_BR.UTF-8";
+    LC_MONETARY = "pt_BR.UTF-8";
+    LC_NAME = "pt_BR.UTF-8";
+    LC_NUMERIC = "pt_BR.UTF-8";
+    LC_PAPER = "pt_BR.UTF-8";
+    LC_TELEPHONE = "pt_BR.UTF-8";
+    LC_TIME = "pt_BR.UTF-8";
+  };
+
+  # Enable the X11 windowing system.
+  #
+  services.xserver.enable = true;
+
+  # Enable the GNOME Desktop Environment.
+  #
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # Configure keymap in X11.
+  #
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
+
+  # Enable CUPS to print documents.
+  #
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  #
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+
+    # If you want to use JACK applications, uncomment this
+    #
+    # jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is
+    # enabled by default, no need to redefine it in your config for now)
+    #
+    # media-session.enable = true;
+  };
+
+  # Enable touchpad support (enabled default in most desktopManager).
+  #
+  # services.xserver.libinput.enable = true;
+
+  # Enable and set zsh as users' default shell.
+  #
+  environment.shells = with pkgs; [ bash zsh ];
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  #
+  users.users.pdmfed = {
+    isNormalUser = true;
+    description = "Pedro Fedricci";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+
+    # Select user specific packages, better use home-manager though.
+    #
+    # packages = with pkgs; [
+      # firefox
+      # thunderbird
+    # ];
+  };
+
+  # Allow unfree packages.
+  #
+  nixpkgs.config.allowUnfree = true;
+
+  # Allow broken packages.
+  #
+  # nixpkgs.config.allowBroken = true;
+
+  # Allow flakes experimental feature.
+  #
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  #
+  environment.systemPackages = with pkgs; [
+    firefox
+    # fprintd # Unsupported.
+    # git
+    # gnumake
+    gnupg
+    # inxi
+    # lshw
+    # usbutils
+    # pciutils
+    # stow
+    # helix
+    # wget
+    # wirelesstools
+  ];
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  #
+  # programs.mtr.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    # enableSSHSupport = true;
+  };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  #
+  # services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  #
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  #
+  # Or disable the firewall altogether.
+  #
+  # networking.firewall.enable = false;
+
+  # Device 10a5:9800 is not supported by libfprint.
+  # https://gitlab.freedesktop.org/libfprint/wiki/-/wikis/Unsupported-Devices
+  #
+  # services.fprintd.enable = true;
+
+  services.flatpak.enable = true;
+  services.gnome.gnome-browser-connector.enable = true;
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  #
+  system.stateVersion = "23.11"; # Did you read the comment?
+}
