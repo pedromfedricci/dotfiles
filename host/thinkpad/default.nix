@@ -1,7 +1,7 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces
 # /etc/nixos/configuration.nix).
-{ pkgs, host, user, ... }:
+{ pkgs, inputs, host, user, ... }:
 
 {
   # You can import other NixOS modules here.
@@ -12,6 +12,8 @@
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
+    inputs.hosts.nixosModule { networking.stevenBlackHosts.enable = true; }
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
@@ -39,7 +41,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  # Enable networking.
   networking.networkmanager.enable = true;
 
   # Set your time zone.

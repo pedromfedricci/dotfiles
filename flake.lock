@@ -255,6 +255,25 @@
         "type": "github"
       }
     },
+    "hosts": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1714056784,
+        "narHash": "sha256-opMmc5XIlPXcDsjKQHTqGh2vPZRxKppAwjwzoUhWXzg=",
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "rev": "bcb3384b0c6e2663df34d35848cd1c88679b600c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StevenBlack",
+        "ref": "3.14.69",
+        "repo": "hosts",
+        "type": "github"
+      }
+    },
     "nix": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -329,6 +348,22 @@
         "owner": "domenkozar",
         "ref": "devenv-2.21",
         "repo": "nix",
+        "type": "github"
+      }
+    },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1714465198,
+        "narHash": "sha256-ySkEJvS0gPz2UhXm0H3P181T8fUxvDVcoUyGn0Kc5AI=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "68d680c1b7c0e67a9b2144d6776583ee83664ef4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
         "type": "github"
       }
     },
@@ -428,6 +463,20 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1714314149,
+        "narHash": "sha256-yNAevSKF4krRWacmLUsLK7D7PlfuY3zF0lYnGYNi9vQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cf8cc1201be8bc71b7cbbbdaf349b22f4f99c7ae",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
     "poetry2nix": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -486,6 +535,8 @@
         "devenv": "devenv",
         "helix": "helix",
         "home-manager": "home-manager",
+        "hosts": "hosts",
+        "nixos-hardware": "nixos-hardware",
         "stable": "stable",
         "unstable": "unstable"
       }
