@@ -1,9 +1,54 @@
-{ pkgs, user, ... }:
-let
-  source = {module, path}: ./config + "/${module}/.config/${module}/${path}";
-  target = {module, path}: "${user.homeDirectory}/.config/${module}/${path}";
-in
+# This is your home-manager configuration file
+# Use this to configure your home environment (it replaces
+# ~/.config/nixpkgs/home.nix).
+{ pkgs, outputs, user,  ... }:
+
 {
+  # You can import other home-manager modules here
+  imports = [
+    # If you want to use modules your own flake exports (from modules/home-manager):
+    # outputs.homeManagerModules.example
+
+    # Or modules exported from other flakes (such as nix-colors):
+    # inputs.nix-colors.homeManagerModules.default
+
+    # You can also split up your configuration and import pieces of it here:
+    # ./nvim.nix
+
+    ../../applications/editors/helix
+    ../../applications/terminal-emulators/alacritty
+    ../../applications/version-management/git
+    ../../tools/misc/bat
+    ../../tools/misc/devenv
+    ../../tools/misc/direnv
+    ../../tools/misc/lsd
+    ../../tools/misc/starship
+    ../../tools/misc/zellij
+    ../../tools/misc/zoxide
+  ];
+
+  # Configuration of the Nix Package collection.
+  nixpkgs = {
+    # You can add overlays here.
+    overlays = [
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
+    ];
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   #
@@ -49,40 +94,33 @@ in
     # System utilities.
     #
     asdf
-    bat
     clang
     devcontainer
-    direnv
     dua
     curl
     gh
     gnumake
     htop
     qemu
-    lsd
     mold-wrapped
     nil
+    nnn
     podman
     ripgrep
     rustup
-    starship
     stow
     tree
     wget
-    zoxide
 
     # Terminal applications.
     #
     fzf
-    helix
     nushell
     podman-tui
-    zellij
     zsh
 
     # Graphical applications.
     #
-    alacritty
     # firefox
     thunderbird
   ];
@@ -103,9 +141,6 @@ in
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
-    "${target{module="alacritty";path="alacritty.toml";}}".source = source{module="alacritty";path="alacritty.toml";};
-    "${target{module="alacritty";path="themes/nightfox.toml";}}".source = source{module="alacritty";path="themes/nightfox.toml";};
   };
 
   # Home Manager can also manage your environment variables through
@@ -127,71 +162,10 @@ in
   #
   programs.home-manager.enable = true;
 
-  programs.alacritty = {
-    enable = true;
-    # settings = {
-    #   cursor.style = lib.mkForce "Block";
-    # };
-  };
-
-  # programs.bat = {
-  #   enable = true;
-  # };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    # enableZshIntegration = true;
-  };
-
-  # programs.firefox = {
-  #   enable = true;
-  #   nativeMessagingHosts = [ pkgs.gnome-browser-connector ];
-  # };
-
-  programs.git = {
-    enable = true;
-    userName = user.userName;
-    userEmail = user.userEmail;
-    signing = {
-      key = null;
-      signByDefault = true;
-    };
-  };
-
-  # programs.helix = {
-  #   enable = true;
-  #   defaultEditor = true;
-  # };
-
-  # programs.starship = {
-  #   enable = true;
-  #   # enableZshIntegration = true;
-  # };
-
-  # programs.zellij = {
-  #   enable = true;
-  #   # enableZshIntegration = true;
-  # };
-
-  # programs.zoxide = {
-  #   enable = true;
-  #   # enableZshIntegration = true;
-  # };
-
   programs.zsh = {
     enable = true;
     sessionVariables = {
       SHELL = "zsh";
-      ZOXIDE_CMD_OVERRIDE = "cd";
-    };
-    shellAliases = {
-      cat = "bat";
-      ls = "lsd";
-      ll = "lsd -l";
-      la = "lsd -a";
-      lt = "lsd --tree";
-      lla = "lsd -la";
     };
     autosuggestion = {
       enable = true;
@@ -203,19 +177,15 @@ in
       enable = true;
       plugins = [
         "asdf"
-        # "bun"
-        "direnv"
+        "bun"
         "docker"
-        "git"
         "gh"
-        # "helm"
+        "helm"
         "podman"
         "python"
         "rust"
         "ripgrep"
-        "starship"
-        # "kubectl"
-        "zoxide"
+        "kubectl"
       ];
     };
   };
