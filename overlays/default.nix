@@ -28,7 +28,7 @@
   # be accessible through 'pkgs.stable'
   #
   stable-packages = final: _prev: {
-    unstable = import inputs.stable {
+    stable = import inputs.stable {
       system = final.system;
       config.allowUnfree = true;
     };

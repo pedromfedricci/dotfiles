@@ -121,7 +121,7 @@
 
     # Graphical applications.
     #
-    # firefox
+    stable.firefox
     thunderbird
   ];
 

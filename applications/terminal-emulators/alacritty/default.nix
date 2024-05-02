@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  config = import ../../../config.nix;
+  dotfiles = import ../../../dotfiles.nix;
 	module = "alacritty";
 	files = [ "alacritty.toml" "themes/nightfox.toml" ];
 in
 {
-	home.file = config.insertModule module files;
+	home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.alacritty = {
     enable = true;

@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  config = import ../../../config.nix;
+  dotfiles = import ../../../dotfiles.nix;
 	module = "starship";
 	files = [ "starship.toml" ];
 in
 {
-  home.file = config.insertModule module files;
+  home.file = dotfiles.insertManyHomeConfig module files;
 
   programs.starship = {
     enable = true;

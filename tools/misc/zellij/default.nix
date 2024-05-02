@@ -1,15 +1,11 @@
 { pkgs, ... }:
 let
-  config = import ../../../config.nix;
+  dotfiles = import ../../../dotfiles.nix;
 	module = "zellij";
-	files = [
-	  "config.kdl"
-	  "layouts/zjstatus.kdl"
-	  "themes/nightfox.kdl"
-	];
+	files = [ "config.kdl" "layouts/zjstatus.kdl" "themes/nightfox.kdl" ];
 in
 {
-	home.file = config.insertModule module files;
+	home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.zellij = {
     enable = true;

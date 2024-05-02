@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  config = import ../../../config.nix;
+  dotfiles = import ../../../dotfiles.nix;
 	module = "bat";
 	files = [ "config" ];
 in
 {
-  home.file = config.insertModule module files;
+  home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.bat = {
     enable = true;

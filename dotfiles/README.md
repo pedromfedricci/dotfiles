@@ -8,14 +8,14 @@ You can clone this repository and select any configuration package as the follow
 
 ```shell
 git clone https://github.com/pedromfedricci/dotfiles.git ~/projects/dotfiles
-cd ~/projects/dotfiles/config
+cd ~/projects/dotfiles/dotfiles
 stow --target $HOME --verbose helix zellij # or select all with: */
 ```
 
 To remove a package configuration use `--delete`:
 
 ```shell
-cd ~/projects/dotfiles/config
+cd ~/projects/dotfiles/dotfiles
 stow --target $HOME --verbose --delete helix zellij # or select all with: */
 ```
 

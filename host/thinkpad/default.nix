@@ -133,9 +133,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    firefox
-    # fprintd # Unsupported.
+    gnome.gnome-tweaks
+    gnomeExtensions.pop-shell
     gnupg
+    inputs.helix.packages.${pkgs.system}.helix
+    pop-launcher
+    # fprintd # Unsupported.
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -164,7 +167,7 @@
   # https://gitlab.freedesktop.org/libfprint/wiki/-/wikis/Unsupported-Devices
   # services.fprintd.enable = true;
 
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
   services.gnome.gnome-browser-connector.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.

@@ -1,11 +1,11 @@
 { pkgs, inputs, ... }:
 let
-  config = import ../../../config.nix;
+  dotfiles = import ../../../dotfiles.nix;
 	module = "helix";
 	files = [ "config.toml" "languages.toml" "themes/nightfox.toml" ];
 in
 {
-  home.file = config.insertModule module files;
+  home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.helix = {
     enable = true;
