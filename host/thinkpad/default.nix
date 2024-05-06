@@ -1,30 +1,35 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces
 # /etc/nixos/configuration.nix).
-{ pkgs, inputs, host, user, ... }:
-
 {
+  pkgs,
+  inputs,
+  host,
+  user,
+  ...
+}: {
   # You can import other NixOS modules here.
-	imports = [
+  imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
     # outputs.nixosModules.example
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-    inputs.hosts.nixosModule { networking.stevenBlackHosts.enable = true; }
+    inputs.hosts.nixosModule
+    {networking.stevenBlackHosts.enable = true;}
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
 
     # Include the results of the hardware scan.
-		./hardware-configuration.nix
-	];
+    ./hardware-configuration.nix
+  ];
 
   # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
   # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
-	# Driver: RTW89_8852be.
+  # Driver: RTW89_8852be.
   boot.kernelPackages = pkgs.linuxPackages_6_8;
 
   # Bootloader.
@@ -99,7 +104,7 @@
   # services.xserver.libinput.enable = true;
 
   # Enable and set zsh as users' default shell.
-  environment.shells = with pkgs; [ bash zsh ];
+  environment.shells = with pkgs; [bash zsh];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
@@ -107,7 +112,7 @@
   users.users.${user.username} = {
     isNormalUser = true;
     description = user.userName;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to
@@ -116,8 +121,8 @@
 
     # Select user specific packages, better use home-manager though.
     # packages = with pkgs; [
-      # firefox
-      # thunderbird
+    # firefox
+    # thunderbird
     # ];
   };
 
@@ -128,17 +133,21 @@
   # nixpkgs.config.allowBroken = true;
 
   # Allow flakes experimental feature.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # fprintd # Unsupported.
     gnome.gnome-tweaks
     gnomeExtensions.pop-shell
+    gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnupg
     inputs.helix.packages.${pkgs.system}.helix
+    openssl
     pop-launcher
-    # fprintd # Unsupported.
+    pkg-config
+    wl-clipboard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

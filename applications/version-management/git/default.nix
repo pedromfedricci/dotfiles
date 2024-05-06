@@ -1,6 +1,8 @@
-{ pkgs, user, ... }:
-
 {
+  pkgs,
+  user,
+  ...
+}: {
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -14,7 +16,7 @@
 
   programs.zsh = {
     oh-my-zsh = {
-      plugins = [ "git" ];
+      plugins = ["git"];
     };
   };
 }

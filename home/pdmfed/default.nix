@@ -86,6 +86,7 @@
 
     # Hardware utilities.
     #
+    dmidecode
     inxi
     lshw
     pciutils
@@ -93,6 +94,7 @@
 
     # System utilities.
     #
+    inputs.alejandra.packages.${pkgs.system}.alejandra
     asdf
     clang
     devcontainer
@@ -121,8 +123,10 @@
 
     # Graphical applications.
     #
+    stable.discord
     stable.firefox
-    thunderbird
+    stable.spotify
+    stable.thunderbird
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -155,8 +159,18 @@
   #  /etc/profiles/per-user/pdmfed/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "hx";
+    EDITOR = "hx";
   };
+
+  # Extra directories to add to PATH.
+  #
+  # These directories are added to the PATH variable in a double-quoted context,
+  # so expressions like $HOME are expanded by the shell. However, since expressions
+  # like ~ or * are escaped, they will end up in the PATH verbatim.
+  home.sessionPath = [
+    "$HOME/.local/bin" 
+    "$HOME/.cargo/bin"
+  ];
 
   # Let Home Manager install and manage itself.
   #
@@ -164,14 +178,10 @@
 
   programs.zsh = {
     enable = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
     sessionVariables = {
       SHELL = "zsh";
-    };
-    autosuggestion = {
-      enable = true;
-    };
-    syntaxHighlighting = {
-      enable = true;
     };
     oh-my-zsh = {
       enable = true;

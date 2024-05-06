@@ -1,10 +1,8 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   dotfiles = import ../../../dotfiles.nix;
-	module = "bat";
-	files = [ "config" ];
-in
-{
+  module = "bat";
+  files = ["config"];
+in {
   home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.bat = {

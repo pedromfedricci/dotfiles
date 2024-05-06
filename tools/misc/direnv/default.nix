@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.direnv = {
     enable = true;
     package = pkgs.direnv;
@@ -10,7 +8,7 @@
 
   programs.zsh = {
     oh-my-zsh = {
-      plugins = [ "direnv" ];
+      plugins = ["direnv"];
     };
   };
 }

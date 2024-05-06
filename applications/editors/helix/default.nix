@@ -1,10 +1,12 @@
-{ pkgs, inputs, ... }:
-let
-  dotfiles = import ../../../dotfiles.nix;
-	module = "helix";
-	files = [ "config.toml" "languages.toml" "themes/nightfox.toml" ];
-in
 {
+  pkgs,
+  inputs,
+  ...
+}: let
+  dotfiles = import ../../../dotfiles.nix;
+  module = "helix";
+  files = ["config.toml" "languages.toml" "themes/nightfox.toml"];
+in {
   home.file = dotfiles.insertManyHomeConfigWithDir module files;
 
   programs.helix = {

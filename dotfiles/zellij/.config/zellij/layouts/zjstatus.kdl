@@ -5,11 +5,10 @@ layout {
 
     pane size=1 borderless=true {
         plugin location="zjstatus" {
-            format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
-            format_right "{datetime}"
+            format_left  "{mode} {tabs}"
+            format_right "#[fg=#89B4FA,bold]{session} "
             format_space ""
 
-            // Opening a floating pane will add frames which look weird
             hide_frame_for_single_pane "true"
 
             mode_normal        "#[fg=#89B4FA,bold] {name} "

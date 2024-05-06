@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.zoxide = {
     enable = true;
     package = pkgs.zoxide;
@@ -12,7 +10,7 @@
       ZOXIDE_CMD_OVERRIDE = "cd";
     };
     oh-my-zsh = {
-      plugins = [ "zoxide" ];
+      plugins = ["zoxide"];
     };
   };
 }

@@ -13,14 +13,20 @@
     };
 
     # Other flakes inputs.
+    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     devenv.url = "github:cachix/devenv/v1.0.5";
     helix.url = "github:helix-editor/helix/eeb8782c542c20069a81f78bec9ec0b15c0c7050";
     hosts.url = "github:StevenBlack/hosts/3.14.69";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs@{ self, stable, unstable, home-manager, ... }:
-  let
+  outputs = {
+    self,
+    stable,
+    unstable,
+    home-manager,
+    ...
+  } @ inputs: let
     inherit (self) outputs;
 
     # Supported systems for your flake packages, shell, etc.
@@ -49,7 +55,6 @@
       username = "pdmfed";
       homeDirectory = "/home/" + user.username;
     };
-
   in {
     # Your custom packages.
     # Accessible through 'nix build', 'nix shell', etc.
@@ -59,7 +64,7 @@
     formatter = forAllSystems (system: unstable.legacyPackages.${system}.alejandra);
 
     # Your custom packages and modifications, exported as overlays.
-    overlays = import ./overlays { inherit inputs; };
+    overlays = import ./overlays {inherit inputs;};
     # Reusable nixos modules you might want to export.
     # These are usually stuff you would upstream into nixpkgs.
     nixosModules = import ./modules/nixos;
@@ -69,10 +74,10 @@
 
     # NixOS configuration entrypoint.
     # Available through 'nixos-rebuild --flake .#your-hostname'.
-    nixosConfigurations = { 
+    nixosConfigurations = {
       ${host.hostName} = stable.lib.nixosSystem {
-        modules = [ (./host + ("/" + host.hostName)) ];
-        specialArgs = { inherit inputs outputs host user; };
+        modules = [(./host + ("/" + host.hostName))];
+        specialArgs = {inherit inputs outputs host user;};
       };
     };
 
@@ -81,8 +86,8 @@
     homeConfigurations = {
       ${user.username} = home-manager.lib.homeManagerConfiguration {
         pkgs = unstable.legacyPackages.x86_64-linux;
-        modules = [ (./home + ("/" + user.username)) ];
-        extraSpecialArgs = { inherit inputs outputs user; };
+        modules = [(./home + ("/" + user.username))];
+        extraSpecialArgs = {inherit inputs outputs user;};
       };
     };
   };
