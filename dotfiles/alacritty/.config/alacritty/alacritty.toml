@@ -14,7 +14,7 @@ size = 11.0
 family = "JetBrainsMono Nerd Font"
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [selection]
 save_to_clipboard = true

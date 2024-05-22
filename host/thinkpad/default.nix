@@ -103,6 +103,24 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Enable libvirt.
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      ovmf.enable = true;
+      ovmf.packages = [
+        (pkgs.OVMF.override {
+          # secureBoot = true; # Not sure about this one.
+          tpmSupport = true;
+        })
+        .fd
+      ];
+    };
+  };
+  # Already set on hardware-configuraon.nix.
+  # boot.kernelModules = ["kvm-amd"];
+
   # Enable and set zsh as users' default shell.
   environment.shells = with pkgs; [bash zsh];
   programs.zsh.enable = true;
@@ -112,7 +130,7 @@
   users.users.${user.username} = {
     isNormalUser = true;
     description = user.userName;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["libvirtd" "networkmanager" "wheel"];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to
@@ -135,18 +153,35 @@
   # Allow flakes experimental feature.
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Storage optimization: https://nixos.wiki/wiki/Storage_optimization.
+
+  # Automatically create hard links for identical content in the store,
+  # saving disk space. Runs every build, may slow it down.
+  nix.settings.auto-optimise-store = true;
+
+  # Automates nix garbage collection.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # fprintd # Unsupported.
+    clang
+    gcc
     gnome.gnome-tweaks
     gnomeExtensions.pop-shell
     gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnupg
+    grub2
     inputs.helix.packages.${pkgs.system}.helix
     openssl
     pop-launcher
     pkg-config
+    vagrant
     wl-clipboard
   ];
 

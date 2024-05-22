@@ -21,7 +21,7 @@ keybinds {
 }
 
 plugins {
-    zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.14.0/zjstatus.wasm"
+    zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.14.1/zjstatus.wasm"
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP

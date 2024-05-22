@@ -1,9 +1,13 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces
 # ~/.config/nixpkgs/home.nix).
-{ pkgs, outputs, user,  ... }:
-
 {
+  pkgs,
+  inputs,
+  outputs,
+  user,
+  ...
+}: {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -16,6 +20,7 @@
     # ./nvim.nix
 
     ../../applications/editors/helix
+    ../../applications/file-managers/yazi
     ../../applications/terminal-emulators/alacritty
     ../../applications/version-management/git
     ../../tools/misc/bat
@@ -74,7 +79,7 @@
     # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # fonts?
     #
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
 
     # You can also create simple shell scripts directly inside your
     # configuration. For example, this adds a command 'my-hello' to your
@@ -87,32 +92,39 @@
     # Hardware utilities.
     #
     dmidecode
+    # fwupd
     inxi
     lshw
+    mtools
     pciutils
     wirelesstools
 
     # System utilities.
     #
-    inputs.alejandra.packages.${pkgs.system}.alejandra
-    asdf
-    clang
+    inputs.alejandra.defaultPackage.${pkgs.system}
+    cloc
+    curl
     devcontainer
     dua
-    curl
+    erlang # Couldn't install it via asdf-vm.
+    fd
+    ffmpegthumbnailer
     gh
     gnumake
     htop
-    qemu
+    jq
     mold-wrapped
+    nasm
     nil
     nnn
     podman
+    poppler
     ripgrep
-    rustup
+    stable.rustup
     stow
     tree
     wget
+    xorriso
 
     # Terminal applications.
     #
@@ -168,7 +180,7 @@
   # so expressions like $HOME are expanded by the shell. However, since expressions
   # like ~ or * are escaped, they will end up in the PATH verbatim.
   home.sessionPath = [
-    "$HOME/.local/bin" 
+    "$HOME/.local/bin"
     "$HOME/.cargo/bin"
   ];
 
