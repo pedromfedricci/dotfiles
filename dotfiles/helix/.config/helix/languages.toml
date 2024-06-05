@@ -1,3 +1,8 @@
+[[language]]
+name = "elixir"
+auto-format = true
+language-servers = [ "elixir-ls" ]
+
 [language-server.elixir-ls.config]
 dialyzerEnabled = true
 fetchDeps = true
@@ -5,6 +10,10 @@ suggestSpecs = true
 signatureAfterComplete = true
 
 [[language]]
-name = "elixir"
+name = "python"
+language-servers = [ "pyright", "ruff" ]
 auto-format = true
-language-servers = [ "elixir-ls" ]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server", "--preview"]
