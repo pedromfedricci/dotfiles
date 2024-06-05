@@ -120,7 +120,7 @@
     podman
     poppler
     ripgrep
-    stable.rustup
+    rustup
     stow
     tree
     wget
@@ -137,8 +137,15 @@
     #
     stable.discord
     stable.firefox
+    stable.libreoffice
     stable.spotify
     stable.thunderbird
+
+    # TODO: python stuff, should move to own module.
+    python312
+    pyright
+    python312Packages.pytest
+    unstable.ruff # needs at least 0.4.5 for language server preview.
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

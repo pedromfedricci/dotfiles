@@ -4,12 +4,12 @@
   inputs = {
     # Nixpkgs.
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
 
     # Home-manager.
     home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "stable";
     };
 
     # Other flakes inputs.
@@ -86,7 +86,7 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       ${user.username} = home-manager.lib.homeManagerConfiguration {
-        pkgs = unstable.legacyPackages.x86_64-linux;
+        pkgs = stable.legacyPackages.x86_64-linux;
         modules = [(./home + ("/" + user.username))];
         extraSpecialArgs = {inherit inputs outputs user;};
       };
