@@ -173,6 +173,7 @@
     clang
     gcc
     gnome.gnome-tweaks
+    gnomeExtensions.toggle-alacritty
     gnomeExtensions.pop-shell
     gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnupg

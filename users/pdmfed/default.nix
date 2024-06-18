@@ -7,7 +7,9 @@
   outputs,
   user,
   ...
-}: {
+}: let
+  modules = ../../modules/home-manager;
+in {
   # You can import other home-manager modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
@@ -18,18 +20,21 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-
-    ../../applications/editors/helix
-    ../../applications/file-managers/yazi
-    ../../applications/terminal-emulators/alacritty
-    ../../applications/version-management/git
-    ../../tools/misc/bat
-    ../../tools/misc/devenv
-    ../../tools/misc/direnv
-    ../../tools/misc/lsd
-    ../../tools/misc/starship
-    ../../tools/misc/zellij
-    ../../tools/misc/zoxide
+    (modules + "/alacritty")
+    (modules + "/bat")
+    (modules + "/devenv")
+    (modules + "/delta")
+    (modules + "/direnv")
+    (modules + "/git")
+    (modules + "/helix")
+    (modules + "/lsd")
+    (modules + "/python")
+    (modules + "/rust")
+    (modules + "/starship")
+    (modules + "/yazi")
+    (modules + "/zellij")
+    (modules + "/zoxide")
+    (modules + "/zsh")
   ];
 
   # Configuration of the Nix Package collection.
@@ -56,7 +61,6 @@
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  #
   home.username = user.username;
   home.homeDirectory = user.homeDirectory;
 
@@ -67,18 +71,15 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  #
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  #
   home.packages = with pkgs; [
     # It is sometimes useful to fine-tune packages, for example, by applying
     # overrides. You can do that directly here, just don't forget the
     # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # fonts?
-    #
     (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
 
     # You can also create simple shell scripts directly inside your
@@ -90,7 +91,6 @@
     # '')
 
     # Hardware utilities.
-    #
     dmidecode
     # fwupd
     inxi
@@ -100,12 +100,12 @@
     wirelesstools
 
     # System utilities.
-    #
     alejandra # inputs.alejandra.defaultPackage.${pkgs.system}
     cloc
     curl
     devcontainer
     dua
+    entr
     erlang # Couldn't install it via asdf-vm.
     fd
     ffmpegthumbnailer
@@ -126,39 +126,21 @@
     xorriso
 
     # Terminal applications.
-    #
     fzf
     nushell
     podman-tui
     zsh
 
     # Graphical applications.
-    #
     stable.discord
     stable.firefox
     stable.libreoffice
     stable.spotify
     stable.thunderbird
-
-    # TODO: python stuff, should move to own module.
-    python312
-    pyright
-    python312Packages.pytest
-    unstable.ruff # needs at least 0.4.5 for language server preview.
-
-    # TODO: rust stuff, should move to own module.
-    rustup
-    cargo-expand
-    cargo-make
-    cargo-nextest
-    cargo-tarpaulin
-    cargo-hack
-    cargo-watch
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
-  #
   home.file = {
     # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -184,7 +166,6 @@
   # or
   #
   #  /etc/profiles/per-user/pdmfed/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
     EDITOR = "hx";
   };
@@ -200,30 +181,5 @@
   ];
 
   # Let Home Manager install and manage itself.
-  #
   programs.home-manager.enable = true;
-
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    sessionVariables = {
-      SHELL = "zsh";
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "asdf"
-        "bun"
-        "docker"
-        "gh"
-        "helm"
-        "podman"
-        "python"
-        "rust"
-        "ripgrep"
-        "kubectl"
-      ];
-    };
-  };
 }

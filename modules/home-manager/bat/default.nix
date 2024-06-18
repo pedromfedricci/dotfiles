@@ -8,6 +8,7 @@ in {
   programs.bat = {
     enable = true;
     package = pkgs.bat;
+    extraPackages = with pkgs.bat-extras; [batdiff batgrep batman batwatch];
   };
 
   programs.zsh = {

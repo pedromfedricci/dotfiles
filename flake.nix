@@ -77,7 +77,7 @@
     # Available through 'nixos-rebuild --flake .#your-hostname'.
     nixosConfigurations = {
       ${host.hostName} = stable.lib.nixosSystem {
-        modules = [(./host + ("/" + host.hostName))];
+        modules = [(./hosts + ("/" + host.hostName))];
         specialArgs = {inherit inputs outputs host user;};
       };
     };
@@ -87,7 +87,7 @@
     homeConfigurations = {
       ${user.username} = home-manager.lib.homeManagerConfiguration {
         pkgs = stable.legacyPackages.x86_64-linux;
-        modules = [(./home + ("/" + user.username))];
+        modules = [(./users + ("/" + user.username))];
         extraSpecialArgs = {inherit inputs outputs user;};
       };
     };

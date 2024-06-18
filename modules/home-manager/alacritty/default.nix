@@ -9,4 +9,8 @@ in {
     enable = true;
     package = pkgs.alacritty;
   };
+
+  home.packages = with pkgs; [
+    alacritty-theme
+  ];
 }
