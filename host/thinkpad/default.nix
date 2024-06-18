@@ -75,8 +75,8 @@
 
   # Configure keymap in X11.
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb.layout = "us";
+    xkb.variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -177,7 +177,7 @@
     gnomeExtensions.gtk4-desktop-icons-ng-ding
     gnupg
     grub2
-    inputs.helix.packages.${pkgs.system}.helix
+    helix # inputs.helix.packages.${pkgs.system}.helix
     openssl
     pop-launcher
     pkg-config

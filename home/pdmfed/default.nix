@@ -101,7 +101,7 @@
 
     # System utilities.
     #
-    inputs.alejandra.defaultPackage.${pkgs.system}
+    alejandra # inputs.alejandra.defaultPackage.${pkgs.system}
     cloc
     curl
     devcontainer
@@ -120,7 +120,6 @@
     podman
     poppler
     ripgrep
-    rustup
     stow
     tree
     wget
@@ -146,6 +145,15 @@
     pyright
     python312Packages.pytest
     unstable.ruff # needs at least 0.4.5 for language server preview.
+
+    # TODO: rust stuff, should move to own module.
+    rustup
+    cargo-expand
+    cargo-make
+    cargo-nextest
+    cargo-tarpaulin
+    cargo-hack
+    cargo-watch
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -12,13 +12,13 @@
       inputs.nixpkgs.follows = "stable";
     };
 
-    # Other flakes inputs.
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    devenv.url = "github:cachix/devenv/v1.0.5";
-    helix.url = "github:helix-editor/helix/eeb8782c542c20069a81f78bec9ec0b15c0c7050";
-    hosts.url = "github:StevenBlack/hosts/3.14.69";
+    # Other flake inputs.
+    alejandra.url = "github:kamadorueda/alejandra/main";
+    devenv.url = "github:cachix/devenv/main";
+    helix.url = "github:helix-editor/helix/master";
+    hosts.url = "github:StevenBlack/hosts/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    yazi.url = "github:sxyazi/yazi/v0.2.5";
+    yazi.url = "github:sxyazi/yazi/main";
   };
 
   outputs = {

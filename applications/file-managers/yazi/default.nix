@@ -11,7 +11,8 @@ in {
 
   programs.yazi = {
     enable = true;
-    package = inputs.yazi.packages.${pkgs.system}.yazi;
+    # package = inputs.yazi.packages.${pkgs.system}.yazi;
+    package = pkgs.unstable.yazi;
     enableZshIntegration = true;
   };
 }

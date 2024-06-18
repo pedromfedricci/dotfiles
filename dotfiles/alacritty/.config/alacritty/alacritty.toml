@@ -8,13 +8,13 @@ shape = "Underline"
 TERM = "alacritty"
 
 [font]
-size = 11.0
+size = 10.0
 
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 
 [mouse]
-hide_when_typing = false
+hide_when_typing = true
 
 [selection]
 save_to_clipboard = true

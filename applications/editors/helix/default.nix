@@ -12,6 +12,7 @@ in {
   programs.helix = {
     enable = true;
     package = inputs.helix.packages.${pkgs.system}.helix;
+    # package = pkgs.unstable.helix;
     defaultEditor = true;
   };
 }
