@@ -30,7 +30,7 @@
   # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
   # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
   # Driver: RTW89_8852be.
-  boot.kernelPackages = pkgs.linuxPackages_6_8;
+  boot.kernelPackages = pkgs.linuxPackages_6_9;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -79,8 +79,30 @@
     xkb.variant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # Enable CUPS to print documents and printing drivers.
+  # NixOS printing wiki: https://nixos.wiki/wiki/Printing.
+  services.printing = {
+    enable = true;
+    drivers = [
+      # Epson XP-211-214-216 Series printer driver and others.
+      pkgs.epson-escpr
+    ];
+  };
+
+  # Enable WiFi printer detection.
+  # NixOS scanner wiki: https://nixos.wiki/wiki/Scanners.
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+  # Scanner support provided by SANE. Link: https://www.sane-project.org/.
+  hardware.sane = {
+    enable = true;
+    # Default `escl` backend couldn't find the Epson scanner.
+    # Epson XP-211-214-216 Series scanner and others.
+    extraBackends = [pkgs.sane-airscan];
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -130,7 +152,7 @@
   users.users.${user.username} = {
     isNormalUser = true;
     description = user.userName;
-    extraGroups = ["libvirtd" "networkmanager" "wheel"];
+    extraGroups = ["libvirtd" "networkmanager" "scanner" "wheel"];
     shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to

@@ -8,4 +8,12 @@
     cargo-hack
     cargo-watch
   ];
+
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+  ];
+
+  programs.zsh.oh-my-zsh.plugins = [
+    "rust"
+  ];
 }

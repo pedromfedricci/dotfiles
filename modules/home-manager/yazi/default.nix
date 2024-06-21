@@ -13,6 +13,6 @@ in {
     enable = true;
     # package = inputs.yazi.packages.${pkgs.system}.yazi;
     package = pkgs.unstable.yazi;
-    enableZshIntegration = true;
+    enableZshIntegration = true; # No plugin support by ohmyzsh. 
   };
 }

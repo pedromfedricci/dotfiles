@@ -22,8 +22,8 @@ in {
     # ./nvim.nix
     (modules + "/alacritty")
     (modules + "/bat")
-    (modules + "/devenv")
     (modules + "/delta")
+    (modules + "/devenv")
     (modules + "/direnv")
     (modules + "/git")
     (modules + "/helix")
@@ -110,6 +110,7 @@ in {
     fd
     ffmpegthumbnailer
     gh
+    git-cliff
     gnumake
     htop
     jq
@@ -129,7 +130,6 @@ in {
     fzf
     nushell
     podman-tui
-    zsh
 
     # Graphical applications.
     stable.discord
@@ -167,7 +167,7 @@ in {
   #
   #  /etc/profiles/per-user/pdmfed/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
-    EDITOR = "hx";
+    # EDITOR = "vim";
   };
 
   # Extra directories to add to PATH.
@@ -177,7 +177,6 @@ in {
   # like ~ or * are escaped, they will end up in the PATH verbatim.
   home.sessionPath = [
     "$HOME/.local/bin"
-    "$HOME/.cargo/bin"
   ];
 
   # Let Home Manager install and manage itself.
