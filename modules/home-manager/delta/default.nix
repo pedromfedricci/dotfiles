@@ -16,7 +16,7 @@ in {
 
   programs.git = {
     includes = [
-      { path = "~/.config/${module}/${file}"; }
+      {path = "~/.config/${module}/${file}";}
     ];
   };
 }

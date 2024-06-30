@@ -30,7 +30,7 @@
   # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
   # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
   # Driver: RTW89_8852be.
-  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  boot.kernelPackages = inputs.kernel.legacyPackages.${pkgs.system}.latest;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -63,8 +63,11 @@
     LC_NUMERIC = "pt_BR.UTF-8";
     LC_PAPER = "pt_BR.UTF-8";
     LC_TELEPHONE = "pt_BR.UTF-8";
-    LC_TIME = "pt_BR.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
+
+  # Hintstyles: "slight" (default), "medium", "full".
+  # fonts.fontconfig.hinting.style = "full";
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -75,7 +78,7 @@
 
   # Configure keymap in X11.
   services.xserver = {
-    xkb.layout = "us";
+    xkb.layout = "us,pt";
     xkb.variant = "";
   };
 
@@ -191,21 +194,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # fprintd # Unsupported.
     clang
+    # fprintd # Unsupported.
     gcc
-    gnome.gnome-tweaks
-    gnomeExtensions.toggle-alacritty
-    gnomeExtensions.pop-shell
-    gnomeExtensions.gtk4-desktop-icons-ng-ding
-    gnupg
     grub2
-    helix # inputs.helix.packages.${pkgs.system}.helix
+    helix
     openssl
-    pop-launcher
     pkg-config
     vagrant
-    wl-clipboard
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -235,7 +231,6 @@
   # services.fprintd.enable = true;
 
   services.flatpak.enable = false;
-  services.gnome.gnome-browser-connector.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.

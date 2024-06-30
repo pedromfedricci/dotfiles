@@ -26,6 +26,8 @@ in {
     (modules + "/devenv")
     (modules + "/direnv")
     (modules + "/git")
+    (modules + "/gnome")
+    (modules + "/gtk")
     (modules + "/helix")
     (modules + "/lsd")
     (modules + "/python")
@@ -73,6 +75,31 @@ in {
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
+  # home.pointerCursor = {
+  #   name = "Capitaine-cursors";
+  #   package = pkgs.capitaine-cursors;
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  #   size = 16;
+  # };
+
+  home.sessionVariables = {
+    # Workaround to fixe alacritty and wezterm (possibly other terms too)
+    # failing to show the mouse cursor while moving it after hiding it by
+    # typing. Related:
+    # https://github.com/alacritty/alacritty/issues/4780
+    # https://github.com/wez/wezterm/issues/3106
+    XCURSOR_THEME = "Adwaita";
+  };
+
+  # Prefer to make programs use XDG directories (default false).
+  home.preferXdgDirectories = true;
+
+  # Enable XDG desktop integration (default false).
+  # Link: https://github.com/flatpak/xdg-desktop-portal.
+  xdg.portal.enable = true;
+  xdg.portal.config.common.default = "*";
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -100,40 +127,45 @@ in {
     wirelesstools
 
     # System utilities.
-    alejandra # inputs.alejandra.defaultPackage.${pkgs.system}
+    alejandra
+    # inputs.alejandra.packages.${pkgs.system}.default
     cloc
     curl
     devcontainer
     dua
     entr
-    erlang # Couldn't install it via asdf-vm.
+    erlang
     fd
     ffmpegthumbnailer
+    gdb
     gh
     git-cliff
     gnumake
     htop
     jq
+    lldb
     mold-wrapped
     nasm
     nil
-    nnn
     podman
     poppler
     ripgrep
     stow
     tree
     wget
+    wl-clipboard
     xorriso
 
     # Terminal applications.
     fzf
+    nnn
     nushell
     podman-tui
 
     # Graphical applications.
     stable.discord
     stable.firefox
+    stable.gimp-with-plugins
     stable.libreoffice
     stable.spotify
     stable.thunderbird

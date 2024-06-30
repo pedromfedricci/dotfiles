@@ -1,25 +1,5 @@
 {
-  description = "Pedro's NixOS and Home Manager configuration";
-
-  inputs = {
-    # Nixpkgs.
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    stable.url = "github:nixos/nixpkgs/nixos-24.05";
-
-    # Home-manager.
-    home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "stable";
-    };
-
-    # Other flake inputs.
-    alejandra.url = "github:kamadorueda/alejandra/main";
-    devenv.url = "github:cachix/devenv/main";
-    helix.url = "github:helix-editor/helix/master";
-    hosts.url = "github:StevenBlack/hosts/master";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    yazi.url = "github:sxyazi/yazi/main";
-  };
+  description = "My NixOS and Home Manager configuration";
 
   outputs = {
     self,
@@ -86,10 +66,70 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations = {
       ${user.username} = home-manager.lib.homeManagerConfiguration {
+        # Per system config?
+        # Discussion: https://github.com/nix-community/home-manager/issues/3075
         pkgs = stable.legacyPackages.x86_64-linux;
         modules = [(./users + ("/" + user.username))];
         extraSpecialArgs = {inherit inputs outputs user;};
       };
     };
   };
+
+  inputs = {
+    # Nixpkgs.
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    # Home-manager.
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    hosts = {
+      url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    kernel = {
+      url = "path:./inputs/kernel";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    # nix = {
+    #   url = "github:NixOS/nix/2.23.0";
+    # };
+
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+    };
+
+    yazi = {
+      url = "github:sxyazi/yazi";
+      inputs.nixpkgs.follows = "stable";
+    };
+  };
 }
+# Issues:
+#
+# `nix flake lock --update-input` updates other input changes as well,
+# defeating its on purpose.
+# Link: https://github.com/NixOS/nix/issues/8755
+# Release 2.19 fixes the issue, but we are still at 2.18 on stable.
+# Link: https://nix.dev/manual/nix/2.23/release-notes/rl-2.19
+

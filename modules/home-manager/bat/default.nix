@@ -14,6 +14,7 @@ in {
   programs.zsh = {
     shellAliases = {
       cat = "bat";
+      fzfbat = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
     };
   };
 }

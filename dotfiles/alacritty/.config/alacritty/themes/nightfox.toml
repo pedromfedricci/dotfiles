@@ -29,3 +29,11 @@ yellow = "0xdbc074"
 [colors.primary]
 background = "0x192330"
 foreground = "0xcdcecf"
+
+[colors.footer_bar]
+background = "0x192330"
+foreground = "0xcdcecf"
+
+[colors.line_indicator]
+background = "0x192330"
+foreground = "0xcdcecf"
