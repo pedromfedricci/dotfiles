@@ -107,8 +107,10 @@
     };
 
     kernel = {
-      url = "path:./inputs/kernel";
-      inputs.nixpkgs.follows = "stable";
+      # Relative flake inputs doe not work well, bunch of weirdness. See:
+      # https://github.com/NixOS/nix/issues/3978
+      # https://github.com/NixOS/nix/issues/3978#issuecomment-1774113898
+      url = "path:inputs/kernel";
     };
 
     # nix = {

@@ -7,14 +7,18 @@ in {
 
   programs.bat = {
     enable = true;
-    package = pkgs.bat;
-    extraPackages = with pkgs.bat-extras; [batdiff batgrep batman batwatch];
+    package = pkgs.unstable.bat;
+    extraPackages = with pkgs.unstable.bat-extras; [
+      batdiff
+      batgrep
+      batman
+      batwatch
+    ];
   };
 
   programs.zsh = {
     shellAliases = {
       cat = "bat";
-      fzfbat = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
     };
   };
 }

@@ -1,27 +1,63 @@
-// See: https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
-
+// Default bindings:
+// https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
+//
 // If you'd like to override the default keybindings completely, be sure to
 // change "keybinds" to "keybinds clear-defaults=true".
-//
 keybinds {
-    // Already using for helix `select_next_sibling`.
-    unbind "Alt n"
-
     shared_except "locked" {
+        bind "Alt G" { SwitchToMode "Locked"; }
+
+        // Already using for helix `select_next_sibling`.
+        unbind "Alt n"
+
         // Already in use for helix `expand_selection`.
         unbind "Alt i" 
-        // Already in use for helix `shrink_selection`.
-        unbind "Alt o" 
-
-        // Default was "Alt i".
         bind "Alt H" { MoveTab "Left"; }
-        // Default was "Alt o".
+
+        // Already in use for helix `shrink_selection`.
+        unbind "Alt o"
         bind "Alt L" { MoveTab "Right"; }
+    }
+
+    shared_except "move" "locked" {
+        unbind "Ctrl h"
+        bind "Alt H" { SwitchToMode "Move"; }
+    }
+
+    shared_except "pane" "locked" {
+        unbind "Ctrl p"
+        bind "Alt P" { SwitchToMode "Pane"; }
+    }
+
+    shared_except "resize" "locked" {
+        unbind "Ctrl n"
+        bind "Alt N" { SwitchToMode "Resize"; }
+    }
+
+    shared_except "tab" "locked" {
+        unbind "Ctrl t"
+        bind "Alt T" { SwitchToMode "Tab"; }
+    }
+
+    shared_except "scroll" "locked" {
+        unbind "Ctrl s"
+        bind "Alt S" { SwitchToMode "Scroll"; }
+    }
+
+    shared_except "session" "locked" {
+        unbind "Ctrl o"
+        bind "Alt O" { SwitchToMode "Session"; }
+    }
+
+    shared_except "tmux" "locked" {
+        unbind "Ctrl b"
+        bind "Alt B" { SwitchToMode "Tmux"; }
     }
 }
 
+// Add plugins aliases for other configuration options refere to.
 plugins {
-    zjstatus location="https://github.com/dj95/zjstatus/releases/download/v0.14.1/zjstatus.wasm"
+    zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP

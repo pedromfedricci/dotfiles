@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
     black
     pipenv
     pyright
@@ -7,13 +7,13 @@
     python312Packages.pip
     python312Packages.pylint
     python312Packages.pytest
-    unstable.ruff # needs at least 0.4.5 for language server preview.
+    ruff # needs at least 0.4.5 for language server preview.
     uv
   ];
 
   programs.pyenv = {
     enable = true;
-    package = pkgs.pyenv;
+    package = pkgs.unstable.pyenv;
     enableZshIntegration = true;
   };
 

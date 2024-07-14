@@ -8,10 +8,12 @@ shape = "Underline"
 TERM = "alacritty"
 
 [font]
-size = 10.0
+# default: 11.25
+size = 12
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+# family = "JetBrainsMono Nerd Font" # recommended size: 13
+family = "FiraCode Nerd Font Mono"
 
 [mouse]
 hide_when_typing = true

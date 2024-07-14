@@ -7,7 +7,7 @@ in {
 
   programs.alacritty = {
     enable = true;
-    package = pkgs.alacritty;
+    package = pkgs.unstable.alacritty;
   };
 
   home.packages = with pkgs; [

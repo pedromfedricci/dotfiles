@@ -7,7 +7,7 @@ in {
 
   programs.git.delta = {
     enable = true;
-    package = pkgs.delta;
+    package = pkgs.unstable.delta;
     options = {
       features = "colibri";
       side-by-side = true;

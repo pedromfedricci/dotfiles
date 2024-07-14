@@ -3,7 +3,6 @@
 # ~/.config/nixpkgs/home.nix).
 {
   pkgs,
-  inputs,
   outputs,
   user,
   ...
@@ -21,11 +20,14 @@ in {
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     (modules + "/alacritty")
+    (modules + "/atuin")
     (modules + "/bat")
     (modules + "/delta")
     (modules + "/devenv")
     (modules + "/direnv")
+    (modules + "/fzf")
     (modules + "/git")
+    (modules + "/go")
     (modules + "/gnome")
     (modules + "/gtk")
     (modules + "/helix")
@@ -119,11 +121,14 @@ in {
 
     # Hardware utilities.
     dmidecode
-    # fwupd
+    hwinfo
+    hw-probe
     inxi
     lshw
     mtools
     pciutils
+    powertop
+    usbutils
     wirelesstools
 
     # System utilities.
@@ -140,9 +145,11 @@ in {
     gdb
     gh
     git-cliff
+    glow
     gnumake
     htop
     jq
+    just
     lldb
     mold-wrapped
     nasm
@@ -152,13 +159,13 @@ in {
     ripgrep
     stow
     tree
+    wezterm
     wget
     wl-clipboard
     xorriso
 
     # Terminal applications.
-    fzf
-    nnn
+    lazygit
     nushell
     podman-tui
 

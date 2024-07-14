@@ -22,7 +22,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-
+    ../../modules/nixos/fprintd-fpcmoh.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -169,10 +169,17 @@
     # ];
   };
 
-  # Allow unfree packages.
+  # Which nix package instance to use throughout the system.
+  # On stable it is currenty at 1.18. Something greater or equal to 1.19
+  # would be better, since that release fixed `nix flake lock` always
+  # updating every existing input.
+  # Link: https://nix.dev/manual/nix/2.23/release-notes/rl-2.19.
+  nix.package = pkgs.nixVersions.nix_2_21;
+
+  # Allow unfree packages (default false).
   nixpkgs.config.allowUnfree = true;
 
-  # Allow broken packages.
+  # Allow broken packages (default false).
   # nixpkgs.config.allowBroken = true;
 
   # Allow flakes experimental feature.
@@ -195,7 +202,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     clang
-    # fprintd # Unsupported.
     gcc
     grub2
     helix
@@ -226,10 +232,14 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # Device 10a5:9800 is not supported by libfprint.
-  # https://gitlab.freedesktop.org/libfprint/wiki/-/wikis/Unsupported-Devices
-  # services.fprintd.enable = true;
+  # Enable fwupd, a DBus service that allows applications to update firmware.
+  # Firmware updates supported by LSFS for this system:
+  # https://fwupd.org/lvfs/devices/com.lenovo.ThinkPadR2AET.firmware
+  # Short guide:
+  # https://www.cyberciti.biz/faq/thinkpad-update-firmware-on-linux-x1-extreme-p1-gen2/
+  services.fwupd.enable = true;
 
+  # Enable flatpak, a linux application sandbox and distribution framework.
   services.flatpak.enable = false;
 
   # This setups a SSH server. Very important if you're setting up a headless system.

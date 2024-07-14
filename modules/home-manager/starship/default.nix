@@ -7,7 +7,7 @@ in {
 
   programs.starship = {
     enable = true;
-    package = pkgs.starship;
+    package = pkgs.unstable.starship;
     # enableZshIntegration = true;
   };
 

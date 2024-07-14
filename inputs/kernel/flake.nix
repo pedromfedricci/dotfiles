@@ -1,5 +1,7 @@
 {
-  description = "Latest Linux kernel package";
+  description = "The latest Linux kernel package";
+
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
   # Systems on default-linux: ["x86_64-linux", "aarch64-linux"].
   inputs.systems.url = "github:nix-systems/default-linux";

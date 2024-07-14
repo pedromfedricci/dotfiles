@@ -1,37 +1,73 @@
+// Reference:
+// https://github.com/dj95/zjstatus/wiki/3-%E2%80%90-Configuration
+// https://github.com/dj95/zjstatus/wiki/4-%E2%80%90-Widgets
 layout {
-    pane split_direction="vertical" {
-        pane
-    }
+    default_tab_template {
+        children
 
-    pane size=1 borderless=true {
-        plugin location="zjstatus" {
-            format_left  "{mode} {tabs}"
-            format_right "#[fg=#89B4FA,bold]{session} "
-            format_space ""
+        pane size=1 borderless=true {
+            plugin location="zjstatus" {
+                hide_frame_for_single_pane "true"
 
-            hide_frame_for_single_pane "true"
+                border_enable   "false"
+                border_char     "─"
+                border_format   "#[fg=#81b29a]"
+                border_position "top"
 
-            mode_normal        "#[fg=#89B4FA,bold] {name} "
-            mode_locked        "#[fg=#89B4FA,bold] {name} "
-            mode_resize        "#[fg=#89B4FA,bold] {name} "
-            mode_pane          "#[fg=#89B4FA,bold] {name} "
-            mode_tab           "#[fg=#89B4FA,bold] {name} "
-            mode_scroll        "#[fg=#89B4FA,bold] {name} "
-            mode_enter_search  "#[fg=#89B4FA,bold] {name} "
-            mode_search        "#[fg=#89B4FA,bold] {name} "
-            mode_rename_tab    "#[fg=#89B4FA,bold] {name} "
-            mode_rename_pane   "#[fg=#89B4FA,bold] {name} "
-            mode_session       "#[fg=#89B4FA,bold] {name} "
-            mode_move          "#[fg=#89B4FA,bold] {name} "
-            mode_prompt        "#[fg=#89B4FA,bold] {name} "
-            mode_tmux          "#[fg=#89B4FA,bold] {name} "
+                format_left   "{mode}"
+                format_center "{tabs}"
+                format_right  "#[fg=#81b29a]{swap_layout} #[fg=#719cd6,bold]{session}"
+                format_space  ""
 
-            tab_normal   "#[fg=#6C7086] {name} "
-            tab_active   "#[fg=#9399B2,bold,italic] {name} "
+                format_hide_on_overlength "true"
+                format_precedence         "lrc"
 
-            datetime        "#[fg=#6C7086,bold] {format} "
-            datetime_format "%A, %d %b %Y %H:%M"
-            datetime_timezone "America/Sao_Paulo"
+                mode_normal       "#[fg=#719cd6,bold]normal"
+                mode_locked       "#[fg=#719cd6,bold]locked"
+                mode_resize       "#[fg=#719cd6,bold]resize"
+                mode_pane         "#[fg=#719cd6,bold]pane"
+                mode_tab          "#[fg=#719cd6,bold]tab"
+                mode_scroll       "#[fg=#719cd6,bold]scroll"
+                mode_enter_search "#[fg=#719cd6,bold]enter"
+                mode_search       "#[fg=#719cd6,bold]search"
+                mode_rename_tab   "#[fg=#719cd6,bold]rename"
+                mode_rename_pane  "#[fg=#719cd6,bold]rename"
+                mode_session      "#[fg=#719cd6,bold]session"
+                mode_move         "#[fg=#719cd6,bold]move"
+                mode_prompt       "#[fg=#719cd6,bold]prompt"
+                mode_tmux         "#[fg=#719cd6,bold]tmux"
+
+                mode_default_to_mode "normal"
+
+                tab_normal            "#[fg=#6C7086]{name}{floating_indicator}"
+                tab_normal_fullscreen "#[fg=#6C7086]{name}{fullscreen_indicator}"
+                tab_normal_sync       "#[fg=#6C7086]{name}{sync_indicator}"
+
+                tab_active            "#[fg=#9399B2,bold]{name}{floating_indicator}"
+                tab_active_fullscreen "#[fg=#9399B2,bold]{name}{fullscreen_indicator}"
+                tab_active_sync       "#[fg=#9399B2,bold]{name}{sync_indicator}"
+
+                tab_separator "#[fg=#6C7986] | "
+                tab_rename    "#[fg=#f4a261]{name}"
+
+                // nf-md and nf-oct are cool
+                tab_sync_indicator       " 󰓦" //    󰓦 󰓡 
+                tab_fullscreen_indicator " 󰊓" // 󰖯 󱀅  󱣴 󱣵 󰹟  󰁌 󰊓
+                tab_floating_indicator   " 󱂬"
+
+                tab_display_count         "8"
+                tab_truncate_start_format "#[fg=#f4a261] +{count}... "
+                tab_truncate_end_format   "#[fg=#f4a261] ...+{count} "
+
+                command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+                command_git_branch_format      "#[fg=blue] {stdout} "
+                command_git_branch_interval    "10"
+                command_git_branch_rendermode  "static"
+
+                datetime          "#[fg=#6C7086,bold]{format}"
+                datetime_format   "%A, %d %b %Y %H:%M"
+                datetime_timezone "America/Sao_Paulo"
+            }
         }
     }
 }

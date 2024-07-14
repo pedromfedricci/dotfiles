@@ -1,11 +1,12 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
+  home.packages = with pkgs.unstable; [
     rustup
     cargo-expand
+    cargo-flamegraph
+    cargo-hack
     cargo-make
     cargo-nextest
     cargo-tarpaulin
-    cargo-hack
     cargo-watch
   ];
 

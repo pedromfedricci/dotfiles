@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = [
-    pkgs.lsd
+    pkgs.unstable.lsd
   ];
 
   programs.zsh = {
