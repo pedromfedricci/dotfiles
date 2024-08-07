@@ -8,6 +8,7 @@
     python312Packages.pylint
     python312Packages.pytest
     ruff # needs at least 0.4.5 for language server preview.
+    rye
     uv
   ];
 
@@ -19,8 +20,8 @@
 
   programs.zsh.oh-my-zsh.plugins = [
     "pip"
-    "pipenv"
-    "pylint"
+    # "pipenv"
+    # "pylint"
     # "pyenv"
     "python"
   ];

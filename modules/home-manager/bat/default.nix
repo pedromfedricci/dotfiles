@@ -1,18 +1,23 @@
-{pkgs, ...}: let
+{pkgs, lib, ...}: let
   dotfiles = import ../../../dotfiles.nix;
   module = "bat";
   files = ["config"];
+  use_source = true;
 in {
-  home.file = dotfiles.insertManyHomeConfigWithDir module files;
+  home = lib.mkIf use_source {
+    file = dotfiles.insertManyHomeConfigWithDir module files;
+  };
 
   programs.bat = {
     enable = true;
     package = pkgs.unstable.bat;
     extraPackages = with pkgs.unstable.bat-extras; [
-      batdiff
+      # batdiff
       batgrep
       batman
+      # batpipe
       batwatch
+      # prettybat
     ];
   };
 

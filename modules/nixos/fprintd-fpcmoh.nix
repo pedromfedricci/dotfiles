@@ -4,6 +4,8 @@
 # See discussion:
 # https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/396
 # https://gitlab.freedesktop.org/libfprint/libfprint/-/merge_requests/432
+# Lenovo:
+# https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/thinkpad-edge-laptops/thinkpad-e14-gen-4-type-21eb-and-21ec/downloads/ds560939-elan-fingerprint-driver-for-ubuntu-2204-thinkpad-e14-gen-4-e15-gen-4
 {pkgs, ...}: let
   fpcbep = pkgs.fetchzip {
     url = "https://download.lenovo.com/pccbbs/mobiles/r1slm01w.zip";
@@ -41,7 +43,8 @@
   fprintd = pkgs.fprintd.override {inherit libfprint;};
 in {
   services.fprintd = {
-    enable = true;
+    # NOTE: Works awfully anyways just disable it.
+    enable = false;
     package = fprintd;
     # tod.enable = true;
   };

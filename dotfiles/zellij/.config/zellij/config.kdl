@@ -21,7 +21,7 @@ keybinds {
 
     shared_except "move" "locked" {
         unbind "Ctrl h"
-        bind "Alt H" { SwitchToMode "Move"; }
+        bind "Alt M" { SwitchToMode "Move"; }
     }
 
     shared_except "pane" "locked" {

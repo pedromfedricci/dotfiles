@@ -106,12 +106,15 @@
       inputs.nixpkgs.follows = "stable";
     };
 
-    kernel = {
-      # Relative flake inputs doe not work well, bunch of weirdness. See:
-      # https://github.com/NixOS/nix/issues/3978
-      # https://github.com/NixOS/nix/issues/3978#issuecomment-1774113898
-      url = "path:inputs/kernel";
-    };
+    # Relative flake inputs doe not work well, bunch of weirdness.
+    # Sometimes nix fails to `fetch input` because it `uses relative path`,
+    # others will build just fine. Awful error messages. Unreliable.
+    # See:
+    # https://github.com/NixOS/nix/issues/3978
+    # https://github.com/NixOS/nix/issues/3978#issuecomment-1774113898
+    # kernel = {
+    #   url = "path:inputs/kernel";
+    # };
 
     # nix = {
     #   url = "github:NixOS/nix/2.23.0";

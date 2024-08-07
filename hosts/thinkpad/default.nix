@@ -30,7 +30,17 @@
   # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
   # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
   # Driver: RTW89_8852be.
-  boot.kernelPackages = inputs.kernel.legacyPackages.${pkgs.system}.latest;
+  # NOTE: Trying out zen-kernel for a while.
+  boot.kernelPackages = pkgs.linuxPackages_zen; # linuxPackages_latest;
+
+  # Parameters added to the kernel command line.
+  boot.kernelParams = [
+    # Fixes screen flickering with AMD and kernel >= 6...ish?
+    # Links:
+    # https://gitlab.freedesktop.org/drm/amd/-/issues/2354.
+    # https://www.phoronix.com/news/AMD-Scatter-Gather-Re-Enabled
+    # "amdgpu.sg_display=0"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -125,6 +135,13 @@
     # media-session.enable = true;
   };
 
+  # Disable bluetooh auto-enable.
+  hardware.bluetooth.settings = {
+    Policy = {
+      AutoEnable = false;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -170,7 +187,7 @@
   };
 
   # Which nix package instance to use throughout the system.
-  # On stable it is currenty at 1.18. Something greater or equal to 1.19
+  # On stable it is currenty at 2.18. Something greater or equal to 2.19
   # would be better, since that release fixed `nix flake lock` always
   # updating every existing input.
   # Link: https://nix.dev/manual/nix/2.23/release-notes/rl-2.19.
@@ -197,6 +214,21 @@
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
+
+  # Power management.
+  # Links:
+  # https://nixos.wiki/wiki/Laptop
+  # https://wiki.nixos.org/wiki/Power_Management
+
+  # Either run powertop auto tune on boot, tlp or power-profiles-daemon services.
+  # powerManagement.powertop.enable = true; # Default: false.
+  # services.power-profiles-daemon.enable = true; # Default true with GNOME.
+  # services.tlp.enable = true; # Default: false.
+
+  # Move from suspend into hibernate after some specified duration.
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=4h
+  '';
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -237,6 +269,9 @@
   # https://fwupd.org/lvfs/devices/com.lenovo.ThinkPadR2AET.firmware
   # Short guide:
   # https://www.cyberciti.biz/faq/thinkpad-update-firmware-on-linux-x1-extreme-p1-gen2/
+  #
+  # NOTE: Can't update FPC Fingerprint Reader Firmware from 27.26.23.23 to 27.26.23.50.
+  # Issue link: https://github.com/fwupd/fwupd/issues/5573:
   services.fwupd.enable = true;
 
   # Enable flatpak, a linux application sandbox and distribution framework.
