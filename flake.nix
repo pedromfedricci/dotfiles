@@ -116,9 +116,14 @@
     #   url = "path:inputs/kernel";
     # };
 
-    # nix = {
-    #   url = "github:NixOS/nix/2.23.0";
-    # };
+    lix = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "stable";
+    };
+
+    nix = {
+      url = "github:NixOS/nix/2.23.0";
+    };
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
@@ -126,7 +131,7 @@
 
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
     };
   };
 }

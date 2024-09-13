@@ -43,8 +43,7 @@
   fprintd = pkgs.fprintd.override {inherit libfprint;};
 in {
   services.fprintd = {
-    # NOTE: Works awfully anyways just disable it.
-    enable = false;
+    enable = true;
     package = fprintd;
     # tod.enable = true;
   };

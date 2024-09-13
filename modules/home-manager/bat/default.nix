@@ -1,4 +1,8 @@
-{pkgs, lib, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   dotfiles = import ../../../dotfiles.nix;
   module = "bat";
   files = ["config"];

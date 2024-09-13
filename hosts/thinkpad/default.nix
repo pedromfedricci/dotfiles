@@ -4,6 +4,7 @@
 {
   pkgs,
   inputs,
+  outputs,
   host,
   user,
   ...
@@ -16,22 +17,48 @@
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
-    inputs.hosts.nixosModule
-    {networking.stevenBlackHosts.enable = true;}
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
+    inputs.lix.nixosModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
-    ../../modules/nixos/fprintd-fpcmoh.nix
+    # ../../modules/nixos/fprintd-fpcmoh.nix
+    ../../modules/nixos/hosts.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  # Override linux kernel version since nixos-23.11 ships linux 6.1 but my
-  # wireless card (Realtek RTL8852BE) driver is only supported by linux >= 6.3.
-  # Driver: RTW89_8852be.
-  # NOTE: Trying out zen-kernel for a while.
-  boot.kernelPackages = pkgs.linuxPackages_zen; # linuxPackages_latest;
+  # Configuration of the Nix Package collection.
+  nixpkgs = {
+    # You can add overlays here.
+    overlays = [
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+      outputs.overlays.stable-packages
+    ];
+  };
+
+  # NOTE: The zen-kernel is at pkgs.linuxKernel.kernels.linux_zen
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen; # linuxPackages_latest
+
+  # Driver: RTW_8852be, only in-kernel from linux >= 6.3 onwards.
+  # Out-of-tree driver from lwfinger's rtw89 on github. Check README for Lenovo
+  # fix over their faulty BIOS constantly dropping connection over wifi.
+  # boot.extraModulePackages = [(pkgs.rtw89-git)];
+  # boot.kernelModules = ["rtw89"];
+  networking.networkmanager.wifi.powersave = true; # Default: true.
 
   # Parameters added to the kernel command line.
   boot.kernelParams = [
@@ -150,7 +177,9 @@
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
-      ovmf.enable = true;
+      # NOTE: Set to false since it builds every switch, taking a lot of time.
+      # Switch back to true when running virtualized OSes that require it.
+      ovmf.enable = false;
       ovmf.packages = [
         (pkgs.OVMF.override {
           # secureBoot = true; # Not sure about this one.
@@ -164,9 +193,9 @@
   # boot.kernelModules = ["kvm-amd"];
 
   # Enable and set zsh as users' default shell.
-  environment.shells = with pkgs; [bash zsh];
+  environment.shells = with pkgs; [bash fish zsh];
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.bash;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${user.username} = {
@@ -191,7 +220,8 @@
   # would be better, since that release fixed `nix flake lock` always
   # updating every existing input.
   # Link: https://nix.dev/manual/nix/2.23/release-notes/rl-2.19.
-  nix.package = pkgs.nixVersions.nix_2_21;
+  # NOTE: Trying out Lix for a while, check imports.
+  # nix.package = pkgs.nixVersions.nix_2_21;
 
   # Allow unfree packages (default false).
   nixpkgs.config.allowUnfree = true;

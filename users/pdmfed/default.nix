@@ -136,11 +136,13 @@ in {
     # inputs.alejandra.packages.${pkgs.system}.default
     cachix
     cloc
+    cmake
     curl
     devcontainer
     dua
     entr
     erlang
+    fastfetch
     fd
     ffmpegthumbnailer
     gdb
