@@ -133,6 +133,11 @@
       url = "github:sxyazi/yazi";
       inputs.nixpkgs.follows = "unstable";
     };
+
+    zen-browser = {
+      url = "github:heywoodlh/flakes/main?dir=zen-browser";
+      # url = "github:heywoodlh/flakes?dir=zen-browser#zen-wrapper";
+    };
   };
 }
 # Issues:

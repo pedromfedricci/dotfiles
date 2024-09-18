@@ -3,6 +3,7 @@
 # ~/.config/nixpkgs/home.nix).
 {
   pkgs,
+  inputs,
   outputs,
   user,
   ...
@@ -133,7 +134,6 @@ in {
 
     # System utilities.
     alejandra
-    # inputs.alejandra.packages.${pkgs.system}.default
     cachix
     cloc
     cmake
@@ -146,23 +146,28 @@ in {
     fd
     ffmpegthumbnailer
     gdb
+    geteltorito
     gh
     git-cliff
     glow
     gnumake
     htop
+    hexyl
     jq
     just
+    libtree
     lldb
     mold-wrapped
     nasm
     nil
     podman
     poppler
+    popsicle
     ripgrep
     stow
     tree
     wget
+    woeusb
     wl-clipboard
     xorriso
 
@@ -170,17 +175,19 @@ in {
     lazygit
     nushell
     podman-tui
-    wezterm
 
     # Graphical applications.
     stable.discord
     stable.firefox
     stable.gimp-with-plugins
+    stable.gparted
     stable.libreoffice
     stable.spotify
     stable.thunderbird
+    unstable.wezterm
     stable.zulip
     unstable.zed-editor
+    inputs.zen-browser.packages.${pkgs.system}.zen-browser
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
