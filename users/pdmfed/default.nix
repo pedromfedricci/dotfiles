@@ -22,6 +22,7 @@ in {
     # ./nvim.nix
     (modules + "/alacritty")
     (modules + "/atuin")
+    (modules + "/bacon")
     (modules + "/bat")
     (modules + "/delta")
     (modules + "/devenv")
@@ -141,6 +142,7 @@ in {
     devcontainer
     dua
     entr
+    envio
     erlang
     fastfetch
     fd
@@ -171,13 +173,14 @@ in {
     wl-clipboard
     xorriso
 
-    # Terminal applications.
+    # TUI applications.
     lazygit
     nushell
     podman-tui
 
-    # Graphical applications.
+    # GUI applications.
     stable.discord
+    stable.element-desktop
     stable.firefox
     stable.gimp-with-plugins
     stable.gparted

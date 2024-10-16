@@ -24,6 +24,8 @@
     # ./users.nix
     # ../../modules/nixos/fprintd-fpcmoh.nix
     ../../modules/nixos/hosts.nix
+    ../../modules/nixos/lanzaboote.nix
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];

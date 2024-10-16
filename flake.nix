@@ -116,6 +116,11 @@
     #   url = "path:inputs/kernel";
     # };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.1";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
       inputs.nixpkgs.follows = "stable";
@@ -136,7 +141,6 @@
 
     zen-browser = {
       url = "github:heywoodlh/flakes/main?dir=zen-browser";
-      # url = "github:heywoodlh/flakes?dir=zen-browser#zen-wrapper";
     };
   };
 }
