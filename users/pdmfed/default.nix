@@ -140,6 +140,7 @@ in {
     cmake
     curl
     devcontainer
+    distrobox
     dua
     entr
     envio
@@ -159,15 +160,19 @@ in {
     just
     libtree
     lldb
+    mkcert
     mold-wrapped
     nasm
     nil
+    nix-tree
     podman
+    podman-compose
     poppler
     popsicle
     ripgrep
     stow
     tree
+    unstable.typst
     wget
     woeusb
     wl-clipboard
@@ -177,6 +182,7 @@ in {
     lazygit
     nushell
     podman-tui
+    typioca
 
     # GUI applications.
     stable.discord
@@ -187,10 +193,10 @@ in {
     stable.libreoffice
     stable.spotify
     stable.thunderbird
-    unstable.wezterm
+    stable.wezterm
     stable.zulip
     unstable.zed-editor
-    inputs.zen-browser.packages.${pkgs.system}.zen-browser
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

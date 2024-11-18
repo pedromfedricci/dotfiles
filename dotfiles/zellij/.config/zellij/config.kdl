@@ -4,54 +4,58 @@
 // If you'd like to override the default keybindings completely, be sure to
 // change "keybinds" to "keybinds clear-defaults=true".
 keybinds {
+    locked {
+        bind "Ctrl Alt g" { SwitchToMode "Normal"; }
+    }
+
     shared_except "locked" {
-        bind "Alt G" { SwitchToMode "Locked"; }
+        bind "Ctrl Alt g" { SwitchToMode "Locked"; }
 
         // Already using for helix `select_next_sibling`.
         unbind "Alt n"
 
         // Already in use for helix `expand_selection`.
         unbind "Alt i" 
-        bind "Alt H" { MoveTab "Left"; }
+        bind "Ctrl Alt h" { MoveTab "Left"; }
 
         // Already in use for helix `shrink_selection`.
         unbind "Alt o"
-        bind "Alt L" { MoveTab "Right"; }
+        bind "Ctrl Alt l" { MoveTab "Right"; }
     }
 
     shared_except "move" "locked" {
         unbind "Ctrl h"
-        bind "Alt M" { SwitchToMode "Move"; }
+        bind "Ctrl Alt m" { SwitchToMode "Move"; }
     }
 
     shared_except "pane" "locked" {
         unbind "Ctrl p"
-        bind "Alt P" { SwitchToMode "Pane"; }
+        bind "Ctrl Alt p" { SwitchToMode "Pane"; }
     }
 
     shared_except "resize" "locked" {
         unbind "Ctrl n"
-        bind "Alt N" { SwitchToMode "Resize"; }
+        bind "Ctrl Alt n" { SwitchToMode "Resize"; }
     }
 
     shared_except "tab" "locked" {
         unbind "Ctrl t"
-        bind "Alt T" { SwitchToMode "Tab"; }
+        bind "Ctrl Alt t" { SwitchToMode "Tab"; }
     }
 
     shared_except "scroll" "locked" {
         unbind "Ctrl s"
-        bind "Alt S" { SwitchToMode "Scroll"; }
+        bind "Ctrl Alt s" { SwitchToMode "Scroll"; }
     }
 
     shared_except "session" "locked" {
         unbind "Ctrl o"
-        bind "Alt O" { SwitchToMode "Session"; }
+        bind "Ctrl Alt 0" { SwitchToMode "Session"; }
     }
 
     shared_except "tmux" "locked" {
         unbind "Ctrl b"
-        bind "Alt B" { SwitchToMode "Tmux"; }
+        bind "Ctrl Alt b" { SwitchToMode "Tmux"; }
     }
 }
 

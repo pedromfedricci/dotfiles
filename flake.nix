@@ -83,47 +83,35 @@
     # Home-manager.
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
     };
 
     alejandra = {
       url = "github:kamadorueda/alejandra";
-      inputs.nixpkgs.follows = "stable";
     };
 
     devenv = {
       url = "github:cachix/devenv";
-      inputs.nixpkgs.follows = "stable";
     };
 
     helix = {
       url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "stable";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
     };
 
     hosts = {
       url = "github:StevenBlack/hosts";
-      inputs.nixpkgs.follows = "stable";
     };
-
-    # Relative flake inputs doe not work well, bunch of weirdness.
-    # Sometimes nix fails to `fetch input` because it `uses relative path`,
-    # others will build just fine. Awful error messages. Unreliable.
-    # See:
-    # https://github.com/NixOS/nix/issues/3978
-    # https://github.com/NixOS/nix/issues/3978#issuecomment-1774113898
-    # kernel = {
-    #   url = "path:inputs/kernel";
-    # };
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "unstable";
     };
 
     lix = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-      inputs.nixpkgs.follows = "stable";
     };
 
     nix = {
@@ -136,11 +124,10 @@
 
     yazi = {
       url = "github:sxyazi/yazi";
-      inputs.nixpkgs.follows = "unstable";
     };
 
     zen-browser = {
-      url = "github:heywoodlh/flakes/main?dir=zen-browser";
+      url = "github:ch4og/zen-browser-flake";
     };
   };
 }

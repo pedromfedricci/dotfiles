@@ -24,6 +24,7 @@
     # ./users.nix
     # ../../modules/nixos/fprintd-fpcmoh.nix
     ../../modules/nixos/hosts.nix
+    ../../modules/nixos/hyprland.nix
     ../../modules/nixos/lanzaboote.nix
 
     # Include the results of the hardware scan.
@@ -191,8 +192,15 @@
       ];
     };
   };
-  # Already set on hardware-configuraon.nix.
+  # Already set on hardware-configuration.nix.
   # boot.kernelModules = ["kvm-amd"];
+
+  # Enable podman.
+  virtualisation.containers.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    defaultNetwork.settings.dns_enabled = true;
+  };
 
   # Enable and set zsh as users' default shell.
   environment.shells = with pkgs; [bash fish zsh];
@@ -233,6 +241,9 @@
 
   # Allow flakes experimental feature.
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  # Add default user to nix's trusted-users list sot they can add binary caches.
+  nix.settings.trusted-users = ["${user.username}"];
 
   # Storage optimization: https://nixos.wiki/wiki/Storage_optimization.
 
