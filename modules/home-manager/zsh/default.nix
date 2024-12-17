@@ -9,21 +9,18 @@
     package = pkgs.unstable.zsh;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    historySubstringSearch.enable = true;
+    zprof.enable = false;
     sessionVariables = {
       SHELL = "zsh";
     };
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "asdf"
-        "bun"
-        "docker"
-        "fd"
-        "gh"
-        "helm"
-        "podman"
-        "ripgrep"
-        "kubectl"
+        # "docker"
+        # "helm"
+        # "gh"
+        # "kubectl"
       ];
     };
   };

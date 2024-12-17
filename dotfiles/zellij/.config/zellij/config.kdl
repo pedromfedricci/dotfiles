@@ -8,11 +8,13 @@ keybinds {
         bind "Ctrl Alt g" { SwitchToMode "Normal"; }
     }
 
-    shared_except "locked" {
-        bind "Ctrl Alt g" { SwitchToMode "Locked"; }
+    shared {
+        unbind "Ctrl g"
+    }
 
-        // Already using for helix `select_next_sibling`.
-        unbind "Alt n"
+    shared_except "locked" {
+        unbind "Ctrl g"
+        bind "Ctrl Alt g" { SwitchToMode "Locked"; }
 
         // Already in use for helix `expand_selection`.
         unbind "Alt i" 
@@ -21,6 +23,31 @@ keybinds {
         // Already in use for helix `shrink_selection`.
         unbind "Alt o"
         bind "Ctrl Alt l" { MoveTab "Right"; }
+
+        // Already using for helix `select_next_sibling`.
+        unbind "Alt n"
+        bind "Ctrl Alt n" { NewPane; }
+
+        unbind "Alt f"
+        bind "Ctrl Alt f" { ToggleFloatingPanes; }
+
+        // unbind "Alt +"
+        // unbind "Alt ="
+        // bind "Ctrl Alt +" { Resize "Increase"; }
+
+        // unbind "Alt -"
+        // bind "Ctrl Alt -" { Resize "Decrease"; }
+
+        // unbind "Alt ["
+        // bind "Ctrl Alt [" { PreviousSwapLayout; }
+
+        // unbind "Alt ]"
+        // bind "Ctrl Alt ]" { NextSwapLayout; }
+
+        unbind "Alt Left" // MoveFocusOrTab "Left"
+        unbind "Alt Right" // MoveFocusOrTab "Right"
+        unbind "Alt Down" // MoveFocus "Down"
+        unbind "Alt Up" // MoveFocus "Up"
     }
 
     shared_except "move" "locked" {

@@ -1,9 +1,11 @@
 {pkgs, ...}: let
   dotfiles = import ../../../dotfiles.nix;
   module = "git";
-  file = "themes.gitconfig";
+  themes = "themes.gitconfig";
 in {
-  home.file = dotfiles.insertHomeConfigWithDir module file;
+  home.file = dotfiles.insertHomeConfigWithDir module themes;
+
+  home.sessionVariables.DELTA_PAGER = "less --mouse";
 
   programs.git.delta = {
     enable = true;
@@ -16,7 +18,7 @@ in {
 
   programs.git = {
     includes = [
-      {path = "~/.config/${module}/${file}";}
+      {path = "~/.config/${module}/${themes}";}
     ];
   };
 }

@@ -77,12 +77,12 @@
 
   inputs = {
     # Nixpkgs.
-    stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    stable.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home-manager.
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "unstable";
     };
 
@@ -100,6 +100,11 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
 
     hosts = {
@@ -127,15 +132,8 @@
     };
 
     zen-browser = {
-      url = "github:ch4og/zen-browser-flake";
+      # url = "github:0xc000022070/zen-browser-flake";
+      url = "github:pedromfedricci/zen-browser-flake";
     };
   };
 }
-# Issues:
-#
-# `nix flake lock --update-input` updates other input changes as well,
-# defeating its on purpose.
-# Link: https://github.com/NixOS/nix/issues/8755
-# Release 2.19 fixes the issue, but we are still at 2.18 on stable.
-# Link: https://nix.dev/manual/nix/2.23/release-notes/rl-2.19
-

@@ -1,25 +1,27 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    gnome.adwaita-icon-theme
-    gnome.gnome-themes-extra
-    gnome.gnome-tweaks
-    gnome.gnome-shell-extensions
-    pop-launcher
+    adwaita-icon-theme
+    gnome-themes-extra
+    gnome-tweaks
+    gnome-power-manager
   ];
 
+  # NOTE: The warning: "error: The ‘gnome.gnome-shell-extensions’ was moved to
+  # top-level. Please use ‘pkgs.gnome-shell-extensions’ directly." was fixed
+  # at master:
+  # https://github.com/nix-community/home-manager/commit/e526fd2b1a40e4ca0b5e07e87b8c960281c67412
+  # Yet to be merged to 24.11:
+  # https://github.com/nix-community/home-manager/tree/release-24.11
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs; [
       {package = gnomeExtensions.blur-my-shell;}
       {package = gnomeExtensions.dash-to-dock;}
-      {package = gnomeExtensions.pop-shell;}
-      {package = gnomeExtensions.toggle-alacritty;}
-      # {package = gnomeExtensions.rounded-window-corners;}
-      # {package = gnomeExtensions.user-themes;}
+      {package = gnomeExtensions.paperwm;}
     ];
     theme = {
       name = "Flat-Remix-Blue-Dark";
-      package = pkgs.flat-remix-gnome;
+      package = pkgs.unstable.flat-remix-gnome;
     };
   };
 }

@@ -8,12 +8,5 @@ in {
   programs.starship = {
     enable = true;
     package = pkgs.unstable.starship;
-    # enableZshIntegration = true;
-  };
-
-  programs.zsh = {
-    oh-my-zsh = {
-      plugins = ["starship"];
-    };
   };
 }

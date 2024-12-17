@@ -24,7 +24,7 @@ save_to_clipboard = true
 
 [window]
 decorations = "None"
-dynamic_padding = true
+# dynamic_padding = true
 dynamic_title = false
 resize_increments = true
 startup_mode = "Maximized"

@@ -3,7 +3,6 @@
 {pkgs, ...}: {
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
     package = pkgs.unstable.fzf;
     defaultCommand = "fd --type f --strip-cwd-prefix --hidden --follow --exclude .git --exclude result --exclude target --exclude build";
     # Color scheme links:
@@ -38,8 +37,5 @@
     shellAliases = {
       fzfbat = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
     };
-    # oh-my-zsh = {
-    # plugins = ["fzf"];
-    # };
   };
 }

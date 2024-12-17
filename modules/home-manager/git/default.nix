@@ -12,11 +12,18 @@
       key = null;
       signByDefault = true;
     };
-  };
-
-  programs.zsh = {
-    oh-my-zsh = {
-      plugins = ["git"];
+    extraConfig = {
+      merge = {
+        conflictstyle = "zdiff3";
+      };
     };
   };
+
+  programs.zsh.oh-my-zsh.plugins = [
+    # "git"
+    # "gitlfs"
+    # "github"
+    # "gitignore"
+    # "git-prompt"
+  ];
 }

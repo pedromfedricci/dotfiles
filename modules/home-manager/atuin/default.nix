@@ -2,7 +2,9 @@
   programs.atuin = {
     enable = true;
     package = pkgs.unstable.atuin;
-    enableZshIntegration = true;
-    flags = ["--disable-up-arrow"];
+    flags = [
+      # "--disable-ctrl-r"
+      "--disable-up-arrow"
+    ];
   };
 }

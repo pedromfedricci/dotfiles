@@ -2,27 +2,22 @@
   home.packages = with pkgs.unstable; [
     black
     pipenv
+    pipx
     pyright
-    python312
-    python312Packages.pip
-    python312Packages.pylint
-    python312Packages.pytest
-    ruff # needs at least 0.4.5 for language server preview.
-    rye
+    python313
+    ruff
     uv
   ];
 
   programs.pyenv = {
     enable = true;
     package = pkgs.unstable.pyenv;
-    enableZshIntegration = true;
   };
 
   programs.zsh.oh-my-zsh.plugins = [
-    "pip"
-    # "pipenv"
-    # "pylint"
-    # "pyenv"
-    "python"
+    # "pip" # completions, aliases
+    # "pipenv" # activation, completions, aliases
+    # "pylint" # completions, aliases
+    # "python" # aliases
   ];
 }

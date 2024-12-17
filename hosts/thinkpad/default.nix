@@ -8,7 +8,9 @@
   host,
   user,
   ...
-}: {
+}: let
+  modules = ../../modules/nixos;
+in {
   # You can import other NixOS modules here.
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -18,15 +20,15 @@
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-    inputs.lix.nixosModules.default
+    # inputs.lix.nixosModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     # ../../modules/nixos/fprintd-fpcmoh.nix
-    ../../modules/nixos/hosts.nix
-    ../../modules/nixos/hyprland.nix
-    ../../modules/nixos/lanzaboote.nix
-
+    (modules + "/hosts")
+    (modules + "/hyprland")
+    (modules + "/lanzaboote")
+    (modules + "/rtw8852be")
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -53,8 +55,14 @@
     ];
   };
 
-  # NOTE: The zen-kernel is at pkgs.linuxKernel.kernels.linux_zen
-  boot.kernelPackages = pkgs.unstable.linuxPackages_zen; # linuxPackages_latest
+  # See kernel versions at `linuxKernel.kernels`:
+  # - linux testing: `linuxKernel.kernels.linux_testing`
+  # - zen kernel: `linuxKernel.kernels.linux_zen`
+  # Package options:
+  # - stable latest: `linuxPackages_latest`
+  # - testing latest: `linuxPackages_testing`
+  # - zen latest: `linuxPackages_zen`
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # Driver: RTW_8852be, only in-kernel from linux >= 6.3 onwards.
   # Out-of-tree driver from lwfinger's rtw89 on github. Check README for Lenovo
@@ -148,7 +156,6 @@
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -204,7 +211,7 @@
 
   # Enable and set zsh as users' default shell.
   environment.shells = with pkgs; [bash fish zsh];
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.bash;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -212,7 +219,7 @@
     isNormalUser = true;
     description = user.userName;
     extraGroups = ["libvirtd" "networkmanager" "scanner" "wheel"];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     openssh.authorizedKeys.keys = [
       # TODO: Add your SSH public key(s) here, if you plan on using SSH to
       # connect.
@@ -268,10 +275,25 @@
   # services.power-profiles-daemon.enable = true; # Default true with GNOME.
   # services.tlp.enable = true; # Default: false.
 
+  # Add swap devices and files.
+  swapDevices = [
+    {
+      device = "/var/swapfile";
+      size = 16 * 1024; # 16GB
+      randomEncryption.enable = false;
+    }
+  ];
+  # Power suspend and hibernation.
+  #
   # Move from suspend into hibernate after some specified duration.
   systemd.sleep.extraConfig = ''
-    HibernateDelaySec=4h
+    # HibernateDelaySec=1h
   '';
+  # Set lid switch to suspend then hibernate.
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  # Enable systemd to dinamically determine hibernation details.
+  # https://discourse.nixos.org/t/is-it-possible-to-hibernate-with-swap-file/2852/5
+  boot.initrd.systemd.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -282,7 +304,7 @@
     helix
     openssl
     pkg-config
-    vagrant
+    # vagrant
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -315,7 +337,7 @@
   #
   # NOTE: Can't update FPC Fingerprint Reader Firmware from 27.26.23.23 to 27.26.23.50.
   # Issue link: https://github.com/fwupd/fwupd/issues/5573:
-  services.fwupd.enable = true;
+  services.fwupd.enable = false;
 
   # Enable flatpak, a linux application sandbox and distribution framework.
   services.flatpak.enable = false;

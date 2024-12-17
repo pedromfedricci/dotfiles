@@ -24,23 +24,28 @@ in {
     (modules + "/atuin")
     (modules + "/bacon")
     (modules + "/bat")
+    (modules + "/cursor")
     (modules + "/delta")
     (modules + "/devenv")
     (modules + "/direnv")
+    (modules + "/electron")
+    (modules + "/fish")
     (modules + "/fzf")
     (modules + "/git")
     (modules + "/go")
     (modules + "/gnome")
     (modules + "/gtk")
     (modules + "/helix")
+    # (modules + "/hyprland")
     (modules + "/lsd")
+    (modules + "/nix")
     (modules + "/python")
     (modules + "/rust")
     (modules + "/starship")
     (modules + "/yazi")
     (modules + "/zellij")
     (modules + "/zoxide")
-    (modules + "/zsh")
+    # (modules + "/zsh")
   ];
 
   # Configuration of the Nix Package collection.
@@ -77,7 +82,7 @@ in {
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # home.pointerCursor = {
   #   name = "Capitaine-cursors";
@@ -86,15 +91,6 @@ in {
   #   gtk.enable = true;
   #   size = 16;
   # };
-
-  home.sessionVariables = {
-    # Workaround to fixe alacritty and wezterm (possibly other terms too)
-    # failing to show the mouse cursor while moving it after hiding it by
-    # typing. Related:
-    # https://github.com/alacritty/alacritty/issues/4780
-    # https://github.com/wez/wezterm/issues/3106
-    XCURSOR_THEME = "Adwaita";
-  };
 
   # Prefer to make programs use XDG directories (default false).
   home.preferXdgDirectories = true;
@@ -122,6 +118,7 @@ in {
     # '')
 
     # Hardware utilities.
+    acpi
     dmidecode
     hwinfo
     hw-probe
@@ -145,18 +142,12 @@ in {
     entr
     envio
     erlang
-    fastfetch
-    fd
     ffmpegthumbnailer
     gdb
     geteltorito
-    gh
-    git-cliff
     glow
     gnumake
-    htop
     hexyl
-    jq
     just
     libtree
     lldb
@@ -165,39 +156,58 @@ in {
     nasm
     nil
     nix-tree
-    podman
     podman-compose
     poppler
     popsicle
-    ripgrep
     stow
     tree
-    unstable.typst
+    typst
     wget
     woeusb
     wl-clipboard
     xorriso
+    unstable.zizmor
 
     # TUI applications.
-    lazygit
-    nushell
     podman-tui
     typioca
 
     # GUI applications.
     stable.discord
     stable.element-desktop
-    stable.firefox
     stable.gimp-with-plugins
     stable.gparted
     stable.libreoffice
     stable.spotify
     stable.thunderbird
-    stable.wezterm
     stable.zulip
-    unstable.zed-editor
     inputs.zen-browser.packages.${pkgs.system}.default
   ];
+
+  programs = {
+    # Utilities.
+    fastfetch.enable = true;
+    fd.enable = true;
+    nh.enable = true;
+    gh.enable = true;
+    git-cliff.enable = true;
+    htop.enable = true;
+    jq.enable = true;
+    ripgrep.enable = true;
+
+    # TUI applications.
+    lazygit.enable = true;
+    nushell.enable = false;
+
+    # GUI applications.
+    firefox.enable = true;
+    wezterm.enable = false;
+    zed-editor.enable = true;
+  };
+
+  services = {
+    # glance.enable = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
