@@ -17,10 +17,11 @@
     extensions = with pkgs; [
       {package = gnomeExtensions.blur-my-shell;}
       {package = gnomeExtensions.dash-to-dock;}
+      {package = gnomeExtensions.hibernate-status-button;}
       {package = gnomeExtensions.paperwm;}
     ];
     theme = {
-      name = "Flat-Remix-Blue-Dark";
+      name = "Flat-Remix-Dark";
       package = pkgs.unstable.flat-remix-gnome;
     };
   };

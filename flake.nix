@@ -94,6 +94,10 @@
       url = "github:cachix/devenv";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
+
     helix = {
       url = "github:helix-editor/helix";
     };
@@ -123,6 +127,10 @@
       url = "github:NixOS/nix/2.23.0";
     };
 
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+    };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
@@ -132,8 +140,8 @@
     };
 
     zen-browser = {
-      # url = "github:0xc000022070/zen-browser-flake";
-      url = "github:pedromfedricci/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
+      # url = "github:pedromfedricci/zen-browser-flake";
     };
   };
 }

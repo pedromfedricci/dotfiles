@@ -26,12 +26,14 @@ symbol = " "
 read_only = " 󰌾"
 
 [direnv]
-disabled = false # disabled by default
+# Disabled by default.
+disabled = false 
 style = "bold blue"
 format = '$symbol[\($loaded/$allowed\)]($style) '
 loaded_msg = "l"
 unloaded_msg = "u"
 allowed_msg = "a"
+not_allowed_msg = "b"
 denied_msg = "d"
 
 [docker_context]
@@ -93,6 +95,7 @@ symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
+format = 'via [$symbol$state]($style) '
 
 [nodejs]
 symbol = " "

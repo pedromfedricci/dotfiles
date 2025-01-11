@@ -10,7 +10,7 @@ TERM = "alacritty"
 
 [font]
 # default: 11.25
-size = 12
+size = 11.25
 
 [font.normal]
 # family = "JetBrainsMono Nerd Font" # recommended size: 13

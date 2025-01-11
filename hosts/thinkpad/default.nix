@@ -72,13 +72,13 @@ in {
   networking.networkmanager.wifi.powersave = true; # Default: true.
 
   # Parameters added to the kernel command line.
-  boot.kernelParams = [
-    # Fixes screen flickering with AMD and kernel >= 6...ish?
-    # Links:
-    # https://gitlab.freedesktop.org/drm/amd/-/issues/2354.
-    # https://www.phoronix.com/news/AMD-Scatter-Gather-Re-Enabled
-    # "amdgpu.sg_display=0"
-  ];
+  # boot.kernelParams = [
+  # Fixes screen flickering with AMD and kernel >= 6...ish?
+  # Links:
+  # https://gitlab.freedesktop.org/drm/amd/-/issues/2354.
+  # https://www.phoronix.com/news/AMD-Scatter-Gather-Re-Enabled
+  # "amdgpu.sg_display=0"
+  # ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -283,14 +283,29 @@ in {
       randomEncryption.enable = false;
     }
   ];
+
   # Power suspend and hibernation.
   #
   # Move from suspend into hibernate after some specified duration.
+  #
+  # https://www.freedesktop.org/software/systemd/man/latest/systemd-sleep.conf.html
+  # https://www.freedesktop.org/software/systemd/man/latest/systemd-suspend-then-hibernate.service.html
+  # https://docs.kernel.org/admin-guide/pm/sleep-states.html#basic-sysfs-interfaces-for-system-suspend-and-hibernation
+  # https://discourse.nixos.org/t/suspend-then-hibernate/31953
   systemd.sleep.extraConfig = ''
-    # HibernateDelaySec=1h
+    #AllowSuspend=no
+    #AllowHibernation=no
+    #AllowSuspendThenHibernate=no
+    #AllowHybridSleep=no
+    MemorySleepMode=
+    SuspendState=mem freeze disk
+    SuspendEstimationSec=
+    HibernateMode=platform suspend shutdown
+    #HibernateOnACPower=yes
+    HibernateDelaySec=60min
   '';
   # Set lid switch to suspend then hibernate.
-  services.logind.lidSwitch = "suspend-then-hibernate";
+  # services.logind.lidSwitch = "suspend-then-hibernate";
   # Enable systemd to dinamically determine hibernation details.
   # https://discourse.nixos.org/t/is-it-possible-to-hibernate-with-swap-file/2852/5
   boot.initrd.systemd.enable = true;
@@ -306,6 +321,11 @@ in {
     pkg-config
     # vagrant
   ];
+
+  # List of pograms to enable in system profile.
+  programs = {
+    nix-ld.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -337,7 +357,7 @@ in {
   #
   # NOTE: Can't update FPC Fingerprint Reader Firmware from 27.26.23.23 to 27.26.23.50.
   # Issue link: https://github.com/fwupd/fwupd/issues/5573:
-  services.fwupd.enable = false;
+  services.fwupd.enable = true;
 
   # Enable flatpak, a linux application sandbox and distribution framework.
   services.flatpak.enable = false;

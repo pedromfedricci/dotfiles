@@ -10,7 +10,7 @@ in {
     package = pkgs.unstable.alacritty;
   };
 
-  home.packages = with pkgs; [
-    alacritty-theme
-  ];
+  # home.packages = with pkgs; [
+  # alacritty-theme
+  # ];
 }

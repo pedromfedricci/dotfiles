@@ -75,23 +75,6 @@ in {
   home.username = user.username;
   home.homeDirectory = user.homeDirectory;
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.11"; # Please read the comment before changing.
-
-  # home.pointerCursor = {
-  #   name = "Capitaine-cursors";
-  #   package = pkgs.capitaine-cursors;
-  #   x11.enable = true;
-  #   gtk.enable = true;
-  #   size = 16;
-  # };
-
   # Prefer to make programs use XDG directories (default false).
   home.preferXdgDirectories = true;
 
@@ -161,6 +144,7 @@ in {
     popsicle
     stow
     tree
+    trunk
     typst
     wget
     woeusb
@@ -181,7 +165,9 @@ in {
     stable.spotify
     stable.thunderbird
     stable.zulip
-    inputs.zen-browser.packages.${pkgs.system}.default
+    # from flakes
+    # inputs.ghostty.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.twilight # beta twilight default
   ];
 
   programs = {
@@ -251,4 +237,13 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 }
