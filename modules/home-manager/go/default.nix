@@ -1,7 +1,8 @@
 {pkgs, ...}: {
   home.packages = with pkgs.unstable; [
-    gopls
     delve
+    golangci-lint-langserver
+    gopls
     gotools
   ];
 
@@ -10,7 +11,7 @@
     package = pkgs.unstable.go;
   };
 
-  programs.zsh.oh-my-zsh.plugins = [
-    # "golang"
-  ];
+  # programs.zsh.oh-my-zsh.plugins = [
+  # "golang"
+  # ];
 }

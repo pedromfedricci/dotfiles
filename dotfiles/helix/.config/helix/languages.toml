@@ -1,18 +1,39 @@
 [[language]]
 name = "elixir"
 auto-format = true
-language-servers = [ "elixir-ls" ]
+language-servers = ["elixir-ls"]
+
+[[language]]
+name = "go"
+auto-format = true
+formatter.command = "goimports"
+
+[[language]]
+name = "nix"
+auto-format = true
+formatter.command = "alejandra"
+
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+auto-format = true
+
+[[language]]
+name = "toml"
+auto-format = true
+formatter.command = "taplo"
+formatter.args = ["fmt", "-"]
+
+[[language]]
+name = "typst"
+auto-format = true
+formatter.command = "typstyle"
 
 [language-server.elixir-ls.config]
 dialyzerEnabled = true
 fetchDeps = true
 suggestSpecs = true
 signatureAfterComplete = true
-
-[[language]]
-name = "python"
-language-servers = [ "pyright", "ruff" ]
-auto-format = true
 
 [language-server.ruff]
 command = "ruff"

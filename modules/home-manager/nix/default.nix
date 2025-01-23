@@ -23,4 +23,12 @@
       ];
     };
   };
+  home.packages = with pkgs; [
+    alejandra
+    nil
+    nixd
+    # nixfmt-classic
+    # nixfmt-rfc-style
+    nix-tree
+  ];
 }

@@ -25,10 +25,12 @@ in {
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     # ../../modules/nixos/fprintd-fpcmoh.nix
+    (modules + "/gnome")
     (modules + "/hosts")
-    (modules + "/hyprland")
+    # (modules + "/hyprland")
     (modules + "/lanzaboote")
-    (modules + "/rtw8852be")
+    (modules + "/nix")
+    # (modules + "/rtw8852be")
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
@@ -62,7 +64,7 @@ in {
   # - stable latest: `linuxPackages_latest`
   # - testing latest: `linuxPackages_testing`
   # - zen latest: `linuxPackages_zen`
-  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
 
   # Driver: RTW_8852be, only in-kernel from linux >= 6.3 onwards.
   # Out-of-tree driver from lwfinger's rtw89 on github. Check README for Lenovo
@@ -301,7 +303,7 @@ in {
     SuspendState=mem freeze disk
     SuspendEstimationSec=
     HibernateMode=platform suspend shutdown
-    #HibernateOnACPower=yes
+    HibernateOnACPower=yes
     HibernateDelaySec=60min
   '';
   # Set lid switch to suspend then hibernate.

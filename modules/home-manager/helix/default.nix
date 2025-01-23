@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  # inputs,
   ...
 }: let
   dotfiles = import ../../../dotfiles.nix;
@@ -11,8 +11,8 @@ in {
 
   programs.helix = {
     enable = true;
-    package = inputs.helix.packages.${pkgs.system}.helix;
-    # package = pkgs.unstable.helix;
+    # package = inputs.helix.packages.${pkgs.system}.helix;
+    package = pkgs.unstable.helix;
     defaultEditor = true;
   };
 }

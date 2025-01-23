@@ -86,30 +86,30 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    alejandra = {
-      url = "github:kamadorueda/alejandra";
-    };
+    # alejandra = {
+    #   url = "github:kamadorueda/alejandra";
+    # };
 
-    devenv = {
-      url = "github:cachix/devenv";
-    };
+    # devenv = {
+    #   url = "github:cachix/devenv";
+    # };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
+    # ghostty = {
+    #   url = "github:ghostty-org/ghostty";
+    # };
 
-    helix = {
-      url = "github:helix-editor/helix";
-    };
+    # helix = {
+    #   url = "github:helix-editor/helix";
+    # };
 
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    # };
 
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
 
     hosts = {
       url = "github:StevenBlack/hosts";
@@ -119,29 +119,29 @@
       url = "github:nix-community/lanzaboote/v0.4.1";
     };
 
-    lix = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
-    };
+    # lix = {
+    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+    # };
 
-    nix = {
-      url = "github:NixOS/nix/2.23.0";
-    };
+    # nix = {
+    #   url = "github:NixOS/nix/2.23.0";
+    # };
 
-    nix-ld = {
-      url = "github:Mic92/nix-ld";
-    };
+    # nix-ld = {
+    #   url = "github:Mic92/nix-ld";
+    # };
 
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
 
-    yazi = {
-      url = "github:sxyazi/yazi";
-    };
+    # yazi = {
+    #   url = "github:sxyazi/yazi";
+    # };
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      # url = "github:pedromfedricci/zen-browser-flake";
+      # url = "github:pedromfedricci/zen-browser-flake/patches";
     };
   };
 }

@@ -42,6 +42,7 @@ in {
     (modules + "/python")
     (modules + "/rust")
     (modules + "/starship")
+    (modules + "/typst")
     (modules + "/yazi")
     (modules + "/zellij")
     (modules + "/zoxide")
@@ -114,7 +115,6 @@ in {
     wirelesstools
 
     # System utilities.
-    alejandra
     cachix
     cloc
     cmake
@@ -137,15 +137,12 @@ in {
     mkcert
     mold-wrapped
     nasm
-    nil
-    nix-tree
     podman-compose
     poppler
     popsicle
     stow
     tree
     trunk
-    typst
     wget
     woeusb
     wl-clipboard
@@ -165,8 +162,6 @@ in {
     stable.spotify
     stable.thunderbird
     stable.zulip
-    # from flakes
-    # inputs.ghostty.packages.${pkgs.system}.default
     inputs.zen-browser.packages.${pkgs.system}.twilight # beta twilight default
   ];
 
@@ -187,6 +182,7 @@ in {
 
     # GUI applications.
     firefox.enable = true;
+    ghostty.enable = false;
     wezterm.enable = false;
     zed-editor.enable = true;
   };

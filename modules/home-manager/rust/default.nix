@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs.unstable; [
-    rustup
     cargo-expand
     cargo-flamegraph
     cargo-hack
@@ -10,13 +9,15 @@
     cargo-semver-checks
     cargo-tarpaulin
     cargo-watch
+    rustup
+    taplo
   ];
 
   home.sessionPath = [
     "$HOME/.cargo/bin"
   ];
 
-  programs.zsh.oh-my-zsh.plugins = [
-    # "rust"
-  ];
+  # programs.zsh.oh-my-zsh.plugins = [
+  # "rust"
+  # ];
 }
