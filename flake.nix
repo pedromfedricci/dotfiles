@@ -98,9 +98,9 @@
     #   url = "github:ghostty-org/ghostty";
     # };
 
-    # helix = {
-    #   url = "github:helix-editor/helix";
-    # };
+    helix = {
+      url = "github:helix-editor/helix";
+    };
 
     # hyprland = {
     #   url = "github:hyprwm/Hyprland";
@@ -116,7 +116,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
+      url = "github:nix-community/lanzaboote/v0.4.2";
     };
 
     # lix = {

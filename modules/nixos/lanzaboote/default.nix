@@ -12,7 +12,7 @@
 
   environment.systemPackages = [
     # For debugging and troubleshooting Secure Boot.
-    pkgs.sbctl
+    pkgs.unstable.sbctl
   ];
 
   # Lanzaboote currently replaces the systemd-boot module.
@@ -23,6 +23,6 @@
 
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = "/var/lib/sbctl";
   };
 }

@@ -58,13 +58,14 @@ in {
   };
 
   # See kernel versions at `linuxKernel.kernels`:
+  # linux stable: `linux`
   # - linux testing: `linuxKernel.kernels.linux_testing`
   # - zen kernel: `linuxKernel.kernels.linux_zen`
   # Package options:
   # - stable latest: `linuxPackages_latest`
   # - testing latest: `linuxPackages_testing`
   # - zen latest: `linuxPackages_zen`
-  boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.unstable.linuxPackages_zen;
 
   # Driver: RTW_8852be, only in-kernel from linux >= 6.3 onwards.
   # Out-of-tree driver from lwfinger's rtw89 on github. Check README for Lenovo

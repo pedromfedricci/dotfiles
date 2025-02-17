@@ -1,4 +1,4 @@
-theme = "nightfox"
+theme = "catppuccin_mocha"
 
 [editor]
 color-modes = true
@@ -16,7 +16,13 @@ render = true
 
 [editor.statusline]
 left = ["mode", "spinner", "file-name", "file-encoding"]
-right = ["version-control", "diagnostics", "selections", "position", "position-percentage"]
+right = [
+  "version-control",
+  "diagnostics",
+  "selections",
+  "position",
+  "position-percentage",
+]
 
 [editor.cursor-shape]
 insert = "bar"

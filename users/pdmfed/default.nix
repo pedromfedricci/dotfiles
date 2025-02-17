@@ -134,6 +134,7 @@ in {
     just
     libtree
     lldb
+    marksman
     mkcert
     mold-wrapped
     nasm
@@ -151,6 +152,7 @@ in {
 
     # TUI applications.
     podman-tui
+    television
     typioca
 
     # GUI applications.
@@ -161,8 +163,9 @@ in {
     stable.libreoffice
     stable.spotify
     stable.thunderbird
+    stable.zoom-us
     stable.zulip
-    inputs.zen-browser.packages.${pkgs.system}.twilight # beta twilight default
+    inputs.zen-browser.packages.${pkgs.system}.twilight-official # beta twilight, twilight-official, default
   ];
 
   programs = {

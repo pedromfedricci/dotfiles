@@ -1,0 +1,17 @@
+# Links:
+# https://github.com/catppuccin/helix
+# https://github.com/helix-editor/helix/blob/master/runtime/themes/catppuccin_mocha.toml
+# Struct members should be "text", not "blue", but there are no queries specific to them.
+# https://github.com/catppuccin/helix/issues/56
+
+inherits = "catppuccin_mocha"
+
+# SYNTAX HIGHLIGHTING OVERRIDES
+# These keys match tree-sitter scopes.
+
+"type.parameter" = "peach"       # original is "yellow", inherited from type
+"variable.other.member" = "text" # original is "blue"
+"namespace" = { fg = "text" }    # original fg = "yellow"
+# "operator" = "text"              # original "sky"
+# "special" = "peach"              # fuzzy highlight, original "blue"
+# "constructor" = "teal"           # original "sapphire"
