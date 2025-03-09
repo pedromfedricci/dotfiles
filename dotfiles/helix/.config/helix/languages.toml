@@ -15,7 +15,7 @@ formatter.command = "alejandra"
 
 [[language]]
 name = "python"
-language-servers = ["pyright", "ruff"]
+language-servers = ["pyright", "ruff"] # ruff, pylyzer, pyright
 auto-format = true
 
 [[language]]
@@ -35,6 +35,19 @@ fetchDeps = true
 suggestSpecs = true
 signatureAfterComplete = true
 
+[language-server.pylyzer]
+command = "pylyzer"
+args = ["--server"]
+
 [language-server.ruff]
 command = "ruff"
-args = ["server", "--preview"]
+args = ["server"]
+
+[language-server.tinymist]
+command = "tinymist"
+config = { exportPdf = "onSave", outputPath = "$root/target/$dir/$name" }
+
+# https://github.com/tekumara/typos-lsp/blob/main/docs/helix-config.md
+[language-server.typos]
+command = "typos-lsp"
+config.diagnosticSeverity = "Warning"

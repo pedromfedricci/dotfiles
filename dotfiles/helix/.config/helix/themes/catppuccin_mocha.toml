@@ -9,9 +9,11 @@ inherits = "catppuccin_mocha"
 # SYNTAX HIGHLIGHTING OVERRIDES
 # These keys match tree-sitter scopes.
 
-"type.parameter" = "peach"       # original is "yellow", inherited from type
-"variable.other.member" = "text" # original is "blue"
-"namespace" = { fg = "text" }    # original fg = "yellow"
-# "operator" = "text"              # original "sky"
-# "special" = "peach"              # fuzzy highlight, original "blue"
-# "constructor" = "teal"           # original "sapphire"
+"namespace" = { fg = "text", modifiers = ["italic"] } # original is "yellow"
+"type.parameter" = "peach"                            # original is "yellow", inherited from type
+"variable.other.member" = "text"                      # original is "blue"
+"operator" = "overlay2"                               # original "sky"
+"label" = "mauve"                                     # original "sapphire", used for lifetimes
+"constructor" = "teal"                                # original "sapphire"
+"special" = "blue"                                    # fuzzy highlight, derives, ?, original "blue"
+"function.macro" = "sapphire"                         # original "mauve"

@@ -25,6 +25,7 @@ in {
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     # ../../modules/nixos/fprintd-fpcmoh.nix
+    (modules + "/fonts")
     (modules + "/gnome")
     (modules + "/hosts")
     # (modules + "/hyprland")

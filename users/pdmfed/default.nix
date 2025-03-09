@@ -43,6 +43,7 @@ in {
     (modules + "/rust")
     (modules + "/starship")
     (modules + "/typst")
+    (modules + "/xdg-desktop-portal")
     (modules + "/yazi")
     (modules + "/zellij")
     (modules + "/zoxide")
@@ -144,10 +145,12 @@ in {
     stow
     tree
     trunk
+    typos-lsp
     wget
     woeusb
     wl-clipboard
     xorriso
+    zathura
     unstable.zizmor
 
     # TUI applications.
@@ -160,12 +163,14 @@ in {
     stable.element-desktop
     stable.gimp-with-plugins
     stable.gparted
+    stable.keepassxc
     stable.libreoffice
+    # stable.ungoogled-chromium
     stable.spotify
     stable.thunderbird
     stable.zoom-us
     stable.zulip
-    inputs.zen-browser.packages.${pkgs.system}.twilight-official # beta twilight, twilight-official, default
+    inputs.zen-browser.packages.${pkgs.system}.beta # beta twilight, twilight-official, default
   ];
 
   programs = {

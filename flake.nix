@@ -141,7 +141,7 @@
 
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      # url = "github:pedromfedricci/zen-browser-flake/patches";
+      # url = "git+file:///home/pdmfed/Projects/pedromfedricci/zen-browser-flake/?ref=patches";
     };
   };
 }

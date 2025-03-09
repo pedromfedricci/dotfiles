@@ -3,6 +3,7 @@
     black
     pipenv
     pipx
+    pylyzer
     pyright
     python313
     ruff
