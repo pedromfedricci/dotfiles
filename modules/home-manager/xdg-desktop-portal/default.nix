@@ -4,7 +4,7 @@
     pkgs.xdg-desktop-portal
     pkgs.xdg-desktop-portal-gtk # GTK
     # pkgs.xdg-desktop-portal-gnome # GNOME
-    pkgs.xdg-desktop-portal-kde # KDE
+    pkgs.kdePackages.xdg-desktop-portal-kde # KDE
     # pkgs.xdg-desktop-portal-lxqt # LXQt
     # pkgs.xdg-desktop-portal-pantheon # Pantheon (Elementary OS)
     pkgs.xdg-desktop-portal-wlr # wlroots

@@ -8,13 +8,13 @@
     corefonts
     # dina-font
     # emojione
-    fira-code-nerdfont
     fira-mono
     # font-awesome
     # ipafont
-    jetbrains-mono
+    # jetbrains-mono
     # kanji-stroke-order-font
     # liberation_ttf
+    nerd-font.fira-code
     # noto-fonts
     # noto-fonts-cjk-sans
     # noto-fonts-emoji

@@ -15,7 +15,8 @@ formatter.command = "alejandra"
 
 [[language]]
 name = "python"
-language-servers = ["pyright", "ruff"] # ruff, pylyzer, pyright
+# pyright, pylint, pylyzer, ruff.
+language-servers = ["pyright", "pylint", "ruff"]
 auto-format = true
 
 [[language]]
@@ -45,7 +46,10 @@ args = ["server"]
 
 [language-server.tinymist]
 command = "tinymist"
-config = { exportPdf = "onSave", outputPath = "$root/target/$dir/$name" }
+config.exportPdf = "onSave"
+config.outputPath = "$root/target/$dir/$name"
+# https://myriad-dreamin.github.io/tinymist/feature/preview.html#label-background-preview
+config.preview.background.enabled = true
 
 # https://github.com/tekumara/typos-lsp/blob/main/docs/helix-config.md
 [language-server.typos]

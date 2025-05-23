@@ -30,6 +30,7 @@ in {
     (modules + "/direnv")
     (modules + "/electron")
     (modules + "/fish")
+    (modules + "/fonts")
     (modules + "/fzf")
     (modules + "/git")
     (modules + "/go")
@@ -92,7 +93,7 @@ in {
     # overrides. You can do that directly here, just don't forget the
     # parentheses. Maybe you want to install Nerd Fonts with a limited number of
     # fonts?
-    (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
+    # (nerdfonts.override {fonts = ["FiraCode" "JetBrainsMono"];})
 
     # You can also create simple shell scripts directly inside your
     # configuration. For example, this adds a command 'my-hello' to your
@@ -119,9 +120,9 @@ in {
     cachix
     cloc
     cmake
+    commitlint
     curl
     devcontainer
-    distrobox
     dua
     entr
     envio
@@ -131,6 +132,7 @@ in {
     geteltorito
     glow
     gnumake
+    gnuplot
     hexyl
     just
     libtree
@@ -155,7 +157,6 @@ in {
 
     # TUI applications.
     podman-tui
-    television
     typioca
 
     # GUI applications.
@@ -164,10 +165,12 @@ in {
     stable.gimp-with-plugins
     stable.gparted
     stable.keepassxc
+    stable.inkscape
     stable.libreoffice
     # stable.ungoogled-chromium
     stable.spotify
     stable.thunderbird
+    stable.vlc
     stable.zoom-us
     stable.zulip
     inputs.zen-browser.packages.${pkgs.system}.beta # beta twilight, twilight-official, default
@@ -175,6 +178,7 @@ in {
 
   programs = {
     # Utilities.
+    distrobox.enable = true;
     fastfetch.enable = true;
     fd.enable = true;
     nh.enable = true;
@@ -182,11 +186,13 @@ in {
     git-cliff.enable = true;
     htop.enable = true;
     jq.enable = true;
+    podman.enable = false;
     ripgrep.enable = true;
 
     # TUI applications.
     lazygit.enable = true;
     nushell.enable = false;
+    television.enable = true;
 
     # GUI applications.
     firefox.enable = true;
@@ -196,7 +202,12 @@ in {
   };
 
   services = {
-    # glance.enable = true;
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-services.home-manager.autoExpire
+    home-manager.autoExpire = {
+      enable = true;
+      frequency = "weekly";
+    };
+    glance.enable = false;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

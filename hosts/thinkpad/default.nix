@@ -31,6 +31,7 @@ in {
     # (modules + "/hyprland")
     (modules + "/lanzaboote")
     (modules + "/nix")
+    (modules + "/steam")
     # (modules + "/rtw8852be")
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -160,7 +161,6 @@ in {
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

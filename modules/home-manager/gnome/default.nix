@@ -19,6 +19,10 @@
       {package = gnomeExtensions.dash-to-dock;}
       {package = gnomeExtensions.hibernate-status-button;}
       {package = gnomeExtensions.paperwm;}
+      # Links:
+      # https://gitlab.com/marcosdalvarez/thinkpad-battery-threshold-extension
+      # https://gitlab.com/marcosdalvarez/thinkpad-battery-threshold-extension/-/issues/27
+      {package = gnomeExtensions.thinkpad-battery-threshold;}
     ];
     theme = {
       name = "Flat-Remix-Dark";

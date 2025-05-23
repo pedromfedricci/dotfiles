@@ -86,9 +86,16 @@ keybinds {
     }
 }
 
-// Add plugins aliases for other configuration options refere to.
+// Plugin aliases - can be used to change the implementation of Zellij
+// changing these requires a restart to take effect
 plugins {
     zjstatus location="https://github.com/dj95/zjstatus/releases/latest/download/zjstatus.wasm"
+}
+
+// Plugins to load in the background when a new session starts
+load_plugins {
+  // "file:/path/to/my-plugin.wasm"
+  // "https://example.com/my-plugin.wasm"
 }
 
 // Choose what to do when zellij receives SIGTERM, SIGINT, SIGQUIT or SIGHUP
@@ -250,10 +257,12 @@ default_layout "zjstatus"
 // mirror_session true
 
 // The folder in which Zellij will look for layouts.
+// (Requires restart)
 //
 // layout_dir "/path/to/my/layout_dir"
 
 // The folder in which Zellij will look for themes.
+// (Requires restart)
 //
 // theme_dir "/path/to/my/theme_dir"
 
@@ -269,6 +278,28 @@ default_layout "zjstatus"
 //
 disable_session_metadata true
 
+// Enable or disable support for the enhanced Kitty Keyboard Protocol (the host terminal must also support it)
+// (Requires restart)
+// Default: true (if the host terminal supports it)
+//
+// support_kitty_keyboard_protocol false
+
+// Whether to stack panes when resizing beyond a certain size
+// Default: true
+//
+// stacked_resize false
+
+// Whether to show release notes on first version run
+// Default: true
+//
+// show_release_notes false
+
+// Whether to show startup tips on session start
+// Default: true
+//
+show_startup_tips false
+
+//
 // Set UI parameters
 //
 ui {
