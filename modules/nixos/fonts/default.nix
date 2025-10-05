@@ -8,13 +8,14 @@
     corefonts
     # dina-font
     # emojione
-    fira-mono
+    # fira-mono
     # font-awesome
     # ipafont
     # jetbrains-mono
     # kanji-stroke-order-font
     # liberation_ttf
-    nerd-font.fira-code
+    # nerd-fonts.fira-code
+    # nerd-fonts.fira-mono
     # noto-fonts
     # noto-fonts-cjk-sans
     # noto-fonts-emoji
@@ -31,25 +32,24 @@
     # useEmbeddedBitmaps = true;
     # antialias = true;
 
-    defaultFonts = {
-      monospace = [
-        "Fira Code"
-        "FiraCode Nerd Font"
-        "DejaVu Sans Mono"
-        "Noto Mono"
-      ];
-      sansSerif = [
-        "Fira Sans"
-        "Ubuntu"
-        "DejaVu Sans"
-        "Noto Sans"
-      ];
-      serif = [
-        "Roboto Slab"
-        "PT Serif"
-        "Liberation Serif"
-        "Noto Serif"
-      ];
-    };
+    # defaultFonts = {
+    #   monospace = [
+    #     "FiraCode Nerd Font"
+    #     "DejaVu Sans Mono"
+    #     "Noto Mono"
+    #   ];
+    #   sansSerif = [
+    #     "Fira Sans"
+    #     "Ubuntu"
+    #     "DejaVu Sans"
+    #     "Noto Sans"
+    #   ];
+    #   serif = [
+    #     "Roboto Slab"
+    #     "PT Serif"
+    #     "Liberation Serif"
+    #     "Noto Serif"
+    #   ];
+    # };
   };
 }

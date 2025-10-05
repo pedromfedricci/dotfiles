@@ -31,6 +31,12 @@ keybinds {
         unbind "Alt f"
         bind "Ctrl Alt f" { ToggleFloatingPanes; }
 
+        unbind "Alt p"
+        bind "Ctrl Alt i" { TogglePaneInGroup; }
+
+        unbind "Alt Shift p"
+        bind "Ctrl Alt o" { ToggleGroupMarking; }
+
         // unbind "Alt +"
         // unbind "Alt ="
         // bind "Ctrl Alt +" { Resize "Increase"; }

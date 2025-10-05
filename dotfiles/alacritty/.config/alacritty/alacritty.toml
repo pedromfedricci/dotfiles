@@ -13,7 +13,6 @@ TERM = "alacritty"
 size = 11.25
 
 [font.normal]
-# family = "JetBrainsMono Nerd Font" # recommended size: 13
 family = "FiraCode Nerd Font Mono"
 
 [mouse]
@@ -26,6 +25,7 @@ save_to_clipboard = true
 decorations = "None"
 # dynamic_padding = true
 dynamic_title = false
+# opacity = 0.5
 resize_increments = true
 startup_mode = "Maximized"
 title = ""

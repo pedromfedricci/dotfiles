@@ -130,9 +130,11 @@ in {
     ffmpegthumbnailer
     gdb
     geteltorito
+    gleam
     glow
     gnumake
     gnuplot
+    # graphviz
     hexyl
     just
     libtree
@@ -144,6 +146,7 @@ in {
     podman-compose
     poppler
     popsicle
+    rebar3
     stow
     tree
     trunk
@@ -152,8 +155,8 @@ in {
     woeusb
     wl-clipboard
     xorriso
-    zathura
-    unstable.zizmor
+    # zathura
+    zizmor
 
     # TUI applications.
     podman-tui
@@ -161,19 +164,18 @@ in {
 
     # GUI applications.
     stable.discord
-    stable.element-desktop
-    stable.gimp-with-plugins
+    # stable.element-desktop
+    # stable.gimp-with-plugins
     stable.gparted
     stable.keepassxc
-    stable.inkscape
+    # stable.inkscape
     stable.libreoffice
-    # stable.ungoogled-chromium
     stable.spotify
-    stable.thunderbird
+    # stable.thunderbird
     stable.vlc
     stable.zoom-us
-    stable.zulip
-    inputs.zen-browser.packages.${pkgs.system}.beta # beta twilight, twilight-official, default
+    # stable.zulip
+    inputs.zen-browser.packages.${pkgs.system}.beta # beta, twilight, twilight-official, default
   ];
 
   programs = {
@@ -186,7 +188,6 @@ in {
     git-cliff.enable = true;
     htop.enable = true;
     jq.enable = true;
-    podman.enable = false;
     ripgrep.enable = true;
 
     # TUI applications.
@@ -208,6 +209,7 @@ in {
       frequency = "weekly";
     };
     glance.enable = false;
+    podman.enable = false;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

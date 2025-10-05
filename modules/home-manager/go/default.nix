@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs.unstable; [
     delve
+    golangci-lint
     golangci-lint-langserver
     gopls
     gotools

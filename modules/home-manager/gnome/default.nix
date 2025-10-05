@@ -22,7 +22,7 @@
       # Links:
       # https://gitlab.com/marcosdalvarez/thinkpad-battery-threshold-extension
       # https://gitlab.com/marcosdalvarez/thinkpad-battery-threshold-extension/-/issues/27
-      {package = gnomeExtensions.thinkpad-battery-threshold;}
+      # {package = gnomeExtensions.thinkpad-battery-threshold;}
     ];
     theme = {
       name = "Flat-Remix-Dark";
