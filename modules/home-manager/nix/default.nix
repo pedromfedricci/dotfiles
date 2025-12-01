@@ -6,6 +6,7 @@
       frequency = "weekly";
       options = "--delete-older-than 14d";
     };
+    extraOptions = "!include access-tokens.conf";
     settings = {
       substituters = [
         # NOTE: NixOS's cache url MUST BE added with home-manager's `nix.settings`,

@@ -17,7 +17,7 @@ in {
     package = pkgs.unstable.bat;
     extraPackages = with pkgs.unstable.bat-extras; [
       # batdiff
-      batgrep
+      # batgrep
       batman
       # batpipe
       batwatch
