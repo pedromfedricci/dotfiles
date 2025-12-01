@@ -3,7 +3,7 @@
     package = pkgs.nix;
     gc = {
       automatic = true;
-      frequency = "weekly";
+      # dates = "weekly"; # default: weekly
       options = "--delete-older-than 14d";
     };
     extraOptions = "!include access-tokens.conf";

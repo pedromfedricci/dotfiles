@@ -7,8 +7,9 @@
 }: let
   terminal = "alacritty";
   fileManager = "nautilus";
-  hyprland = inputs.hyprland.packages.${pkgs.system};
-  hyprland-plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+  system = pkgs.stdenv.hostPlatform.system;
+  hyprland = inputs.hyprland.packages.${system};
+  hyprland-plugins = inputs.hyprland-plugins.packages.${system};
 in {
   # Optional, hint electron apps to use wayland:
   home.sessionVariables.NIXOS_OZONE_WL = "1";

@@ -9,6 +9,7 @@
   ...
 }: let
   modules = ../../modules/home-manager;
+  system = pkgs.stdenv.hostPlatform.system;
 in {
   # You can import other home-manager modules here
   imports = [
@@ -175,7 +176,8 @@ in {
     stable.vlc
     stable.zoom-us
     # stable.zulip
-    inputs.zen-browser.packages.${pkgs.system}.beta # beta, twilight, twilight-official, default
+    # zen: beta, twilight, twilight-official, default
+    inputs.zen-browser.packages.${system}.beta
   ];
 
   programs = {

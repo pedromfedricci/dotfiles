@@ -8,8 +8,9 @@ in {
 
   home.sessionVariables.DELTA_PAGER = "less --mouse";
 
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
+    enableGitIntegration = true;
     package = pkgs.unstable.delta;
     options = {
       features = "catppuccin-mocha";

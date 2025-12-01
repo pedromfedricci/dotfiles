@@ -1,10 +1,10 @@
 {
   pkgs,
-  inputs,
+  # inputs,
   ...
 }: {
   home.packages = with pkgs; [
-    # inputs.devenv.packages.${pkgs.system}.devenv
+    # inputs.devenv.packages.${pkgs.stdenv.hostPlatform.system}.devenv
     unstable.devenv
   ];
 }

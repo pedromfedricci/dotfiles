@@ -6,13 +6,13 @@
   programs.git = {
     enable = true;
     package = pkgs.git;
-    userName = user.userName;
-    userEmail = user.userEmail;
     signing = {
       key = null;
       signByDefault = true;
     };
-    extraConfig = {
+    settings = {
+      user.name = user.userName;
+      user.email = user.userEmail;
       merge = {
         conflictstyle = "zdiff3";
       };
