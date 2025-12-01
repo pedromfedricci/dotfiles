@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  hyprland = inputs.hyprland.packages.${pkgs.system};
+  hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   programs.hyprland = {
     enable = true;

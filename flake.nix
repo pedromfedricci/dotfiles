@@ -77,7 +77,7 @@
 
   inputs = {
     # Nixpkgs.
-    stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    stable.url = "github:nixos/nixpkgs/nixos-25.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # Home-manager.

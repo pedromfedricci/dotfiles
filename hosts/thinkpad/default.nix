@@ -122,12 +122,15 @@ in {
   # Hintstyles: "slight" (default), "medium", "full".
   # fonts.fontconfig.hinting.style = "full";
 
+  # Enable nixos-init, a bashless initialization system for systemd initrd.
+  # system.nixos-init.enable = false;
+
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11.
   services.xserver = {
@@ -191,18 +194,9 @@ in {
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
-      # NOTE: Set to false since it builds every switch, taking a lot of time.
-      # Switch back to true when running virtualized OSes that require it.
-      ovmf.enable = false;
-      ovmf.packages = [
-        (pkgs.OVMF.override {
-          # secureBoot = true; # Not sure about this one.
-          tpmSupport = true;
-        })
-        .fd
-      ];
     };
   };
+
   # Already set on hardware-configuration.nix.
   # boot.kernelModules = ["kvm-amd"];
 
