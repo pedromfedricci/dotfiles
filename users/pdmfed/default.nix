@@ -195,7 +195,7 @@ in {
     # TUI applications.
     lazygit.enable = true;
     nushell.enable = false;
-    television.enable = true;
+    television.enable = false;
 
     # GUI applications.
     firefox.enable = true;
