@@ -5,7 +5,7 @@
 }: let
   dotfiles = import ../../../dotfiles.nix;
   module = "bat";
-  files = ["config" "themes/Catppuccin Mocha.tmTheme"];
+  files = ["config"];
   use_source = true;
 in {
   home = lib.mkIf use_source {
