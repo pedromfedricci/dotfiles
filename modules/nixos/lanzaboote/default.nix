@@ -24,5 +24,13 @@
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/var/lib/sbctl";
+
+    # TODO: To automatically and fully provision a system, set all to `true`.
+    autoGenerateKeys.enable = false;
+    autoEnrollKeys = {
+      enable = false;
+      # Automatically reboot to enroll the keys in the firmware.
+      autoReboot = false;
+    };
   };
 }
