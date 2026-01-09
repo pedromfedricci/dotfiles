@@ -128,10 +128,6 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = false;
 
-  # Enable the GNOME Desktop Environment.
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-
   # Configure keymap in X11.
   services.xserver = {
     xkb.layout = "us,pt";
@@ -196,6 +192,20 @@ in {
       package = pkgs.qemu_kvm;
     };
   };
+
+  # Enable docker virtualization.
+  virtualisation.docker = {
+    # System wide docker daemon.
+    enable = false;
+    # Rootless docker
+    # Ref: https://docs.docker.com/engine/security/rootless/
+    # Ref: https://wiki.nixos.org/wiki/Docker#Rootless_Docker
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+  # users.users.${user.username}.extraGroups = ["docker"];
 
   # Already set on hardware-configuration.nix.
   # boot.kernelModules = ["kvm-amd"];
@@ -322,7 +332,18 @@ in {
 
   # List of pograms to enable in system profile.
   programs = {
-    nix-ld.enable = true;
+  };
+
+  # Run unpatched dynamic binaries on NixOS.
+  # Ref: https://github.com/nix-community/nix-ld
+  # Ref: https://discourse.nixos.org/t/sqlalchemy-python-fails-to-find-libstdc-so-6-in-virtualenv/38153/2
+  programs.nix-ld = {
+    enable = true;
+    # libraries = with pkgs; [
+    # zlib # numpy
+    # libgcc # sqlalchemy
+    # stdenv.cc.cc.lib
+    # ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

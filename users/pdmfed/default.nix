@@ -45,7 +45,7 @@ in {
     (modules + "/rust")
     (modules + "/starship")
     (modules + "/typst")
-    (modules + "/xdg-desktop-portal")
+    # (modules + "/xdg-desktop-portal")
     (modules + "/yazi")
     (modules + "/zellij")
     (modules + "/zoxide")
@@ -54,6 +54,9 @@ in {
 
   # Configuration of the Nix Package collection.
   nixpkgs = {
+    # Allow unfree software.
+    config.allowUnfree = true;
+
     # You can add overlays here.
     overlays = [
       # You can also add overlays exported from other flakes:
@@ -123,7 +126,7 @@ in {
     cmake
     commitlint
     curl
-    devcontainer
+    # devcontainer
     dua
     entr
     envio
@@ -137,6 +140,7 @@ in {
     gnuplot
     # graphviz
     hexyl
+    hurl
     just
     libtree
     lldb
@@ -171,6 +175,7 @@ in {
     stable.keepassxc
     # stable.inkscape
     stable.libreoffice
+    stable.postman
     stable.spotify
     # stable.thunderbird
     stable.vlc

@@ -1,12 +1,13 @@
 {pkgs, ...}: {
   home.packages = with pkgs.unstable; [
     black
-    pipenv
+    # pipenv
+    poetry
     pipx
     pylint
     pylyzer
     pyright
-    python313
+    python314
     ruff
     uv
   ];

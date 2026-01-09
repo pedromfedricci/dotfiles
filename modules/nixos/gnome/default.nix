@@ -1,4 +1,8 @@
 {lib, ...}: {
+  # Enable the GNOME Desktop Environment.
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
   # Power settings for laptop.
   # Links:
   # https://wiki.archlinux.org/title/GNOME#Power
