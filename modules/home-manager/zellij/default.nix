@@ -9,4 +9,8 @@ in {
     enable = true;
     package = pkgs.unstable.zellij;
   };
+
+  home.shellAliases = {
+    z = "zellij";
+  };
 }

@@ -4,11 +4,11 @@
 {
   pkgs,
   inputs,
-  outputs,
   user,
   ...
 }: let
   modules = ../../modules/home-manager;
+  overlays = ../../modules/overlays;
   system = pkgs.stdenv.hostPlatform.system;
 in {
   # You can import other home-manager modules here
@@ -35,47 +35,22 @@ in {
     (modules + "/fzf")
     (modules + "/git")
     (modules + "/go")
-    (modules + "/gnome")
     (modules + "/gtk")
     (modules + "/helix")
-    # (modules + "/hyprland")
     (modules + "/lsd")
     (modules + "/nix")
+    (modules + "/noctalia")
     (modules + "/python")
     (modules + "/rust")
     (modules + "/starship")
     (modules + "/typst")
-    # (modules + "/xdg-desktop-portal")
     (modules + "/yazi")
     (modules + "/zellij")
     (modules + "/zoxide")
-    # (modules + "/zsh")
+
+    # Set overlays: nixpkgs.overlays = [outputs.overlays]
+    overlays
   ];
-
-  # Configuration of the Nix Package collection.
-  nixpkgs = {
-    # Allow unfree software.
-    config.allowUnfree = true;
-
-    # You can add overlays here.
-    overlays = [
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-      outputs.overlays.stable-packages
-    ];
-  };
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -84,11 +59,6 @@ in {
 
   # Prefer to make programs use XDG directories (default false).
   home.preferXdgDirectories = true;
-
-  # Enable XDG desktop integration (default false).
-  # Link: https://github.com/flatpak/xdg-desktop-portal.
-  xdg.portal.enable = true;
-  xdg.portal.config.common.default = "*";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -110,15 +80,23 @@ in {
     # Hardware utilities.
     acpi
     dmidecode
+    # geteltorito
+    # hddtemp
     hwinfo
     hw-probe
     inxi
+    lm_sensors
     lshw
     mtools
+    nvme-cli
     pciutils
+    # popsicle
     powertop
     usbutils
+    # ventoy
     wirelesstools
+    # woeusb-ng
+    xorriso
 
     # System utilities.
     cachix
@@ -133,7 +111,6 @@ in {
     erlang
     ffmpegthumbnailer
     gdb
-    geteltorito
     gleam
     glow
     gnumake
@@ -141,6 +118,7 @@ in {
     # graphviz
     hexyl
     hurl
+    inetutils
     just
     libtree
     lldb
@@ -150,36 +128,33 @@ in {
     nasm
     podman-compose
     poppler
-    popsicle
+    pre-commit
     rebar3
     stow
     tree
     trunk
     typos-lsp
     wget
-    woeusb
-    wl-clipboard
-    xorriso
-    # zathura
+    # unstable.weathr
     zizmor
 
     # TUI applications.
     podman-tui
-    typioca
 
     # GUI applications.
     stable.discord
     # stable.element-desktop
     # stable.gimp-with-plugins
-    stable.gparted
+    # stable.gparted
     stable.keepassxc
     # stable.inkscape
-    stable.libreoffice
-    stable.postman
+    # stable.libreoffice
+    # stable.obs-studio
+    # stable.postman
     stable.spotify
     # stable.thunderbird
-    stable.vlc
-    stable.zoom-us
+    # stable.vlc
+    # stable.zoom-us
     # stable.zulip
     # zen: beta, twilight, twilight-official, default
     inputs.zen-browser.packages.${system}.beta
@@ -187,7 +162,7 @@ in {
 
   programs = {
     # Utilities.
-    distrobox.enable = true;
+    distrobox.enable = false;
     fastfetch.enable = true;
     fd.enable = true;
     nh.enable = true;
@@ -203,20 +178,25 @@ in {
     television.enable = false;
 
     # GUI applications.
-    firefox.enable = true;
+    firefox.enable = false;
     ghostty.enable = false;
     wezterm.enable = false;
     zed-editor.enable = true;
   };
 
-  services = {
-    # https://nix-community.github.io/home-manager/options.xhtml#opt-services.home-manager.autoExpire
-    home-manager.autoExpire = {
+  # Configure home-manager service itself.
+  # https://nix-community.github.io/home-manager/options.xhtml#opt-services.home-manager.autoExpire
+  services.home-manager = {
+    autoExpire = {
       enable = true;
       frequency = "weekly";
+      store.cleanup = true;
     };
+  };
+
+  # Enable and configure home-manager services.
+  services = {
     glance.enable = false;
-    podman.enable = false;
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -247,7 +227,6 @@ in {
   #
   #  /etc/profiles/per-user/pdmfed/etc/profile.d/hm-session-vars.sh
   home.sessionVariables = {
-    # EDITOR = "vim";
   };
 
   # Extra directories to add to PATH.

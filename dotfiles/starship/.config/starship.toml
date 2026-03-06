@@ -1,5 +1,8 @@
 # Timeout for commands executed by starship (in milliseconds).
-command_timeout = 5000
+command_timeout = 1000 # default: 500
+
+# Timeout for starship to scan files (in milliseconds).
+scan_timeout = 100 # default: 30
 
 # Set to false to disable the blank line at the start of the prompt.
 add_newline = true
@@ -26,8 +29,7 @@ symbol = " "
 read_only = " 󰌾"
 
 [direnv]
-# Disabled by default.
-disabled = false 
+disabled = false                                  # disabled by default
 style = "bold blue"
 format = '$symbol[\($loaded/$allowed\)]($style) '
 loaded_msg = "l"

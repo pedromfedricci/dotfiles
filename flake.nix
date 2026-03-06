@@ -76,73 +76,101 @@
   };
 
   inputs = {
-    # Nixpkgs.
+    # Link: https://github.com/NixOS/nixpkgs
     stable.url = "github:nixos/nixpkgs/nixos-25.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home-manager.
+    # Link: https://github.com/nix-community/home-manager
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "unstable";
     };
 
+    # Link: https://github.com/kamadorueda/alejandra
     # alejandra = {
     #   url = "github:kamadorueda/alejandra";
     # };
 
+    # Link: https://github.com/cachix/devenv
     # devenv = {
     #   url = "github:cachix/devenv";
     # };
 
+    # Link: https://github.com/ghostty-org/ghostty
     # ghostty = {
     #   url = "github:ghostty-org/ghostty";
     # };
 
+    # Link: https://github.com/helix-editor/helix
     helix = {
       url = "github:helix-editor/helix";
     };
 
+    # Link: https://github.com/hyprwm/Hyprland
     # hyprland = {
     #   url = "github:hyprwm/Hyprland";
     # };
 
+    # Link: https://github.com/hyprwm/hyprland-plugins
     # hyprland-plugins = {
     #   url = "github:hyprwm/hyprland-plugins";
     #   inputs.hyprland.follows = "hyprland";
     # };
 
+    # Link: https://github.com/StevenBlack/hosts
     hosts = {
       url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "unstable";
     };
 
+    # Link: https://github.com/nix-community/lanzaboote
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "unstable";
     };
 
-    # lix = {
-    #   url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+    # # Link: https://github.com/sodiboo/niri-flake
+    # niri = {
+    #   url = "github:sodiboo/niri-flake";
     # };
 
+    # Link: https://github.com/NixOS/nix
     # nix = {
     #   url = "github:NixOS/nix/2.23.0";
     # };
 
+    # Link: https://github.com/Mic92/nix-ld
     # nix-ld = {
     #   url = "github:Mic92/nix-ld";
     # };
 
+    # Link: https://github.com/NixOS/nixos-hardware
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
     };
 
+    # Link: https://docs.noctalia.dev/getting-started/nixos/
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell/v4.6.4";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+
+    # Link: https://docs.noctalia.dev/getting-started/nixos/#add-flake-input
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "unstable";
+    };
+
+    # Link: https://github.com/sxyazi/yazi
     # yazi = {
     #   url = "github:sxyazi/yazi";
     # };
 
+    # Link: https://github.com/0xc000022070/zen-brozen-browser-flake
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
-      # url = "git+file:///home/pdmfed/Projects/pedromfedricci/zen-browser-flake/?ref=patches";
+      inputs.nixpkgs.follows = "unstable";
     };
   };
 }

@@ -1,0 +1,131 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+// NOTE: Since installed via nix flake, command is noctalia-shell.
+// Otherwise, should be started as: qs -c noctalia-shell.
+// Links:
+// https://docs.noctalia.dev/getting-started/running-the-shell/
+// https://docs.noctalia.dev/getting-started/keybinds/
+spawn-at-startup "noctalia-shell"
+
+// Switch event bindings.
+// Find more information on the wiki:
+// https://niri-wm.github.io/niri/Configuration%3A-Switch-Events.html
+switch-events {
+    lid-close { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lockAndSuspend"; }
+}
+
+// Settings that influence how windows are positioned and sized.
+// Find more information on the wiki:
+// https://yalter.github.io/niri/Configuration:-Layout
+layout {
+    focus-ring {
+        active-color   "#cba6f7"
+        inactive-color "#1e1e2e"
+        urgent-color   "#f38ba8"
+    }
+
+    border {
+        active-color   "#cba6f7"
+        inactive-color "#1e1e2e"
+        urgent-color   "#f38ba8"
+    }
+
+    shadow {
+        color "#11111b70"
+    }
+
+    tab-indicator {
+        active-color   "#cba6f7"
+        inactive-color "#6b02e9"
+        urgent-color   "#f38ba8"
+    }
+
+    insert-hint {
+        color "#cba6f780"
+    }
+}
+
+// In this section you can configure the recent windows switcher (Alt-Tab).
+// Find more information on the wiki:
+// https://niri-wm.github.io/niri/Configuration%3A-Recent-Windows.html
+recent-windows {
+    open-delay-ms 150 // Default: 150
+
+    highlight {
+        active-color "#cba6f7"
+        urgent-color "#f38ba8"
+    }
+}
+
+// Set the overview wallpaper on the backdrop.
+layer-rule {
+    match namespace="^noctalia-overview*"
+    place-within-backdrop true
+}
+
+// Debug options.
+// These options are not covered by the config breaking change policy.
+// Find more information on the wiki:
+// https://niri-wm.github.io/niri/Configuration%3A-Debug-Options.html
+debug {
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Configure binds that open and navigate the recent windows switcher.
+// Find more information on the wiki:
+// https://niri-wm.github.io/niri/Configuration%3A-Recent-Windows.html#binds
+binds {
+    // Core Noctalia binds.
+    // https://docs.noctalia.dev/getting-started/keybinds/core-and-navigation/#core-functions
+    Mod+Alt+Slash hotkey-overlay-title="Open App Launcher (Noctalia)" {
+        spawn "noctalia-shell" "ipc" "call" "launcher" "toggle";
+    }
+    Mod+Alt+C  hotkey-overlay-title="Toggle Control Center (Noctalia)" {
+        spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle";
+    }
+    Mod+Alt+S hotkey-overlay-title="Toggle Settings (Noctalia)" {
+        spawn "noctalia-shell" "ipc" "call" "settings" "toggle";
+    }    
+
+    // Shows a list of important hotkeys (Override).
+    // https://noctalia.dev/plugins/keybind-cheatsheet/
+    Mod+Alt+O hotkey-overlay-title="Show Hotkey Overlay (Noctalia)" {
+        spawn "noctalia-shell" "ipc" "call" "plugin:keybind-cheatsheet" "toggle";
+    }
+
+    // Security & Privacy.
+    // https://docs.noctalia.dev/getting-started/keybinds/interface-and-plugins/#security--privacy
+    Super+Alt+L hotkey-overlay-title="Lock The Screen (Noctalia)" {
+        spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
+    }
+    
+    // Audio management.
+    // Link: https://docs.noctalia.dev/getting-started/keybinds/system-controls/#audio-management
+    XF86AudioMute        allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86AudioLowerVolume allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioRaiseVolume allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioMicMute     allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+    // Attach to function keys as well, with a leading key.
+    Mod+F1 allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    Mod+F2 allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    Mod+F3 allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    Mod+F4 allow-when-locked=true  { spawn "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+
+    // Brightness intensity.
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86MonBrightnessUp   allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    // Attach to function keys as well, with a leading key.
+    Mod+F5 allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    Mod+F6 allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+
+    // Player control.
+    // Link: https://docs.noctalia.dev/getting-started/keybinds/system-controls/#media-controls
+    XF86AudioPlay allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "play"; }
+    XF86AudioStop allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "pause"; }
+    XF86AudioNext allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "previous"; }
+}

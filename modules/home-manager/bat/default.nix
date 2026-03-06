@@ -24,10 +24,4 @@ in {
       # prettybat
     ];
   };
-
-  programs.zsh = {
-    shellAliases = {
-      cat = "bat";
-    };
-  };
 }

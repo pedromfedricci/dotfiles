@@ -17,10 +17,6 @@
     gtk-enable-input-feedback-sounds = 0;
   };
 in {
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-  ];
-
   gtk = {
     enable = true;
     font = {

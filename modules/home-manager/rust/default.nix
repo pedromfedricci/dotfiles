@@ -1,7 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs.unstable; [
+    bpf-linker
+    # cargo-dylint
     cargo-expand
     cargo-flamegraph
+    cargo-generate
     cargo-hack
     cargo-make
     cargo-msrv

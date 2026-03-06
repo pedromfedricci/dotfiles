@@ -4,6 +4,7 @@
 # https://www.reddit.com/r/NixOS/comments/15wvv2y/microsoft_fonts/
 {pkgs, ...}: {
   fonts.enableDefaultPackages = true;
+
   fonts.packages = with pkgs; [
     corefonts
     # dina-font
@@ -52,4 +53,8 @@
     #   ];
     # };
   };
+
+  # Hintstyles: "slight" (default), "medium", "full".
+  #
+  # fonts.fontconfig.hinting.style = "full";
 }
