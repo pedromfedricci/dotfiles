@@ -1,3 +1,6 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Timeout for commands executed by starship (in milliseconds).
 command_timeout = 1000 # default: 500
 
@@ -16,6 +19,12 @@ symbol = " "
 [c]
 symbol = " "
 
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
 [conda]
 symbol = " "
 
@@ -29,14 +38,14 @@ symbol = " "
 read_only = " 󰌾"
 
 [direnv]
-disabled = false                                  # disabled by default
-style = "bold blue"
-format = '$symbol[\($loaded/$allowed\)]($style) '
-loaded_msg = "l"
-unloaded_msg = "u"
-allowed_msg = "a"
-not_allowed_msg = "b"
-denied_msg = "d"
+disabled = false                   # disabled by default
+style = "bold purple"
+format = "env [$allowed]($style) "
+loaded_msg = "loaded"              # "▴"
+unloaded_msg = "unloaded"          # "▿"
+allowed_msg = "✔ allowed"          # "☑" "✓" "✔"
+denied_msg = "⊘ denied"            # "☒" "⊘"
+not_allowed_msg = "⊘ not allowed"
 
 [docker_context]
 symbol = " "
@@ -50,14 +59,23 @@ symbol = " "
 [fennel]
 symbol = " "
 
+[fortran]
+symbol = " "
+
 [fossil_branch]
 symbol = " "
 
 [git_branch]
 symbol = " "
 
+[git_commit]
+tag_symbol = '  '
+
 [golang]
 symbol = " "
+
+[gradle]
+symbol = " "
 
 [guix_shell]
 symbol = " "
@@ -158,6 +176,9 @@ symbol = " "
 [pijul_channel]
 symbol = " "
 
+[pixi]
+symbol = "󰏗 "
+
 [python]
 symbol = " "
 
@@ -173,11 +194,14 @@ symbol = " "
 [scala]
 symbol = " "
 
-[shell]
+# [shell]
 # disabled = false # disabled by default
 
 [swift]
 symbol = " "
+
+[xmake]
+symbol = " "
 
 [zig]
 symbol = " "

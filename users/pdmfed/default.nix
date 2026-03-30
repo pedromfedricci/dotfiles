@@ -37,6 +37,7 @@ in {
     (modules + "/go")
     (modules + "/gtk")
     (modules + "/helix")
+    (modules + "/kanshi")
     (modules + "/lsd")
     (modules + "/nix")
     (modules + "/noctalia")
@@ -100,6 +101,8 @@ in {
 
     # System utilities.
     cachix
+    clang
+    clang-tools
     cloc
     cmake
     commitlint
@@ -110,6 +113,7 @@ in {
     envio
     erlang
     ffmpegthumbnailer
+    # gcc
     gdb
     gleam
     glow
@@ -120,6 +124,7 @@ in {
     hurl
     inetutils
     just
+    kdlfmt
     libtree
     lldb
     marksman
@@ -131,9 +136,11 @@ in {
     pre-commit
     rebar3
     stow
+    taplo
     tree
     trunk
     typos-lsp
+    vagrant
     wget
     # unstable.weathr
     zizmor
@@ -154,7 +161,7 @@ in {
     stable.spotify
     # stable.thunderbird
     # stable.vlc
-    # stable.zoom-us
+    stable.zoom-us
     # stable.zulip
     # zen: beta, twilight, twilight-official, default
     inputs.zen-browser.packages.${system}.beta
@@ -181,7 +188,7 @@ in {
     firefox.enable = false;
     ghostty.enable = false;
     wezterm.enable = false;
-    zed-editor.enable = true;
+    zed-editor.enable = false;
   };
 
   # Configure home-manager service itself.

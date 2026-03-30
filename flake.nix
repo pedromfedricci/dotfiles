@@ -151,15 +151,8 @@
 
     # Link: https://docs.noctalia.dev/getting-started/nixos/
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell/v4.6.4";
-      inputs.nixpkgs.follows = "unstable";
-      inputs.noctalia-qs.follows = "noctalia-qs";
-    };
-
-    # Link: https://docs.noctalia.dev/getting-started/nixos/#add-flake-input
-    noctalia-qs = {
-      url = "github:noctalia-dev/noctalia-qs";
-      inputs.nixpkgs.follows = "unstable";
+      url = "github:noctalia-dev/noctalia-shell/v4.7.1";
+      # inputs.nixpkgs.follows = "unstable";
     };
 
     # Link: https://github.com/sxyazi/yazi

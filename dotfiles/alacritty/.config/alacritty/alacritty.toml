@@ -23,6 +23,6 @@ save_to_clipboard = true
 [window]
 decorations = "None"
 dynamic_padding = false
-dynamic_title = true      # Default: true
-resize_increments = true  # Works on macOS/X11
+dynamic_title = true
+resize_increments = true
 startup_mode = "Windowed"

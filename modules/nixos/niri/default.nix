@@ -12,17 +12,25 @@
     terminal = "alacritty";
   };
 
-  programs.evince = {
-    enable = true;
-  };
+  # Some document viewer, Evince from GNOME.
+  # Link: https://mynixos.com/nixpkgs/options/programs.evince
+  programs.evince.enable = true;
 
   # Set some display manager.
   services.displayManager.gdm.enable = true;
+
+  # Enable GVfs service, userspace virtual filesystem.
+  # Link: https://mynixos.com/nixpkgs/options/services.gvfs
+  services.gvfs.enable = true;
+  # Enable udisk2 service, storage manipulation DBus service.
+  # Link: https://mynixos.com/nixpkgs/option/services.udisks2
+  services.udisks2.enable = true;
 
   environment.systemPackages = with pkgs; [
     celluloid
     gedit
     gnome-system-monitor
+    libnotify
     nautilus
     wev
     xwayland-satellite

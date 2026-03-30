@@ -34,18 +34,18 @@
   # https://www.freedesktop.org/software/systemd/man/latest/systemd-suspend-then-hibernate.service.html
   # https://docs.kernel.org/admin-guide/pm/sleep-states.html#basic-sysfs-interfaces-for-system-suspend-and-hibernation
   # https://discourse.nixos.org/t/suspend-then-hibernate/31953
-  systemd.sleep.extraConfig = ''
-    #AllowSuspend=no
-    #AllowHibernation=no
-    #AllowSuspendThenHibernate=no
-    #AllowHybridSleep=no
-    MemorySleepMode=s2idle
-    SuspendState=mem freeze disk
-    SuspendEstimationSec=
-    HibernateMode=platform suspend shutdown
-    HibernateOnACPower=yes
-    HibernateDelaySec=3h
-  '';
+  # systemd.sleep.extraConfig = ''
+  # AllowSuspend=yes
+  # AllowHibernation=yes
+  # AllowSuspendThenHibernate=yes
+  # AllowHybridSleep=yes
+  # MemorySleepMode=s2idle
+  # SuspendState=mem freeze
+  # HibernateMode=platform shutdown
+  # HibernateOnACPower=no
+  # HibernateMode=
+  # HibernateDelaySec=
+  # '';
 
   # Enable systemd to dinamically determine hibernation details.
   # https://discourse.nixos.org/t/is-it-possible-to-hibernate-with-swap-file/2852/5

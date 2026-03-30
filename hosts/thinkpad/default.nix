@@ -53,7 +53,7 @@ in {
   # - stable latest: `linuxPackages_latest`
   # - testing latest: `linuxPackages_testing`
   # - zen latest: `linuxPackages_zen`
-  boot.kernelPackages = pkgs.unstable.linuxPackages_lqx;
+  boot.kernelPackages = pkgs.stable.linuxPackages_zen;
 
   # Add thinkpad acpi to kernel modules.
   boot.kernelModules = ["thinkpad_acpi"];
@@ -207,13 +207,9 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    clang
-    gcc
     grub2
-    helix
     openssl
     pkg-config
-    # vagrant
   ];
 
   # List of pograms to enable in system profile.

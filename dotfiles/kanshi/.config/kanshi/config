@@ -1,0 +1,38 @@
+output "Lenovo Group Limited 0x403D Unknown" {
+	enable
+	position 0,0
+	transform normal
+	mode 1920x1200@60
+	scale 1
+	adaptive_sync on
+	alias $thinkpadE14
+}
+
+output "Acer Technologies KG241Q P 0x9480EBC7" {
+	enable
+	position 0,0
+	transform normal
+	mode 1920x1080@120
+	scale 1
+	adaptive_sync on
+	alias $acerKG241Q
+}
+
+profile any-on-eDP1-off {
+	output * enable
+	output eDP-1 disable
+}
+
+profile any-on-eDP1-on {
+	output * enable
+	output eDP-1 enable
+}
+
+profile any-off-eDP1-on {
+	output * disable
+	output eDP-1 enable
+}
+
+profile any-on {
+    output * enable
+}

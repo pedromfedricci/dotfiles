@@ -79,6 +79,12 @@ debug {
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration%3A-Recent-Windows.html#binds
 binds {
+    // Restart Noctalia, useful when home-manager updates its version but
+    // previous version is still running.
+    Mod+Alt+R {
+      spawn "sh" "-c" "pkill -f noctalia-shell; noctalia-shell &>/dev/null &disown";
+    }
+
     // Core Noctalia binds.
     // https://docs.noctalia.dev/getting-started/keybinds/core-and-navigation/#core-functions
     Mod+Alt+Slash hotkey-overlay-title="Open App Launcher (Noctalia)" {
@@ -99,7 +105,7 @@ binds {
 
     // Security & Privacy.
     // https://docs.noctalia.dev/getting-started/keybinds/interface-and-plugins/#security--privacy
-    Super+Alt+L hotkey-overlay-title="Lock The Screen (Noctalia)" {
+    Mod+Alt+L hotkey-overlay-title="Lock The Screen (Noctalia)" {
         spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock";
     }
     
