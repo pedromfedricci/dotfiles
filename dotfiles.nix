@@ -58,6 +58,22 @@ let
 
   insertManyHomeConfigWithDir = module: paths:
     appendManyHomeConfigWithDir {} module paths;
+
+  appendHomeLocalBin = homeFile: module: path: let
+    source = module: path: "${dotfiles}/${module}/.local/bin/${path}";
+    target = path: ".local/bin/${path}";
+    config = {${target path}.source = source module path;};
+  in
+    homeFile // config;
+
+  appendManyHomeLocalBin = homeFile: module: paths:
+    forEach homeFile module paths appendHomeLocalBin;
+
+  insertHomeLocalBin = module: path:
+    appendHomeLocalBin {} module path;
+
+  insertManyHomeLocalBin = module: path:
+    appendManyHomeLocalBin {} module path;
 in {
   appendHomeRoot = appendHomeRoot;
   appendManyHomeRoot = appendManyHomeRoot;
@@ -73,4 +89,9 @@ in {
   apapendManyHomeConfigWithDir = appendManyHomeConfigWithDir;
   insertHomeConfigWithDir = insertHomeConfigWithDir;
   insertManyHomeConfigWithDir = insertManyHomeConfigWithDir;
+
+  appendHomeLocalBin = appendHomeLocalBin;
+  appendManyHomeLocalBin = appendManyHomeLocalBin;
+  insertHomeLocalBin = insertHomeLocalBin;
+  insertManyHomeLocalBin = insertManyHomeLocalBin;
 }
