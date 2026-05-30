@@ -9,15 +9,15 @@
   inputs = {
     nixpkgs.follows = "stable";
 
-    # https://github.com/NixOS/nixpkgs/tree/nixos-25.11
-    stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    # https://github.com/NixOS/nixpkgs/tree/nixos-26.05
+    stable.url = "github:nixos/nixpkgs/nixos-26.05";
 
     # https://github.com/NixOS/nixpkgs/tree/nixos-unstable
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # https://github.com/nix-community/home-manager
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "stable";
     };
 
@@ -76,7 +76,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # https://docs.noctalia.dev/getting-started/nixos/
-    noctalia.url = "github:noctalia-dev/noctalia-shell/v4.7.1";
+    noctalia.url = "github:noctalia-dev/noctalia-shell/v4.7.7";
 
     # https://github.com/sxyazi/yazi
     # yazi.url = "github:sxyazi/yazi";

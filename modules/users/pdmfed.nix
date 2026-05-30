@@ -18,7 +18,6 @@ in {
 
       {nixpkgs.overlays = builtins.attrValues self.overlays;}
 
-      self.homeModules.alacritty
       self.homeModules.atuin
       self.homeModules.bat
       self.homeModules.cursor
@@ -28,6 +27,7 @@ in {
       self.homeModules.fish
       self.homeModules.fonts
       self.homeModules.fzf
+      self.homeModules.ghostty
       self.homeModules.git
       self.homeModules.go
       self.homeModules.gtk

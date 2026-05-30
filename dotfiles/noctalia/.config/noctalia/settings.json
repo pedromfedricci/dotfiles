@@ -25,10 +25,11 @@
             "postman",
             "steam",
             "org.gnome.Nautilus",
-            "org.keepassxc.KeePassXC",
             "org.gnome.SystemMonitor",
             "nixos-manual",
-            "zen-beta"
+            "zen-beta",
+            "org.keepassxc.KeePassXC",
+            "onlyoffice-desktopeditors"
         ],
         "position": "center",
         "screenshotAnnotationTool": "",
@@ -121,9 +122,10 @@
             ],
             "left": [
                 {
-                    "colorizeSystemIcon": "none",
+                    "colorizeSystemIcon": "primary",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
-                    "enableColorization": false,
+                    "enableColorization": true,
                     "icon": "rocket",
                     "iconColor": "primary",
                     "id": "Launcher",
@@ -164,7 +166,7 @@
                     "defaultSettings": {
                         "activeColor": "primary",
                         "enableToast": true,
-                        "hideInactive": true,
+                        "hideInactive": false,
                         "iconSpacing": 4,
                         "inactiveColor": "none",
                         "micFilterRegex": "",
@@ -201,6 +203,30 @@
                     "pinned": [
                         "nm-applet"
                     ]
+                },
+                {
+                    "defaultSettings": {
+                        "audioCodec": "opus",
+                        "audioSource": "default_output",
+                        "colorRange": "limited",
+                        "copyToClipboard": false,
+                        "customReplayDuration": "30",
+                        "directory": "",
+                        "filenamePattern": "recording_yyyyMMdd_HHmmss",
+                        "frameRate": "60",
+                        "hideInactive": false,
+                        "iconColor": "none",
+                        "quality": "very_high",
+                        "replayDuration": "30",
+                        "replayEnabled": false,
+                        "replayStorage": "ram",
+                        "resolution": "original",
+                        "restorePortalSession": false,
+                        "showCursor": true,
+                        "videoCodec": "h264",
+                        "videoSource": "portal"
+                    },
+                    "id": "plugin:screen-recorder"
                 },
                 {
                     "defaultSettings": {
@@ -251,6 +277,7 @@
                 {
                     "colorizeDistroLogo": false,
                     "colorizeSystemIcon": "primary",
+                    "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": true,
                     "icon": "noctalia",
@@ -291,6 +318,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Catppuccin",
         "schedulingMode": "off",
+        "syncGsettings": true,
         "useWallpaperColors": false
     },
     "controlCenter": {
@@ -384,20 +412,24 @@
         "launcherUseDistroLogo": false,
         "monitors": [
         ],
-        "onlySameOutput": false,
+        "onlySameOutput": true,
         "pinnedApps": [
+            "com.mitchellh.ghostty",
+            "org.gnome.Nautilus",
+            "gedit",
+            "onlyoffice-desktopeditors",
             "zen-beta",
-            "Alacritty",
             "spotify",
             "discord",
+            "org.keepassxc.KeePassXC",
             "steam"
         ],
-        "pinnedStatic": false,
+        "pinnedStatic": true,
         "position": "bottom",
         "showDockIndicator": false,
         "showLauncherIcon": false,
         "sitOnFrame": false,
-        "size": 1
+        "size": 1.2
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
@@ -461,6 +493,7 @@
         "showHibernateOnLockScreen": true,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": true,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -491,20 +524,21 @@
     },
     "location": {
         "analogClockInCalendar": false,
+        "autoLocate": true,
         "firstDayOfWeek": -1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Sao Paulo",
+        "name": "São Paulo",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": false,
         "use12hourFormat": false,
         "useFahrenheit": false,
         "weatherEnabled": true,
-        "weatherShowEffects": true
+        "weatherShowEffects": true,
+        "weatherTaliaMascotAlways": false
     },
     "network": {
-        "airplaneModeEnabled": false,
         "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": false,
@@ -709,6 +743,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": false,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,

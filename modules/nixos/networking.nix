@@ -23,11 +23,11 @@
     # Systemd DNS resolver daemon (systemd-resolved).
     # https://www.mankier.com/5/resolved.conf
     # https://mynixos.com/nixpkgs/options/services.resolved.settings.Resolve
-    services.resolved = {
+    services.resolved.settings.Resolve = {
       enable = true;
       # DNS = config.networking.nameservers; # Default: nameservers
-      dnssec = "allow-downgrade"; # Default: false
-      dnsovertls = "opportunistic"; # Default: false
+      DNSSEC = "allow-downgrade"; # Default: false
+      DNSOverTLS = "opportunistic"; # Default: false
     };
 
     # Driver: RTW_8852be, only in-kernel from linux >= 6.3 onwards.

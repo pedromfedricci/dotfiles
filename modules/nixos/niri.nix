@@ -4,7 +4,7 @@
     # https://mynixos.com/nixpkgs/options/programs.niri
     programs.niri = {
       enable = true; # Default: false
-      package = pkgs.niri;
+      package = pkgs.unstable.niri;
       useNautilus = true; # Default: true
     };
 
@@ -16,9 +16,6 @@
     # Some document viewer, Evince from GNOME.
     # Link: https://mynixos.com/nixpkgs/options/programs.evince
     programs.evince.enable = true;
-
-    # Set some display manager.
-    services.displayManager.gdm.enable = true;
 
     # Enable GVfs service, userspace virtual filesystem.
     # Link: https://mynixos.com/nixpkgs/options/services.gvfs
@@ -33,6 +30,7 @@
       gnome-system-monitor
       libnotify
       nautilus
+      simple-scan
       wev
       xwayland-satellite
       wl-clipboard

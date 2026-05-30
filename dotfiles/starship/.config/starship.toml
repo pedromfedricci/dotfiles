@@ -5,7 +5,7 @@
 command_timeout = 1000 # default: 500
 
 # Timeout for starship to scan files (in milliseconds).
-scan_timeout = 100 # default: 30
+scan_timeout = 300 # default: 30
 
 # Set to false to disable the blank line at the start of the prompt.
 add_newline = true

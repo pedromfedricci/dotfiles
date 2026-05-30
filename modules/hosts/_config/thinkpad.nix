@@ -12,7 +12,7 @@
   # - stable latest: `linuxPackages_latest`
   # - testing latest: `linuxPackages_testing`
   # - zen latest: `linuxPackages_zen`
-  boot.kernelPackages = pkgs.stable.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Add thinkpad acpi to kernel modules.
   boot.kernelModules = ["thinkpad_acpi"];
@@ -27,6 +27,9 @@
 
   # Set your time zone.
   time.timeZone = host.timeZone;
+
+  # Set some display manager.
+  services.displayManager.ly.enable = true; # gdm, lemurs
 
   # Enable nixos-init, a bashless initialization system for systemd initrd.
   # Links:
@@ -43,7 +46,7 @@
   # NOTE: Used to detect network printers that support IPP Everywhere protocol.
   # Link: https://mynixos.com/nixpkgs/options/services.avahi
   services.avahi = {
-    enable = false;
+    enable = true;
     nssmdns4 = true;
     openFirewall = true;
   };
@@ -61,11 +64,11 @@
   # NixOS scanner wiki: https://nixos.wiki/wiki/Scanners.
   # Scanner support provided by SANE. Link: https://www.sane-project.org/.
   hardware.sane = {
-    enable = false;
+    enable = true;
     # Default `escl` backend couldn't find the Epson scanner.
     # Epson XP-211-214-216 Series scanner and others.
     #
-    # extraBackends = [pkgs.sane-airscan];
+    extraBackends = [pkgs.sane-airscan];
   };
 
   # RealtimeKit system service, which hands out realtime scheduling priority
@@ -190,6 +193,13 @@
   programs.gnupg.agent = {
     enable = true;
     # enableSSHSupport = true;
+  };
+
+  # Enable AppImage seamlessly execution.
+  # Ref: https://mynixos.com/nixpkgs/options/programs.appimage
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
   };
 
   # Enable fwupd, a DBus service that allows applications to update firmware.

@@ -4,11 +4,11 @@
       black
       # pipenv
       poetry
-      pipx
+      # pipx
       pylint
       pylyzer
       pyright
-      python314
+      python3
       ruff
       uv
     ];

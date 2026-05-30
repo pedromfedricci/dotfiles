@@ -398,9 +398,9 @@ binds {
     }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Alt+T hotkey-overlay-title="Open Terminal: Alacritty" { spawn "alacritty"; }
-    Mod+Alt+B hotkey-overlay-title="Open Web Browser: Zen"    { spawn "zen-beta"; }
-    Mod+Alt+F hotkey-overlay-title="Open Files: Nautilus"     { spawn "nautilus"; }
+    Mod+Alt+T hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
+    Mod+Alt+B hotkey-overlay-title="Open Web Browser: Zen"  { spawn "zen-beta"; }
+    Mod+Alt+F hotkey-overlay-title="Open Files: Nautilus"   { spawn "nautilus"; }
 
     // Mod+D hotkey-overlay-title="Run Application: Fuzzel"      { spawn "fuzzel"; }
     // Super+Alt+L hotkey-overlay-title="Lock The Screen: Swaylock" { spawn "swaylock"; }

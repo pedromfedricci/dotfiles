@@ -1,0 +1,52 @@
+# Theme
+theme = Catppuccin Mocha
+
+# Cursor
+cursor-style = underline
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+# Env
+# term = xterm-256color
+
+# Font
+font-family = MonaspiceNe Nerd Font
+font-size = 11
+
+# Font features
+# textture healing
+font-feature = calt
+# dynamic spacing
+font-feature = liga
+# ss01: != and ===
+font-feature = ss01
+# ss02: <= and >=
+font-feature = ss02
+# ss03: -> and ~>
+font-feature = ss03
+# ss04: <> and </>
+font-feature = ss04
+# ss05: \/ and |>
+font-feature = ss05
+# ss06: ### and +++
+font-feature = ss06
+# ss07: ::> and :<:
+font-feature = ss07
+# ss08: ..= and ..-
+font-feature = ss08
+# ss09: << and =>
+font-feature = ss09
+# ss10: #[ and #(
+font-feature = ss10
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Selection
+clipboard-paste-protection = false
+selection-invert-fg-bg = false
+copy-on-select = clipboard
+
+# Window
+window-decoration = false
+# title = ""

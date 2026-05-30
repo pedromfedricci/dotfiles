@@ -57,7 +57,7 @@ in {
     cmake
     commitlint
     curl
-    # devcontainer
+    # devenv
     dua
     entr
     envio
@@ -79,8 +79,9 @@ in {
     lldb
     marksman
     mkcert
-    mold-wrapped
+    mold
     nasm
+    parallel
     podman-compose
     poppler
     pre-commit
@@ -92,21 +93,21 @@ in {
     typos-lsp
     vagrant
     wget
-    # unstable.weathr
+    zenoh
     zizmor
 
     # TUI applications.
     podman-tui
 
     # GUI applications.
-    stable.discord
     # stable.element-desktop
     # stable.gimp-with-plugins
     # stable.gparted
-    stable.keepassxc
     # stable.inkscape
+    stable.keepassxc
     # stable.libreoffice
     # stable.obs-studio
+    stable.onlyoffice-desktopeditors
     # stable.postman
     stable.spotify
     # stable.thunderbird
@@ -119,6 +120,7 @@ in {
 
   programs = {
     # Utilities.
+    discord.enable = true;
     distrobox.enable = false;
     fastfetch.enable = true;
     fd.enable = true;
@@ -136,8 +138,6 @@ in {
 
     # GUI applications.
     firefox.enable = false;
-    ghostty.enable = false;
-    wezterm.enable = false;
     zed-editor.enable = false;
   };
 

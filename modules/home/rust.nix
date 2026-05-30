@@ -1,7 +1,7 @@
 {
   flake.homeModules.rust = {pkgs, ...}: {
-    home.packages = with pkgs; [
-      pkgs.clang # linker
+    home.packages = with pkgs.unstable; [
+      pkgs.stable.clang # linker
 
       # bpf-linker
       # cargo-dylint
